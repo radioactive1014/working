@@ -1,0 +1,8 @@
+prefix=/home/intelligentrobotics/rokon/devel
+
+Name: utils
+Description: Description of utils
+Version: 0.0.0
+Cflags: -I/home/intelligentrobotics/rokon/src/utils/include
+Libs: -L/home/intelligentrobotics/rokon/devel/lib -lutils
+Requires: roscpp

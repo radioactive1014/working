@@ -1,0 +1,8 @@
+prefix=/home/intelligentrobotics/rokon/devel
+
+Name: main
+Description: Description of main
+Version: 0.0.0
+Cflags: -I/home/intelligentrobotics/rokon/src/main/include
+Libs: -L/home/intelligentrobotics/rokon/devel/lib -lmain
+Requires: roscpp

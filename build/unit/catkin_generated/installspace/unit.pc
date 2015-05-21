@@ -1,0 +1,8 @@
+prefix=/home/intelligentrobotics/rokon/install
+
+Name: unit
+Description: Description of unit
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/intelligentrobotics/rokon/install/lib -lunit
+Requires: roscpp

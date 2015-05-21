@@ -1,0 +1,8 @@
+prefix=/home/intelligentrobotics/rokon/devel
+
+Name: camera
+Description: Description of camera
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/intelligentrobotics/rokon/devel/lib 
+Requires: 
