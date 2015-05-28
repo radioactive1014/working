@@ -32,8 +32,10 @@ link_directories("/usr/local/lib")
 
 # Define a library target called hello_world
 add_executable(unit unit.cpp )
+add_executable(test1 pide.cpp )
 
 
 target_link_libraries(unit ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(test1 ${roscpp_LIBRARIES} utils ode main  )
 
 

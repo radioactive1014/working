@@ -41,6 +41,8 @@ float cam_p;
 float ode_p ;
 
 
+
+
 //debug variables
 
 float d_cam= 5;
@@ -67,7 +69,9 @@ double gain ;
 double kp ;
 double kd ;
 double ki ;
-double step = .001 ;
+double step = .01 ;
+
+int c = 0;
 
 
 
@@ -77,7 +81,7 @@ double a1 = (86.17*3.1416)/180 ; // -0.350812
 double a2 = (-75.79*M_PI)/180 ;  // 1.75433
 double a3 = (-3.85*3.1416)/180 ; //1.5708
 double a4 = (88.36*3.1416)/180 ;  //1.4947
-double a5 = (74.07*3.1416)/180 ;   //-0.0195477
+double a5 = (75.43*3.1416)/180 ;   //-0.0195477
 double a6 = (-23.30*3.1416)/180 ;  // 2.04064
 double e1 = (-89.46*3.1416)/180 ;  // -0.0160571
 
@@ -87,6 +91,9 @@ double limit2 = (72*3.1416)/180 ;  // -0.0160571
 double control ;
 double final_control;
 
+double last_pos = a5;
+
+double last_camera = 0 ;
 
 
 namespace cmd = ::boost::process;
@@ -129,7 +136,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh { "Simple" };
 	ros::NodeHandle n;
 
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(33);
 
 
 
@@ -159,15 +166,27 @@ int main(int argc, char **argv) {
 	control_pos_mon.request.control = FRI_CTRL_POSITION;
 	control_pos_mon.request.state = FRI_STATE_CMD;
 
+for (int j = 0 ; j< 50; j++)
 
+{
 	ros::spinOnce();  //first callback
 
+	printf("%d\n",j );
+	printf("%f\n",cam_p );
+	loop_rate.sleep();	
+}
 	setControlModeClient.call(control_pos_mon); // setting control mode
 
 
 
-	while (ros::ok())
+	//while (ros::ok())
+
+	for (int k = 0; k< 90 ; k++)
 {
+
+ros::Time begin = ros::Time::now();
+
+
 
 
     ros::spinOnce();
@@ -185,21 +204,38 @@ int main(int argc, char **argv) {
 
 
 
-kp = .3;
+kp = .035;
+ki = .001 ;
+kd =.4;
+
+
+
+/*
+
+kp = 1;
 kd =.001;
-ki = .07 ;
-error = target -cam_p ;
+ki = 1.9;
+
+*/
+error = (target -cam_p)/100 ;
+//printf("error%f\n", error);
 
 	//error = target -d_cam ;
 
 
 sum_error = sum_error + (error * step) ;
 
+  //printf("sum error%f\n", sum_error);
+
 dif_error = (error-last_error)/step;
+
+  //printf("diff error%f\n", dif_error);
 
 vel = kp*error+ ki*sum_error+ kd*dif_error ;
 
-last_error = error ;
+
+ // printf("vel %f\n", vel);
+
 
 
 
@@ -208,6 +244,18 @@ last_error = error ;
 
 double degree = m*180/3.1416 ;
 
+
+
+double change = degree -last_pos ;
+
+double  ball_change = cam_p - last_camera ;
+
+printf(" change angle : %f\n",change );
+printf(" ball change %f\n",  ball_change);
+
+
+last_pos = degree ;
+last_camera = cam_p ;
 
 
 //double d_m = 75 ;
@@ -219,27 +267,36 @@ double degree = m*180/3.1416 ;
 
 
 
-//printf("current angle %f\n",degree );
+printf("current angle %f\n",degree );
+printf("ball %f\n", cam_p );
 
 //double desired_angle = (a5*180/3.1416) +vel;
 
-double desired_angle = (a5*180/3.1416) + 0;
+double desired_angle = (a5*180/3.1416) + 5;
 
 
-gain = 3;
+gain = .1;
+
+
 
 
 double angle_error = (degree - desired_angle)*3.1416/180 ;
 
 
 
-double desired_vel = -angle_error * gain ;
+//double angle_error = (degree - desired_angle);
+
+
+
+//double desired_vel = -angle_error * gain ;
+
+double desired_vel = .5 ;
 //printf(" desired velocity  %f\n", desired_vel );
 
 
 
 
-printf("desired angle %f\n",desired_angle);
+//printf("desired angle %f\n",desired_angle);
 
 if (   desired_angle > 30 &&  desired_angle < 102 )
 {
@@ -248,6 +305,8 @@ msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
 
 		chatter_pub.publish(msg);
 //		printf("inside \n");
+
+		last_error = error ;
 
 
 }		
@@ -259,8 +318,22 @@ printf(" out  \n");
 	ros::spinOnce();
 	loop_rate.sleep();	
 
+ros::Time end = ros::Time::now();
+double dt = (begin - end).toSec();
 
+ROS_INFO("something");
 
+	//ROS_INFO("dt %f", dt);
+/*
+	int i = 0;
+	loop : cin >> i;
+
+		   if ( i != 1)
+			   goto loop;
+*/
+c = c+1;
+
+printf(" count : %d\n",c );
 }
 	return 0;
 

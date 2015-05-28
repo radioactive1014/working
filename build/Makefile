@@ -696,6 +696,19 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
+# Target rules for targets named test1
+
+# Build rule for target.
+test1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test1
+.PHONY : test1
+
+# fast build rule for target.
+test1/fast:
+	$(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/build
+.PHONY : test1/fast
+
+#=============================================================================
 # Target rules for targets named unit
 
 # Build rule for target.
@@ -867,6 +880,7 @@ help:
 	@echo "... cpub"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... main"
+	@echo "... test1"
 	@echo "... unit"
 	@echo "... unit_gencpp"
 	@echo "... unit_generate_messages"

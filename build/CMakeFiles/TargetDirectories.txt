@@ -39,6 +39,7 @@
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/std_srvs_generate_messages_lisp.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/std_srvs_generate_messages_py.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/sub.dir
+/home/intelligentrobotics/rokon/build/unit/CMakeFiles/test1.dir
 /home/intelligentrobotics/rokon/build/CMakeFiles/tests.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_gencpp.dir

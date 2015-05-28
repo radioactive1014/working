@@ -151,7 +151,7 @@ ROS_INFO(" state front  : [%d]", getState.response.state);
 	
 
 
-
+/*
 	KUKACommander::joint_ptp_motion motion_srv;
 		//boost::array<double, 7> pos={0.0,1.7,-1.74,0.0,0.0,0.0,0.0};
 
@@ -161,6 +161,8 @@ ROS_INFO(" state front  : [%d]", getState.response.state);
 		motion_srv.request.speed = 10;
 		// Move to start position
 		jointPTPMotion.call(motion_srv);
+		
+*/
 		ros::Duration(5).sleep();
 
 

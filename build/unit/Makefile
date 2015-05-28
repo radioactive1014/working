@@ -150,6 +150,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+unit/CMakeFiles/test1.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/test1.dir/rule
+.PHONY : unit/CMakeFiles/test1.dir/rule
+
+# Convenience name for target.
+test1: unit/CMakeFiles/test1.dir/rule
+.PHONY : test1
+
+# fast build rule for target.
+test1/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/build
+.PHONY : test1/fast
+
+# Convenience name for target.
 unit/CMakeFiles/unit.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit.dir/rule
 .PHONY : unit/CMakeFiles/unit.dir/rule
@@ -261,6 +275,30 @@ unit_genpy/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_genpy.dir/build.make unit/CMakeFiles/unit_genpy.dir/build
 .PHONY : unit_genpy/fast
 
+pide.o: pide.cpp.o
+.PHONY : pide.o
+
+# target to build an object file
+pide.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/pide.cpp.o
+.PHONY : pide.cpp.o
+
+pide.i: pide.cpp.i
+.PHONY : pide.i
+
+# target to preprocess a source file
+pide.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/pide.cpp.i
+.PHONY : pide.cpp.i
+
+pide.s: pide.cpp.s
+.PHONY : pide.s
+
+# target to generate assembly for a file
+pide.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/pide.cpp.s
+.PHONY : pide.cpp.s
+
 unit.o: unit.cpp.o
 .PHONY : unit.o
 
@@ -298,6 +336,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... test1"
 	@echo "... unit"
 	@echo "... unit_gencpp"
 	@echo "... unit_generate_messages"
@@ -306,6 +345,9 @@ help:
 	@echo "... unit_generate_messages_py"
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
+	@echo "... pide.o"
+	@echo "... pide.i"
+	@echo "... pide.s"
 	@echo "... unit.o"
 	@echo "... unit.i"
 	@echo "... unit.s"

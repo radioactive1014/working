@@ -40,10 +40,10 @@ int UpperV = 170;
     int iLowH = 114;
     int iHighH = 179;
 
-    int iLowS = 74; 
+    int iLowS = 88; 
     int iHighS = 255;
 
-    int iLowV = 45;
+    int iLowV = 142;
     int iHighV = 255;
 
     int posX;
@@ -140,11 +140,11 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
   //printf("x: %d , y: %d \n", posX, posY);
 
   
-if ( posX > 151 && posX< 605 && posY > 41 && posY < 457 )
+if ( posX > 41 && posX< 506 && posY > 6 && posY < 464 )
 {
 
-         newX = (posX - 151) * .105 ;
-         newY = (posY-41) *.105 ;
+         newX = (posX - 41) * .086021;
+         newY = (posY-6) *.086021 ;
        printf("x= %f,y=%f\n", newX,newY); 
   
 }
@@ -163,9 +163,9 @@ if ( posX > 151 && posX< 605 && posY > 41 && posY < 457 )
         cv::setMouseCallback( "Original", onMouse, 0 );
 
 
-cv::waitKey(1);
+//cv::waitKey(1);
  std_msgs::Float32 cam_pos;
-    cam_pos.data = newY;
+    cam_pos.data = newX;
 
 chatter_pub.publish(cam_pos);
 
@@ -227,7 +227,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& original_image)
     //Display the image using OpenCV
     cv::imshow(WINDOW, cv_ptr->image);
     //Add some delay in miliseconds. The function only works if there is at least one HighGUI window created and the window is active. If there are several HighGUI windows, any of them can be active.
-    cv::waitKey(3);
+    //cv::waitKey(3);
     /**
     * The publish() function is how you send messages. The parameter
     * is the message object. The type of this object must agree with the type
@@ -315,8 +315,9 @@ cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Contro
     * buffer up before throwing some away.
     */
 
-  ros::Rate loop_rate(.5);
-    //  while (ros::ok())
+  ros::Rate loop_rate(100);
+     while (ros::ok())
+     {
   
     pub = it.advertise("camera/image_processed", 1);
     chatter_pub = nh.advertise <std_msgs::Float32>("/from_camera", 1);
@@ -325,13 +326,13 @@ cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Contro
     * ros::spin() will not return until the node has been shutdown, either through a call 
     * to ros::shutdown() or a Ctrl-C.
     */
-  ros::spin();
+ // ros::spin();
 
-     // ros::spinOnce();
+     ros::spinOnce();
 
-   //loop_rate.sleep();
+   loop_rate.sleep();
    
- // }
+  }
     //ROS_INFO is the replacement for printf/cout.
     ROS_INFO("tutorialROSOpenCV::main.cpp::No error.");
  
