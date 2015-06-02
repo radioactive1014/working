@@ -118,6 +118,7 @@ include_directories(
  add_executable(check src/check.cpp)
  add_executable(click src/click.cpp)
  add_executable(cpub src/click_pub.cpp)
+ add_executable(fix src/fix.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -140,10 +141,14 @@ include_directories(
  target_link_libraries(cpub 
   ${catkin_LIBRARIES}
  )
+ target_link_libraries(fix 
+  ${catkin_LIBRARIES}
+ )
    target_link_libraries(camera ${OpenCV_LIBRARIES})
  target_link_libraries(color ${OpenCV_LIBRARIES})
  target_link_libraries(check ${OpenCV_LIBRARIES})
  target_link_libraries(click ${OpenCV_LIBRARIES})
+ target_link_libraries(fix ${OpenCV_LIBRARIES})
 
 #############
 ## Install ##

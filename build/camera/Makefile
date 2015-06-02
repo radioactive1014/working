@@ -219,6 +219,20 @@ cpub/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/build
 .PHONY : cpub/fast
 
+# Convenience name for target.
+camera/CMakeFiles/fix.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix.dir/rule
+.PHONY : camera/CMakeFiles/fix.dir/rule
+
+# Convenience name for target.
+fix: camera/CMakeFiles/fix.dir/rule
+.PHONY : fix
+
+# fast build rule for target.
+fix/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
+.PHONY : fix/fast
+
 src/check.o: src/check.cpp.o
 .PHONY : src/check.o
 
@@ -315,6 +329,30 @@ src/color.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
+src/fix.o: src/fix.cpp.o
+.PHONY : src/fix.o
+
+# target to build an object file
+src/fix.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.o
+.PHONY : src/fix.cpp.o
+
+src/fix.i: src/fix.cpp.i
+.PHONY : src/fix.i
+
+# target to preprocess a source file
+src/fix.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.i
+.PHONY : src/fix.cpp.i
+
+src/fix.s: src/fix.cpp.s
+.PHONY : src/fix.s
+
+# target to generate assembly for a file
+src/fix.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.s
+.PHONY : src/fix.cpp.s
+
 src/image.o: src/image.cpp.o
 .PHONY : src/image.o
 
@@ -351,6 +389,7 @@ help:
 	@echo "... color"
 	@echo "... cpub"
 	@echo "... edit_cache"
+	@echo "... fix"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -369,6 +408,9 @@ help:
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/fix.o"
+	@echo "... src/fix.i"
+	@echo "... src/fix.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"

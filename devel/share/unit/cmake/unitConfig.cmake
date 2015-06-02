@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(unit_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "" STREQUAL "")
+if(NOT "/home/intelligentrobotics/rokon/devel/include" STREQUAL "")
   set(unit_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/intelligentrobotics/rokon/devel/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})

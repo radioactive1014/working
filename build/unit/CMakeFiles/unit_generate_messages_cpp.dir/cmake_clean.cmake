@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/unit_generate_messages_cpp"
+  "/home/intelligentrobotics/rokon/devel/include/unit/from_robot.h"
 )
 
 # Per-language clean rules from dependency scanning.

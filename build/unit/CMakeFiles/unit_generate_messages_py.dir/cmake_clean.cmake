@@ -1,5 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/unit_generate_messages_py"
+  "/home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py"
+  "/home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.

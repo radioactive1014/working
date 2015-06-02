@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/unit_generate_messages_lisp"
+  "/home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv/from_robot.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -269,7 +269,7 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/SimplePTP_backup.cpp
+_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/pbp_vel.cpp
 
 //Value Computed by CMake
 app_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/app
@@ -361,6 +361,9 @@ main_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/main
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/groovy/share/message_filters/cmake
+
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/groovy/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/groovy/share/message_runtime/cmake

@@ -192,6 +192,20 @@ bup/fast:
 .PHONY : bup/fast
 
 # Convenience name for target.
+app/CMakeFiles/client.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/client.dir/rule
+.PHONY : app/CMakeFiles/client.dir/rule
+
+# Convenience name for target.
+client: app/CMakeFiles/client.dir/rule
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+# Convenience name for target.
 app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 .PHONY : app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
@@ -288,6 +302,34 @@ new_pid: app/CMakeFiles/new_pid.dir/rule
 new_pid/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/build
 .PHONY : new_pid/fast
+
+# Convenience name for target.
+app/CMakeFiles/pbp.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp.dir/rule
+.PHONY : app/CMakeFiles/pbp.dir/rule
+
+# Convenience name for target.
+pbp: app/CMakeFiles/pbp.dir/rule
+.PHONY : pbp
+
+# fast build rule for target.
+pbp/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/build
+.PHONY : pbp/fast
+
+# Convenience name for target.
+app/CMakeFiles/pbp_vel.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_vel.dir/rule
+.PHONY : app/CMakeFiles/pbp_vel.dir/rule
+
+# Convenience name for target.
+pbp_vel: app/CMakeFiles/pbp_vel.dir/rule
+.PHONY : pbp_vel
+
+# fast build rule for target.
+pbp_vel/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/build
+.PHONY : pbp_vel/fast
 
 # Convenience name for target.
 app/CMakeFiles/pid.dir/rule:
@@ -555,6 +597,20 @@ sub/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/sub.dir/build.make app/CMakeFiles/sub.dir/build
 .PHONY : sub/fast
 
+# Convenience name for target.
+app/CMakeFiles/testing.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/testing.dir/rule
+.PHONY : app/CMakeFiles/testing.dir/rule
+
+# Convenience name for target.
+testing: app/CMakeFiles/testing.dir/rule
+.PHONY : testing
+
+# fast build rule for target.
+testing/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/build
+.PHONY : testing/fast
+
 src/SimplePTP.o: src/SimplePTP.cpp.o
 .PHONY : src/SimplePTP.o
 
@@ -627,6 +683,30 @@ src/SimplePTP_backup.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/bup.dir/build.make app/CMakeFiles/bup.dir/src/SimplePTP_backup.cpp.s
 .PHONY : src/SimplePTP_backup.cpp.s
 
+src/client.o: src/client.cpp.o
+.PHONY : src/client.o
+
+# target to build an object file
+src/client.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
+
+src/client.i: src/client.cpp.i
+.PHONY : src/client.i
+
+# target to preprocess a source file
+src/client.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
+
+src/client.s: src/client.cpp.s
+.PHONY : src/client.s
+
+# target to generate assembly for a file
+src/client.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
+
 src/move.o: src/move.cpp.o
 .PHONY : src/move.o
 
@@ -698,6 +778,30 @@ src/new_pid.s: src/new_pid.cpp.s
 src/new_pid.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/src/new_pid.cpp.s
 .PHONY : src/new_pid.cpp.s
+
+src/pbp_vel.o: src/pbp_vel.cpp.o
+.PHONY : src/pbp_vel.o
+
+# target to build an object file
+src/pbp_vel.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/src/pbp_vel.cpp.o
+.PHONY : src/pbp_vel.cpp.o
+
+src/pbp_vel.i: src/pbp_vel.cpp.i
+.PHONY : src/pbp_vel.i
+
+# target to preprocess a source file
+src/pbp_vel.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/src/pbp_vel.cpp.i
+.PHONY : src/pbp_vel.cpp.i
+
+src/pbp_vel.s: src/pbp_vel.cpp.s
+.PHONY : src/pbp_vel.s
+
+# target to generate assembly for a file
+src/pbp_vel.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/src/pbp_vel.cpp.s
+.PHONY : src/pbp_vel.cpp.s
 
 src/pid.o: src/pid.cpp.o
 .PHONY : src/pid.o
@@ -819,6 +923,54 @@ src/sub.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/sub.dir/build.make app/CMakeFiles/sub.dir/src/sub.cpp.s
 .PHONY : src/sub.cpp.s
 
+src/testing.o: src/testing.cpp.o
+.PHONY : src/testing.o
+
+# target to build an object file
+src/testing.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/src/testing.cpp.o
+.PHONY : src/testing.cpp.o
+
+src/testing.i: src/testing.cpp.i
+.PHONY : src/testing.i
+
+# target to preprocess a source file
+src/testing.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/src/testing.cpp.i
+.PHONY : src/testing.cpp.i
+
+src/testing.s: src/testing.cpp.s
+.PHONY : src/testing.s
+
+# target to generate assembly for a file
+src/testing.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/src/testing.cpp.s
+.PHONY : src/testing.cpp.s
+
+src/with_pbp.o: src/with_pbp.cpp.o
+.PHONY : src/with_pbp.o
+
+# target to build an object file
+src/with_pbp.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/src/with_pbp.cpp.o
+.PHONY : src/with_pbp.cpp.o
+
+src/with_pbp.i: src/with_pbp.cpp.i
+.PHONY : src/with_pbp.i
+
+# target to preprocess a source file
+src/with_pbp.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/src/with_pbp.cpp.i
+.PHONY : src/with_pbp.cpp.i
+
+src/with_pbp.s: src/with_pbp.cpp.s
+.PHONY : src/with_pbp.s
+
+# target to generate assembly for a file
+src/with_pbp.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/src/with_pbp.cpp.s
+.PHONY : src/with_pbp.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -828,6 +980,7 @@ help:
 	@echo "... SimplePTP"
 	@echo "... SimplePTP1"
 	@echo "... bup"
+	@echo "... client"
 	@echo "... edit_cache"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
@@ -840,6 +993,8 @@ help:
 	@echo "... move1"
 	@echo "... new"
 	@echo "... new_pid"
+	@echo "... pbp"
+	@echo "... pbp_vel"
 	@echo "... pid"
 	@echo "... ppid"
 	@echo "... pub"
@@ -861,6 +1016,7 @@ help:
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... sub"
 	@echo "... test"
+	@echo "... testing"
 	@echo "... src/SimplePTP.o"
 	@echo "... src/SimplePTP.i"
 	@echo "... src/SimplePTP.s"
@@ -870,6 +1026,9 @@ help:
 	@echo "... src/SimplePTP_backup.o"
 	@echo "... src/SimplePTP_backup.i"
 	@echo "... src/SimplePTP_backup.s"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
 	@echo "... src/move.o"
 	@echo "... src/move.i"
 	@echo "... src/move.s"
@@ -879,6 +1038,9 @@ help:
 	@echo "... src/new_pid.o"
 	@echo "... src/new_pid.i"
 	@echo "... src/new_pid.s"
+	@echo "... src/pbp_vel.o"
+	@echo "... src/pbp_vel.i"
+	@echo "... src/pbp_vel.s"
 	@echo "... src/pid.o"
 	@echo "... src/pid.i"
 	@echo "... src/pid.s"
@@ -894,6 +1056,12 @@ help:
 	@echo "... src/sub.o"
 	@echo "... src/sub.i"
 	@echo "... src/sub.s"
+	@echo "... src/testing.o"
+	@echo "... src/testing.i"
+	@echo "... src/testing.s"
+	@echo "... src/with_pbp.o"
+	@echo "... src/with_pbp.i"
+	@echo "... src/with_pbp.s"
 .PHONY : help
 
 

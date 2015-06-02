@@ -10,10 +10,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x  -fmessage-length=0 ")
 find_package(roscpp REQUIRED)
 find_package(utils REQUIRED)
 find_package(main REQUIRED)
-find_package(catkin REQUIRED rospy std_msgs genmsg)
+find_package(catkin REQUIRED rospy std_msgs genmsg  message_generation)
+
+#generate_messages(DEPENDENCIES std_msgs)
+
+
+add_service_files(
+DIRECTORY srv
+  FILES
+  from_robot.srv
+)
 
 generate_messages(DEPENDENCIES std_msgs)
-
 
 # Declare this project as a catkin package and export the necessary build flags
 catkin_package(
@@ -22,7 +30,12 @@ catkin_package(
   CATKIN_DEPENDS roscpp
   )
 
+
+
 # Add the local headers and the headers from roscpp
+include_directories( include
+  ${catkin_INCLUDE_DIRS}
+)
 include_directories(include ${roscpp_INCLUDE_DIRS}  ${utils_INCLUDE_DIRS} ${main_INCLUDE_DIRS})
 include_directories ("${PROJECT_SOURCE_DIR}/eigen")
 include_directories("/home/spacemaster09/ode-0.12/ode/src/joints")
@@ -33,9 +46,14 @@ link_directories("/usr/local/lib")
 # Define a library target called hello_world
 add_executable(unit unit.cpp )
 add_executable(test1 pide.cpp )
+add_executable(test_p unit_backup.cpp )
+
+add_executable(vel vel.cpp )
 
 
 target_link_libraries(unit ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(test1 ${roscpp_LIBRARIES} utils ode main  )
+target_link_libraries(test_p ${roscpp_LIBRARIES} utils ode main  )
+target_link_libraries(vel ${roscpp_LIBRARIES} utils ode main  )
 
 

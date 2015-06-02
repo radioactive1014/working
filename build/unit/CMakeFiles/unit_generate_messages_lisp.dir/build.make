@@ -45,9 +45,16 @@ CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
 # Include the progress variables for this target.
 include unit/CMakeFiles/unit_generate_messages_lisp.dir/progress.make
 
-unit/CMakeFiles/unit_generate_messages_lisp:
+unit/CMakeFiles/unit_generate_messages_lisp: /home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv/from_robot.lisp
+
+/home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv/from_robot.lisp: /opt/ros/groovy/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv/from_robot.lisp: /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from unit/from_robot.srv"
+	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p unit -o /home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv
 
 unit_generate_messages_lisp: unit/CMakeFiles/unit_generate_messages_lisp
+unit_generate_messages_lisp: /home/intelligentrobotics/rokon/devel/share/common-lisp/ros/unit/srv/from_robot.lisp
 unit_generate_messages_lisp: unit/CMakeFiles/unit_generate_messages_lisp.dir/build.make
 .PHONY : unit_generate_messages_lisp
 

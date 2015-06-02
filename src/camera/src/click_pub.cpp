@@ -294,7 +294,7 @@ cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Contro
     * When the Subscriber object is destructed, it will automatically unsubscribe from the "camera/image_raw" base topic.
     */
     //image_transport::Subscriber sub = it.subscribe("camera/image_raw", 1, imageCallback);
-    image_transport::Subscriber sub = it.subscribe("camera/rgb/image_raw", 1, colorDetectionCallback);
+    image_transport::Subscriber sub = it.subscribe("camera/rgb/image_raw", 2, colorDetectionCallback);
     //OpenCV HighGUI call to destroy a display window on shut-down.
     cv::destroyWindow(WINDOW);
     /**

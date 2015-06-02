@@ -164,6 +164,20 @@ test1/fast:
 .PHONY : test1/fast
 
 # Convenience name for target.
+unit/CMakeFiles/test_p.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/test_p.dir/rule
+.PHONY : unit/CMakeFiles/test_p.dir/rule
+
+# Convenience name for target.
+test_p: unit/CMakeFiles/test_p.dir/rule
+.PHONY : test_p
+
+# fast build rule for target.
+test_p/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/build
+.PHONY : test_p/fast
+
+# Convenience name for target.
 unit/CMakeFiles/unit.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit.dir/rule
 .PHONY : unit/CMakeFiles/unit.dir/rule
@@ -275,6 +289,20 @@ unit_genpy/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_genpy.dir/build.make unit/CMakeFiles/unit_genpy.dir/build
 .PHONY : unit_genpy/fast
 
+# Convenience name for target.
+unit/CMakeFiles/vel.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/vel.dir/rule
+.PHONY : unit/CMakeFiles/vel.dir/rule
+
+# Convenience name for target.
+vel: unit/CMakeFiles/vel.dir/rule
+.PHONY : vel
+
+# fast build rule for target.
+vel/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/build
+.PHONY : vel/fast
+
 pide.o: pide.cpp.o
 .PHONY : pide.o
 
@@ -323,6 +351,54 @@ unit.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit.cpp.s
 .PHONY : unit.cpp.s
 
+unit_backup.o: unit_backup.cpp.o
+.PHONY : unit_backup.o
+
+# target to build an object file
+unit_backup.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/unit_backup.cpp.o
+.PHONY : unit_backup.cpp.o
+
+unit_backup.i: unit_backup.cpp.i
+.PHONY : unit_backup.i
+
+# target to preprocess a source file
+unit_backup.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/unit_backup.cpp.i
+.PHONY : unit_backup.cpp.i
+
+unit_backup.s: unit_backup.cpp.s
+.PHONY : unit_backup.s
+
+# target to generate assembly for a file
+unit_backup.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/unit_backup.cpp.s
+.PHONY : unit_backup.cpp.s
+
+vel.o: vel.cpp.o
+.PHONY : vel.o
+
+# target to build an object file
+vel.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/vel.cpp.o
+.PHONY : vel.cpp.o
+
+vel.i: vel.cpp.i
+.PHONY : vel.i
+
+# target to preprocess a source file
+vel.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/vel.cpp.i
+.PHONY : vel.cpp.i
+
+vel.s: vel.cpp.s
+.PHONY : vel.s
+
+# target to generate assembly for a file
+vel.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/vel.cpp.s
+.PHONY : vel.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -337,6 +413,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... test1"
+	@echo "... test_p"
 	@echo "... unit"
 	@echo "... unit_gencpp"
 	@echo "... unit_generate_messages"
@@ -345,12 +422,19 @@ help:
 	@echo "... unit_generate_messages_py"
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
+	@echo "... vel"
 	@echo "... pide.o"
 	@echo "... pide.i"
 	@echo "... pide.s"
 	@echo "... unit.o"
 	@echo "... unit.i"
 	@echo "... unit.s"
+	@echo "... unit_backup.o"
+	@echo "... unit_backup.i"
+	@echo "... unit_backup.s"
+	@echo "... vel.o"
+	@echo "... vel.i"
+	@echo "... vel.s"
 .PHONY : help
 
 

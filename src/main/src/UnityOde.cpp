@@ -76,7 +76,7 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 				continue;
 			}
 
-			contact[i].surface.mode =0; dContactSoftERP|dContactSoftCFM;//dContactSlip1 | dContactSlip2;// |dContactSoftERP | dContactSoftCFM | dContactApprox1;
+			//contact[i].surface.mode =0; dContactSoftERP|dContactSoftCFM;//dContactSlip1 | dContactSlip2;// |dContactSoftERP | dContactSoftCFM | dContactApprox1;
 
 
 				//	contact[i].surface.mode = 0;//	dContactApprox1 |dContactSoftERP | dContactSoftCFM  ;
@@ -86,12 +86,14 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 			//	contact[i].surface.mode |= dContactSoftCFM;
 			//	contact[i].surface.soft_cfm = context->contactSoftCFM;//1e-10;
 			//}
-			//contact[i].surface.mode |= dContactApprox1;
-			contact[i].surface.mu = .2 ;//context->frictionCoefficient;//200;
+			contact[i].surface.mode = dContactApprox1|dContactSoftERP|dContactSoftCFM;
+			contact[i].surface.mu = 1;//context->frictionCoefficient;//200;
 			//contact[i].surface.slip1 = 0.001f;
 			//contact[i].surface.slip2 = 0.001f;
-			contact[i].surface.bounce = 0.0f;
-			contact[i].surface.soft_erp = 0;
+			//contact[i].surface.bounce = 0.0f;
+			contact[i].surface.soft_erp = 1.0;
+			contact[i].surface.soft_cfm = 1e-10;
+
 			dJointID c = dJointCreateContact (context->world,context->contactGroup,&contact[i]);
 			dBodyID body1=dGeomGetBody(contact[i].geom.g1);
 			dBodyID body2=dGeomGetBody(contact[i].geom.g2);

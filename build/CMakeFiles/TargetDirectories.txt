@@ -6,9 +6,11 @@
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/check.dir
 /home/intelligentrobotics/rokon/build/CMakeFiles/clean_test_results.dir
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/click.dir
+/home/intelligentrobotics/rokon/build/app/CMakeFiles/client.dir
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/color.dir
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/cpub.dir
 /home/intelligentrobotics/rokon/build/CMakeFiles/doxygen.dir
+/home/intelligentrobotics/rokon/build/camera/CMakeFiles/fix.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/geometry_msgs_generate_messages_py.dir
@@ -19,6 +21,8 @@
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/move1.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/new.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/new_pid.dir
+/home/intelligentrobotics/rokon/build/app/CMakeFiles/pbp.dir
+/home/intelligentrobotics/rokon/build/app/CMakeFiles/pbp_vel.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/pid.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/ppid.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/pub.dir
@@ -40,6 +44,8 @@
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/std_srvs_generate_messages_py.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/sub.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/test1.dir
+/home/intelligentrobotics/rokon/build/unit/CMakeFiles/test_p.dir
+/home/intelligentrobotics/rokon/build/app/CMakeFiles/testing.dir
 /home/intelligentrobotics/rokon/build/CMakeFiles/tests.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_gencpp.dir
@@ -50,3 +56,4 @@
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_genlisp.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_genpy.dir
 /home/intelligentrobotics/rokon/build/utils/CMakeFiles/utils.dir
+/home/intelligentrobotics/rokon/build/unit/CMakeFiles/vel.dir

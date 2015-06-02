@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <cstdio> 
 #include <iostream>  
-#include"std_msgs/Float32.h"
+#include "std_msgs/Float32.h"
 #include <ctime>
 #include <ctime>
 #include <unistd.h>
@@ -48,6 +48,8 @@ const dReal *pos1,*R1,*pos2,*R2,*pos3,*R3;
  std_msgs::Float32 msg_pid; 
  ros::Publisher chatter_pub ;
 
+ float cam;
+
   dMass m3;
 
 int num= 1; 
@@ -57,9 +59,9 @@ float vel, error=0,sum_error=0,dif_error=0,prev_vel=0;
  dReal x, y, z;
 
   float dist;
-  float target = .1;
+  float target = 0;
   float kp,kd,ki;
-  float step = 0.01;
+  float step = 0.03;
 
   double last_pos = 0;
   int tick = 4 ;
@@ -75,6 +77,13 @@ typedef struct {
 myLink stage,ball,sbox;
 
 
+
+void cameraCallback(const std_msgs::Float32& cam_sim)
+{
+
+ cam = cam_sim.data;
+//ROS_INFO("In camera: [%f]", cam_sim.data);
+}
 
 //collission detection 
 
@@ -134,9 +143,6 @@ void printPos(dBodyID obj_body)
   last_pos = x ;
 
 
-  msg_pid.data = pos[0];
-  chatter_pub.publish(msg_pid);   
-  ros::spinOnce();
 
 }
 
@@ -187,16 +193,16 @@ double TruePosition = dJointGetHingeAngle(joint[1]);
 
 double degree = (TruePosition*180)/3.1416 ;
 
- printf("current angle %f\n",degree );
+ 
 //printf("desired angle %f\n", vel);
 dReal DesiredPosition =vel;
 dReal Error = degree - DesiredPosition;
 //printf("error%f\n", Error);
 //dReal DesiredVelocity = -Error * Gain;
 
-dReal DesiredVelocity = .5;
+dReal DesiredVelocity = 2;
 
-//printf(" velocity %f\n", DesiredVelocity);
+
 
  dBodyGetMass(stage.body, &m3);
 //cout<<m3.mass<<endl;
@@ -207,25 +213,30 @@ if (taint )
 {  
 
 
-	if (tick == 0 )
-{
+	//if (tick == 0 )
+//{
 dReal MaxForce = dInfinity;
 
 dJointSetHingeParam(joint[1], dParamFMax, MaxForce);  //setting maximum force
 
 dJointSetHingeParam(joint[1], dParamVel,DesiredVelocity);
 
+printf("current angle %f\n",degree );
+printf(" velocity %f\n", DesiredVelocity);
+
+ros::spinOnce();
+
 //dJointSetHingeParam(joint[1], dParamVel,.05*(vel-prev_vel)); //setting velocity for rotation
 prev_vel=vel;
 tick = 3 ;
-printf("giving \n");
+//printf("giving \n");
 
 c = c+1 ;
 
 
 
-   printf("count %d\n", c);
-}
+ // printf("count %d\n", c);
+//}
 
 //printf("ín taint" );
 
@@ -233,16 +244,24 @@ c = c+1 ;
 
 tick = tick -1 ;
 
-printf("not giving \n");
+//printf("not giving \n");
 
 
 taint = true ;
+
+
 //dReal torque={0,2,0};
 //dBodyAddTorque(stage.body,0,.001,0);
  //dJointAddHingeTorque (joint[1],.001);
 dSpaceCollide(space,0,&nearCallback); // Collision detection
 
 dWorldStep(world,step);// Step a world for 0.01 [sec]
+
+
+
+  msg_pid.data = DesiredVelocity;
+  chatter_pub.publish(msg_pid);   
+
  
 //TruePosition = dJointGetHingeAngle(joint[1]);
 //// degree = (TruePosition*180)/3.1416 ;
@@ -261,12 +280,12 @@ dJointGroupEmpty(contactgroup);  // Empty the joint group
  // printf(" time %f\n", elapsed_secs );
 
 	
-/*	int i = 0;
+	int i = 0;
 	loop : cin >> i;
 
 		   if ( i != 1)
 			   goto loop;
-*/
+
   
 }
 
@@ -300,7 +319,7 @@ void createstage()
 void makeBall()
 {
   dMass m1;
-  dReal x0 = - 0.0039, y0 = 0.0, z0 = 1.6;
+  dReal x0 = 0.0, y0 = 0.0, z0 = 1.6;
 
 
     ball.radius = 0.059;
@@ -336,8 +355,13 @@ int main (int argc, char **argv)
   ros::init(argc,argv, "talker_pid");
   ros::NodeHandle n ;
 
-   chatter_pub = n.advertise<std_msgs::Float32>("from_ode_pid", 1000);
+   chatter_pub = n.advertise<std_msgs::Float32>("from_ode_pid", 1);
+
+
+  ros::Subscriber sub_camera_sim = n.subscribe("/from_camera", 2, cameraCallback);
  
+  ros::Rate loop_rate(33);
+
 
   dInitODE();       // Initialize ODE
   
@@ -360,12 +384,19 @@ int main (int argc, char **argv)
 
 
 
+ros::spinOnce();
 
-	//while (1)
+while (1)
 
-	for (int e = 0 ; e<90 ; e++)
+	//for (int e = 0 ; e<90 ; e++)
   {
+
+      
    simLoop (0);
+
+
+   // ros::spinOnce();
+ loop_rate.sleep();  
   }
    
    

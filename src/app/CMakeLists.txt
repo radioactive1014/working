@@ -152,7 +152,11 @@ rosbuild_add_executable(pid src/pid.cpp)
 rosbuild_add_executable(new_pid src/new_pid.cpp)
 rosbuild_add_executable(ppid src/proper_pid.cpp)
 rosbuild_add_executable(bup src/SimplePTP_backup.cpp)
+rosbuild_add_executable(testing src/testing.cpp)
+rosbuild_add_executable(pbp src/with_pbp.cpp)
 
+rosbuild_add_executable(client src/client.cpp)
+rosbuild_add_executable(pbp_vel src/pbp_vel.cpp)
 
 
 
@@ -210,6 +214,22 @@ target_link_libraries(ppid
  )
 
 target_link_libraries(bup
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(testing
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(pbp
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(client
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(pbp_vel
   ${catkin_LIBRARIES}
  )
 #target_link_libraries(pub

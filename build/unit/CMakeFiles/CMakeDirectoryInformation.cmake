@@ -10,6 +10,7 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 
 # The C and CXX include file search paths:
 SET(CMAKE_C_INCLUDE_PATH
+  "/home/intelligentrobotics/rokon/devel/include"
   "/home/intelligentrobotics/rokon/src/unit/include"
   "/opt/ros/groovy/include"
   "/home/intelligentrobotics/rokon/src/utils/include"

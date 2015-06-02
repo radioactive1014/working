@@ -267,6 +267,19 @@ bup/fast:
 .PHONY : bup/fast
 
 #=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -356,6 +369,32 @@ new_pid: cmake_check_build_system
 new_pid/fast:
 	$(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/build
 .PHONY : new_pid/fast
+
+#=============================================================================
+# Target rules for targets named pbp
+
+# Build rule for target.
+pbp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pbp
+.PHONY : pbp
+
+# fast build rule for target.
+pbp/fast:
+	$(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/build
+.PHONY : pbp/fast
+
+#=============================================================================
+# Target rules for targets named pbp_vel
+
+# Build rule for target.
+pbp_vel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pbp_vel
+.PHONY : pbp_vel
+
+# fast build rule for target.
+pbp_vel/fast:
+	$(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/build
+.PHONY : pbp_vel/fast
 
 #=============================================================================
 # Target rules for targets named pid
@@ -605,6 +644,19 @@ sub/fast:
 .PHONY : sub/fast
 
 #=============================================================================
+# Target rules for targets named testing
+
+# Build rule for target.
+testing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 testing
+.PHONY : testing
+
+# fast build rule for target.
+testing/fast:
+	$(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/build
+.PHONY : testing/fast
+
+#=============================================================================
 # Target rules for targets named camera
 
 # Build rule for target.
@@ -670,6 +722,19 @@ cpub/fast:
 .PHONY : cpub/fast
 
 #=============================================================================
+# Target rules for targets named fix
+
+# Build rule for target.
+fix: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fix
+.PHONY : fix
+
+# fast build rule for target.
+fix/fast:
+	$(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
+.PHONY : fix/fast
+
+#=============================================================================
 # Target rules for targets named _catkin_empty_exported_target
 
 # Build rule for target.
@@ -707,6 +772,19 @@ test1: cmake_check_build_system
 test1/fast:
 	$(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/build
 .PHONY : test1/fast
+
+#=============================================================================
+# Target rules for targets named test_p
+
+# Build rule for target.
+test_p: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_p
+.PHONY : test_p
+
+# fast build rule for target.
+test_p/fast:
+	$(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/build
+.PHONY : test_p/fast
 
 #=============================================================================
 # Target rules for targets named unit
@@ -813,6 +891,19 @@ unit_genpy/fast:
 .PHONY : unit_genpy/fast
 
 #=============================================================================
+# Target rules for targets named vel
+
+# Build rule for target.
+vel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vel
+.PHONY : vel
+
+# fast build rule for target.
+vel/fast:
+	$(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/build
+.PHONY : vel/fast
+
+#=============================================================================
 # Target rules for targets named utils
 
 # Build rule for target.
@@ -847,6 +938,7 @@ help:
 	@echo "... SimplePTP"
 	@echo "... SimplePTP1"
 	@echo "... bup"
+	@echo "... client"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
@@ -854,6 +946,8 @@ help:
 	@echo "... move1"
 	@echo "... new"
 	@echo "... new_pid"
+	@echo "... pbp"
+	@echo "... pbp_vel"
 	@echo "... pid"
 	@echo "... ppid"
 	@echo "... pub"
@@ -873,14 +967,17 @@ help:
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... sub"
+	@echo "... testing"
 	@echo "... camera"
 	@echo "... check"
 	@echo "... click"
 	@echo "... color"
 	@echo "... cpub"
+	@echo "... fix"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... main"
 	@echo "... test1"
+	@echo "... test_p"
 	@echo "... unit"
 	@echo "... unit_gencpp"
 	@echo "... unit_generate_messages"
@@ -889,6 +986,7 @@ help:
 	@echo "... unit_generate_messages_py"
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
+	@echo "... vel"
 	@echo "... utils"
 .PHONY : help
 

@@ -39,6 +39,7 @@ using namespace ros;
 double m ;
 float cam_p;
 float ode_p ;
+float ode_pid ;
 
 
 
@@ -125,6 +126,16 @@ ROS_INFO("In camera: [%f]", cam.data);
 
 }
 
+void odePidCallback(const std_msgs::Float32& odePid)
+{
+
+ ode_pid = odePid.data;
+ROS_INFO("In ode pid: [%f]", odePid.data);
+ cout<<odePid.data <<endl;
+
+}
+
+
 
 
 
@@ -143,6 +154,7 @@ int main(int argc, char **argv) {
 	ros::Subscriber sub_camera = n.subscribe("/from_camera", 1, cameraCallback);
 	ros::Subscriber sub_ode = n.subscribe("/from_ode", 1, odeCallback);
 	ros::Subscriber sub_krc = n.subscribe("/iros/pbd/dmp/JointPos", 1, chatterCallback);
+	ros::Subscriber sub_ode_pid = n.subscribe("/from_ode_pid", 1, odePidCallback);
 	 
 
 
@@ -179,9 +191,9 @@ for (int j = 0 ; j< 50; j++)
 
 
 
-	//while (ros::ok())
+	while (ros::ok())
 
-	for (int k = 0; k< 90 ; k++)
+//	for (int k = 0; k< 90 ; k++)
 {
 
 ros::Time begin = ros::Time::now();
@@ -250,8 +262,8 @@ double change = degree -last_pos ;
 
 double  ball_change = cam_p - last_camera ;
 
-printf(" change angle : %f\n",change );
-printf(" ball change %f\n",  ball_change);
+/*printf(" change angle : %f\n",change );
+printf(" ball change %f\n",  ball_change);*/
 
 
 last_pos = degree ;
@@ -266,9 +278,11 @@ last_camera = cam_p ;
 
 
 
-
+/*
 printf("current angle %f\n",degree );
-printf("ball %f\n", cam_p );
+//printf("ball %f\n", cam_p );*/
+
+printf("from ode %f\n",ode_pid );
 
 //double desired_angle = (a5*180/3.1416) +vel;
 
@@ -298,10 +312,14 @@ double desired_vel = .5 ;
 
 //printf("desired angle %f\n",desired_angle);
 
-if (   desired_angle > 30 &&  desired_angle < 102 )
+//if (   desired_angle > 30 &&  desired_angle < 102 )
+if (   degree> 30 &&  degree < 102 )
+
 {
 
-msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
+
+msg.position = {va1,va2,ve1,va3,va4,ode_pid*100,va6};
+//msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
 
 		chatter_pub.publish(msg);
 //		printf("inside \n");
@@ -321,19 +339,19 @@ printf(" out  \n");
 ros::Time end = ros::Time::now();
 double dt = (begin - end).toSec();
 
-ROS_INFO("something");
+//ROS_INFO("something");
 
 	//ROS_INFO("dt %f", dt);
-/*
-	int i = 0;
+
+/*	int i = 0;
 	loop : cin >> i;
 
 		   if ( i != 1)
-			   goto loop;
-*/
+			   goto loop;*/
+
 c = c+1;
 
-printf(" count : %d\n",c );
+//printf(" count : %d\n",c );
 }
 	return 0;
 
