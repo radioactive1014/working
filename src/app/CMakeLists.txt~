@@ -158,6 +158,8 @@ rosbuild_add_executable(pbp src/with_pbp.cpp)
 rosbuild_add_executable(client src/client.cpp)
 rosbuild_add_executable(pbp_vel src/pbp_vel.cpp)
 
+rosbuild_add_executable(fancy src/fancy.cpp)
+
 
 
 ## Declare a cpp library
@@ -230,6 +232,10 @@ target_link_libraries(client
  )
 
 target_link_libraries(pbp_vel
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(fancy
   ${catkin_LIBRARIES}
  )
 #target_link_libraries(pub

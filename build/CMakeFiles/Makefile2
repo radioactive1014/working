@@ -199,7 +199,7 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  14
 	@echo "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
@@ -230,7 +230,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  13
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  15
 	@echo "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
@@ -262,6 +262,7 @@ app/all: app/CMakeFiles/SimplePTP.dir/all
 app/all: app/CMakeFiles/SimplePTP1.dir/all
 app/all: app/CMakeFiles/bup.dir/all
 app/all: app/CMakeFiles/client.dir/all
+app/all: app/CMakeFiles/fancy.dir/all
 app/all: app/CMakeFiles/move.dir/all
 app/all: app/CMakeFiles/move1.dir/all
 app/all: app/CMakeFiles/new.dir/all
@@ -280,6 +281,7 @@ app/clean: app/CMakeFiles/SimplePTP.dir/clean
 app/clean: app/CMakeFiles/SimplePTP1.dir/clean
 app/clean: app/CMakeFiles/bup.dir/clean
 app/clean: app/CMakeFiles/client.dir/clean
+app/clean: app/CMakeFiles/fancy.dir/clean
 app/clean: app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 app/clean: app/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 app/clean: app/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
@@ -456,6 +458,41 @@ clean: app/CMakeFiles/client.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target app/CMakeFiles/fancy.dir
+
+# All Build rule for target.
+app/CMakeFiles/fancy.dir/all:
+	$(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/depend
+	$(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  11
+	@echo "Built target fancy"
+.PHONY : app/CMakeFiles/fancy.dir/all
+
+# Include target in all.
+all: app/CMakeFiles/fancy.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+app/CMakeFiles/fancy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/fancy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 0
+.PHONY : app/CMakeFiles/fancy.dir/rule
+
+# Convenience name for target.
+fancy: app/CMakeFiles/fancy.dir/rule
+.PHONY : fancy
+
+# clean rule for target.
+app/CMakeFiles/fancy.dir/clean:
+	$(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/clean
+.PHONY : app/CMakeFiles/fancy.dir/clean
+
+# clean rule for target.
+clean: app/CMakeFiles/fancy.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
@@ -555,7 +592,7 @@ clean: app/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 app/CMakeFiles/move.dir/all:
 	$(MAKE) -f app/CMakeFiles/move.dir/build.make app/CMakeFiles/move.dir/depend
 	$(MAKE) -f app/CMakeFiles/move.dir/build.make app/CMakeFiles/move.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  16
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  18
 	@echo "Built target move"
 .PHONY : app/CMakeFiles/move.dir/all
 
@@ -590,7 +627,7 @@ clean: app/CMakeFiles/move.dir/clean
 app/CMakeFiles/move1.dir/all:
 	$(MAKE) -f app/CMakeFiles/move1.dir/build.make app/CMakeFiles/move1.dir/depend
 	$(MAKE) -f app/CMakeFiles/move1.dir/build.make app/CMakeFiles/move1.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  19
 	@echo "Built target move1"
 .PHONY : app/CMakeFiles/move1.dir/all
 
@@ -625,7 +662,7 @@ clean: app/CMakeFiles/move1.dir/clean
 app/CMakeFiles/new.dir/all:
 	$(MAKE) -f app/CMakeFiles/new.dir/build.make app/CMakeFiles/new.dir/depend
 	$(MAKE) -f app/CMakeFiles/new.dir/build.make app/CMakeFiles/new.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  20
 	@echo "Built target new"
 .PHONY : app/CMakeFiles/new.dir/all
 
@@ -660,7 +697,7 @@ clean: app/CMakeFiles/new.dir/clean
 app/CMakeFiles/new_pid.dir/all:
 	$(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/depend
 	$(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  19
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  21
 	@echo "Built target new_pid"
 .PHONY : app/CMakeFiles/new_pid.dir/all
 
@@ -695,7 +732,7 @@ clean: app/CMakeFiles/new_pid.dir/clean
 app/CMakeFiles/pbp.dir/all:
 	$(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/depend
 	$(MAKE) -f app/CMakeFiles/pbp.dir/build.make app/CMakeFiles/pbp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  22
 	@echo "Built target pbp"
 .PHONY : app/CMakeFiles/pbp.dir/all
 
@@ -730,7 +767,7 @@ clean: app/CMakeFiles/pbp.dir/clean
 app/CMakeFiles/pbp_vel.dir/all:
 	$(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/depend
 	$(MAKE) -f app/CMakeFiles/pbp_vel.dir/build.make app/CMakeFiles/pbp_vel.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  21
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  23
 	@echo "Built target pbp_vel"
 .PHONY : app/CMakeFiles/pbp_vel.dir/all
 
@@ -765,7 +802,7 @@ clean: app/CMakeFiles/pbp_vel.dir/clean
 app/CMakeFiles/pid.dir/all:
 	$(MAKE) -f app/CMakeFiles/pid.dir/build.make app/CMakeFiles/pid.dir/depend
 	$(MAKE) -f app/CMakeFiles/pid.dir/build.make app/CMakeFiles/pid.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  22
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  24
 	@echo "Built target pid"
 .PHONY : app/CMakeFiles/pid.dir/all
 
@@ -800,7 +837,7 @@ clean: app/CMakeFiles/pid.dir/clean
 app/CMakeFiles/ppid.dir/all:
 	$(MAKE) -f app/CMakeFiles/ppid.dir/build.make app/CMakeFiles/ppid.dir/depend
 	$(MAKE) -f app/CMakeFiles/ppid.dir/build.make app/CMakeFiles/ppid.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  23
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  25
 	@echo "Built target ppid"
 .PHONY : app/CMakeFiles/ppid.dir/all
 
@@ -835,7 +872,7 @@ clean: app/CMakeFiles/ppid.dir/clean
 app/CMakeFiles/pub.dir/all:
 	$(MAKE) -f app/CMakeFiles/pub.dir/build.make app/CMakeFiles/pub.dir/depend
 	$(MAKE) -f app/CMakeFiles/pub.dir/build.make app/CMakeFiles/pub.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  24
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  26
 	@echo "Built target pub"
 .PHONY : app/CMakeFiles/pub.dir/all
 
@@ -1335,7 +1372,7 @@ clean: app/CMakeFiles/std_srvs_generate_messages_py.dir/clean
 app/CMakeFiles/sub.dir/all:
 	$(MAKE) -f app/CMakeFiles/sub.dir/build.make app/CMakeFiles/sub.dir/depend
 	$(MAKE) -f app/CMakeFiles/sub.dir/build.make app/CMakeFiles/sub.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  25
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  27
 	@echo "Built target sub"
 .PHONY : app/CMakeFiles/sub.dir/all
 
@@ -1370,7 +1407,7 @@ clean: app/CMakeFiles/sub.dir/clean
 app/CMakeFiles/testing.dir/all:
 	$(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/depend
 	$(MAKE) -f app/CMakeFiles/testing.dir/build.make app/CMakeFiles/testing.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  28
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  30
 	@echo "Built target testing"
 .PHONY : app/CMakeFiles/testing.dir/all
 
@@ -1407,6 +1444,7 @@ camera/all: camera/CMakeFiles/check.dir/all
 camera/all: camera/CMakeFiles/click.dir/all
 camera/all: camera/CMakeFiles/color.dir/all
 camera/all: camera/CMakeFiles/cpub.dir/all
+camera/all: camera/CMakeFiles/fancy_cam.dir/all
 camera/all: camera/CMakeFiles/fix.dir/all
 .PHONY : camera/all
 
@@ -1416,6 +1454,7 @@ camera/clean: camera/CMakeFiles/check.dir/clean
 camera/clean: camera/CMakeFiles/click.dir/clean
 camera/clean: camera/CMakeFiles/color.dir/clean
 camera/clean: camera/CMakeFiles/cpub.dir/clean
+camera/clean: camera/CMakeFiles/fancy_cam.dir/clean
 camera/clean: camera/CMakeFiles/fix.dir/clean
 .PHONY : camera/clean
 
@@ -1599,13 +1638,48 @@ clean: camera/CMakeFiles/cpub.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target camera/CMakeFiles/fancy_cam.dir
+
+# All Build rule for target.
+camera/CMakeFiles/fancy_cam.dir/all:
+	$(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/depend
+	$(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  12
+	@echo "Built target fancy_cam"
+.PHONY : camera/CMakeFiles/fancy_cam.dir/all
+
+# Include target in all.
+all: camera/CMakeFiles/fancy_cam.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+camera/CMakeFiles/fancy_cam.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fancy_cam.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 0
+.PHONY : camera/CMakeFiles/fancy_cam.dir/rule
+
+# Convenience name for target.
+fancy_cam: camera/CMakeFiles/fancy_cam.dir/rule
+.PHONY : fancy_cam
+
+# clean rule for target.
+camera/CMakeFiles/fancy_cam.dir/clean:
+	$(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/clean
+.PHONY : camera/CMakeFiles/fancy_cam.dir/clean
+
+# clean rule for target.
+clean: camera/CMakeFiles/fancy_cam.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target camera/CMakeFiles/fix.dir
 
 # All Build rule for target.
 camera/CMakeFiles/fix.dir/all:
 	$(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/depend
 	$(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  11
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  13
 	@echo "Built target fix"
 .PHONY : camera/CMakeFiles/fix.dir/all
 
@@ -1687,7 +1761,7 @@ clean: main/CMakeFiles/_catkin_empty_exported_target.dir/clean
 main/CMakeFiles/main.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f main/CMakeFiles/main.dir/build.make main/CMakeFiles/main.dir/depend
 	$(MAKE) -f main/CMakeFiles/main.dir/build.make main/CMakeFiles/main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  14 15
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  16 17
 	@echo "Built target main"
 .PHONY : main/CMakeFiles/main.dir/all
 
@@ -1724,6 +1798,7 @@ unit/all: unit/CMakeFiles/test_p.dir/all
 unit/all: unit/CMakeFiles/unit.dir/all
 unit/all: unit/CMakeFiles/unit_generate_messages.dir/all
 unit/all: unit/CMakeFiles/vel.dir/all
+unit/all: unit/CMakeFiles/vel_check.dir/all
 .PHONY : unit/all
 
 # Convenience name for "clean" pass in the directory.
@@ -1738,6 +1813,7 @@ unit/clean: unit/CMakeFiles/unit_generate_messages_py.dir/clean
 unit/clean: unit/CMakeFiles/unit_genlisp.dir/clean
 unit/clean: unit/CMakeFiles/unit_genpy.dir/clean
 unit/clean: unit/CMakeFiles/vel.dir/clean
+unit/clean: unit/CMakeFiles/vel_check.dir/clean
 .PHONY : unit/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -1752,7 +1828,7 @@ unit/CMakeFiles/test1.dir/all: main/CMakeFiles/main.dir/all
 unit/CMakeFiles/test1.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/depend
 	$(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  26
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  28
 	@echo "Built target test1"
 .PHONY : unit/CMakeFiles/test1.dir/all
 
@@ -1788,7 +1864,7 @@ unit/CMakeFiles/test_p.dir/all: main/CMakeFiles/main.dir/all
 unit/CMakeFiles/test_p.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/depend
 	$(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  27
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  29
 	@echo "Built target test_p"
 .PHONY : unit/CMakeFiles/test_p.dir/all
 
@@ -1824,7 +1900,7 @@ unit/CMakeFiles/unit.dir/all: main/CMakeFiles/main.dir/all
 unit/CMakeFiles/unit.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/depend
 	$(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  29
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  31
 	@echo "Built target unit"
 .PHONY : unit/CMakeFiles/unit.dir/all
 
@@ -1887,9 +1963,9 @@ clean: unit/CMakeFiles/unit_gencpp.dir/clean
 # Target rules for target unit/CMakeFiles/unit_generate_messages.dir
 
 # All Build rule for target.
-unit/CMakeFiles/unit_generate_messages.dir/all: unit/CMakeFiles/unit_generate_messages_cpp.dir/all
-unit/CMakeFiles/unit_generate_messages.dir/all: unit/CMakeFiles/unit_generate_messages_py.dir/all
 unit/CMakeFiles/unit_generate_messages.dir/all: unit/CMakeFiles/unit_generate_messages_lisp.dir/all
+unit/CMakeFiles/unit_generate_messages.dir/all: unit/CMakeFiles/unit_generate_messages_py.dir/all
+unit/CMakeFiles/unit_generate_messages.dir/all: unit/CMakeFiles/unit_generate_messages_cpp.dir/all
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages.dir/build.make unit/CMakeFiles/unit_generate_messages.dir/depend
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages.dir/build.make unit/CMakeFiles/unit_generate_messages.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles 
@@ -1927,7 +2003,7 @@ clean: unit/CMakeFiles/unit_generate_messages.dir/clean
 unit/CMakeFiles/unit_generate_messages_cpp.dir/all: app/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_cpp.dir/build.make unit/CMakeFiles/unit_generate_messages_cpp.dir/depend
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_cpp.dir/build.make unit/CMakeFiles/unit_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  30
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  32
 	@echo "Built target unit_generate_messages_cpp"
 .PHONY : unit/CMakeFiles/unit_generate_messages_cpp.dir/all
 
@@ -1958,7 +2034,7 @@ clean: unit/CMakeFiles/unit_generate_messages_cpp.dir/clean
 unit/CMakeFiles/unit_generate_messages_lisp.dir/all: app/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_lisp.dir/build.make unit/CMakeFiles/unit_generate_messages_lisp.dir/depend
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_lisp.dir/build.make unit/CMakeFiles/unit_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  31
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  33
 	@echo "Built target unit_generate_messages_lisp"
 .PHONY : unit/CMakeFiles/unit_generate_messages_lisp.dir/all
 
@@ -1989,7 +2065,7 @@ clean: unit/CMakeFiles/unit_generate_messages_lisp.dir/clean
 unit/CMakeFiles/unit_generate_messages_py.dir/all: app/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_py.dir/build.make unit/CMakeFiles/unit_generate_messages_py.dir/depend
 	$(MAKE) -f unit/CMakeFiles/unit_generate_messages_py.dir/build.make unit/CMakeFiles/unit_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  32 33
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  34 35
 	@echo "Built target unit_generate_messages_py"
 .PHONY : unit/CMakeFiles/unit_generate_messages_py.dir/all
 
@@ -2083,7 +2159,7 @@ unit/CMakeFiles/vel.dir/all: main/CMakeFiles/main.dir/all
 unit/CMakeFiles/vel.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/depend
 	$(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  46
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  48
 	@echo "Built target vel"
 .PHONY : unit/CMakeFiles/vel.dir/all
 
@@ -2112,6 +2188,42 @@ clean: unit/CMakeFiles/vel.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target unit/CMakeFiles/vel_check.dir
+
+# All Build rule for target.
+unit/CMakeFiles/vel_check.dir/all: main/CMakeFiles/main.dir/all
+unit/CMakeFiles/vel_check.dir/all: utils/CMakeFiles/utils.dir/all
+	$(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/depend
+	$(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  49
+	@echo "Built target vel_check"
+.PHONY : unit/CMakeFiles/vel_check.dir/all
+
+# Include target in all.
+all: unit/CMakeFiles/vel_check.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+unit/CMakeFiles/vel_check.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 15
+	$(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/vel_check.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 0
+.PHONY : unit/CMakeFiles/vel_check.dir/rule
+
+# Convenience name for target.
+vel_check: unit/CMakeFiles/vel_check.dir/rule
+.PHONY : vel_check
+
+# clean rule for target.
+unit/CMakeFiles/vel_check.dir/clean:
+	$(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/clean
+.PHONY : unit/CMakeFiles/vel_check.dir/clean
+
+# clean rule for target.
+clean: unit/CMakeFiles/vel_check.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory utils
 
 # Convenience name for "all" pass in the directory.
@@ -2133,7 +2245,7 @@ utils/preinstall:
 utils/CMakeFiles/utils.dir/all:
 	$(MAKE) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/depend
 	$(MAKE) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  34 35 36 37 38 39 40 41 42 43 44 45
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles  36 37 38 39 40 41 42 43 44 45 46 47
 	@echo "Built target utils"
 .PHONY : utils/CMakeFiles/utils.dir/all
 

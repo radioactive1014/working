@@ -131,7 +131,7 @@ saveOdeState(0);
 	//The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 	float C=10;	
 	float controlStd=0.9f*C;	//sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
-	float controlDiffStd=1000.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
+	float controlDiffStd=100.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 	float controlDiffDiffStd=1000.0f*C; //sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 	float mutationScale=0.25f;		//\sigma_m in the paper
 	pbp.init(nSamples,nTimeSteps,nStateDimensions,nControlDimensions,&minControl,&maxControl,&controlMean,&controlStd,&controlDiffStd,&controlDiffDiffStd,mutationScale,NULL);
@@ -231,7 +231,7 @@ saveOdeState(0);
 
 				const dReal *pos = odeBodyGetPosition(body1);
 				float angle=odeJointGetHingeAngle(hinge);
-				float cost=squared((pos[0])*12.0f) +squared(control * 0.55) + squared(angle*0.2f) ; //+squared(control * 5.2);
+				float cost=squared((pos[0])*100.0f); // +squared(control * 0.05) + squared(angle*0.01f) ; //+squared(control * 5.2);
 			
 
 
@@ -240,12 +240,14 @@ saveOdeState(0);
 
 
 
+		
+
 			///////////////////  need to remodel .//////////
-     if (pos[2]<2.3 || pos[2]>3.2)
+    /* if (pos[2]<2.3 || pos[2]>3.2)
 		{
 				cost=cost+1000;
 				//printf("I am in\n");
-			}
+			}*/
 			float angle1 =abs( angle*180/PI);
 			if (angle1 >24)
 			{
@@ -310,7 +312,7 @@ saveOdeState(0);
 		pos = odeBodyGetPosition(body1);
 		//angle=odeJointGetHingeAngle(hinge);
 	   angle=odeJointGetHingeAngle(hinge);
-		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f \n",pos[0],pos[2],(angle*180/PI),cost);
+		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control = %f \n",pos[0],pos[2],(angle*180/PI),cost,control);
 	  // printf("angle %1.3f, avel %1.3f, cost=%1.3f\n",angle,aVel,cost);
 	
 	

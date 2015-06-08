@@ -206,6 +206,20 @@ client/fast:
 .PHONY : client/fast
 
 # Convenience name for target.
+app/CMakeFiles/fancy.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/fancy.dir/rule
+.PHONY : app/CMakeFiles/fancy.dir/rule
+
+# Convenience name for target.
+fancy: app/CMakeFiles/fancy.dir/rule
+.PHONY : fancy
+
+# fast build rule for target.
+fancy/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/build
+.PHONY : fancy/fast
+
+# Convenience name for target.
 app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 .PHONY : app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
@@ -707,6 +721,30 @@ src/client.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/client.dir/build.make app/CMakeFiles/client.dir/src/client.cpp.s
 .PHONY : src/client.cpp.s
 
+src/fancy.o: src/fancy.cpp.o
+.PHONY : src/fancy.o
+
+# target to build an object file
+src/fancy.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/src/fancy.cpp.o
+.PHONY : src/fancy.cpp.o
+
+src/fancy.i: src/fancy.cpp.i
+.PHONY : src/fancy.i
+
+# target to preprocess a source file
+src/fancy.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/src/fancy.cpp.i
+.PHONY : src/fancy.cpp.i
+
+src/fancy.s: src/fancy.cpp.s
+.PHONY : src/fancy.s
+
+# target to generate assembly for a file
+src/fancy.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/src/fancy.cpp.s
+.PHONY : src/fancy.cpp.s
+
 src/move.o: src/move.cpp.o
 .PHONY : src/move.o
 
@@ -982,6 +1020,7 @@ help:
 	@echo "... bup"
 	@echo "... client"
 	@echo "... edit_cache"
+	@echo "... fancy"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
@@ -1029,6 +1068,9 @@ help:
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
+	@echo "... src/fancy.o"
+	@echo "... src/fancy.i"
+	@echo "... src/fancy.s"
 	@echo "... src/move.o"
 	@echo "... src/move.i"
 	@echo "... src/move.s"

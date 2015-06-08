@@ -280,6 +280,19 @@ client/fast:
 .PHONY : client/fast
 
 #=============================================================================
+# Target rules for targets named fancy
+
+# Build rule for target.
+fancy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fancy
+.PHONY : fancy
+
+# fast build rule for target.
+fancy/fast:
+	$(MAKE) -f app/CMakeFiles/fancy.dir/build.make app/CMakeFiles/fancy.dir/build
+.PHONY : fancy/fast
+
+#=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -722,6 +735,19 @@ cpub/fast:
 .PHONY : cpub/fast
 
 #=============================================================================
+# Target rules for targets named fancy_cam
+
+# Build rule for target.
+fancy_cam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fancy_cam
+.PHONY : fancy_cam
+
+# fast build rule for target.
+fancy_cam/fast:
+	$(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/build
+.PHONY : fancy_cam/fast
+
+#=============================================================================
 # Target rules for targets named fix
 
 # Build rule for target.
@@ -904,6 +930,19 @@ vel/fast:
 .PHONY : vel/fast
 
 #=============================================================================
+# Target rules for targets named vel_check
+
+# Build rule for target.
+vel_check: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vel_check
+.PHONY : vel_check
+
+# fast build rule for target.
+vel_check/fast:
+	$(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/build
+.PHONY : vel_check/fast
+
+#=============================================================================
 # Target rules for targets named utils
 
 # Build rule for target.
@@ -939,6 +978,7 @@ help:
 	@echo "... SimplePTP1"
 	@echo "... bup"
 	@echo "... client"
+	@echo "... fancy"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
@@ -973,6 +1013,7 @@ help:
 	@echo "... click"
 	@echo "... color"
 	@echo "... cpub"
+	@echo "... fancy_cam"
 	@echo "... fix"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... main"
@@ -987,6 +1028,7 @@ help:
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
 	@echo "... vel"
+	@echo "... vel_check"
 	@echo "... utils"
 .PHONY : help
 

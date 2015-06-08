@@ -10,6 +10,8 @@
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/color.dir
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/cpub.dir
 /home/intelligentrobotics/rokon/build/CMakeFiles/doxygen.dir
+/home/intelligentrobotics/rokon/build/app/CMakeFiles/fancy.dir
+/home/intelligentrobotics/rokon/build/camera/CMakeFiles/fancy_cam.dir
 /home/intelligentrobotics/rokon/build/camera/CMakeFiles/fix.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 /home/intelligentrobotics/rokon/build/app/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
@@ -57,3 +59,4 @@
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_genpy.dir
 /home/intelligentrobotics/rokon/build/utils/CMakeFiles/utils.dir
 /home/intelligentrobotics/rokon/build/unit/CMakeFiles/vel.dir
+/home/intelligentrobotics/rokon/build/unit/CMakeFiles/vel_check.dir

@@ -220,6 +220,20 @@ cpub/fast:
 .PHONY : cpub/fast
 
 # Convenience name for target.
+camera/CMakeFiles/fancy_cam.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fancy_cam.dir/rule
+.PHONY : camera/CMakeFiles/fancy_cam.dir/rule
+
+# Convenience name for target.
+fancy_cam: camera/CMakeFiles/fancy_cam.dir/rule
+.PHONY : fancy_cam
+
+# fast build rule for target.
+fancy_cam/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/build
+.PHONY : fancy_cam/fast
+
+# Convenience name for target.
 camera/CMakeFiles/fix.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix.dir/rule
 .PHONY : camera/CMakeFiles/fix.dir/rule
@@ -329,6 +343,30 @@ src/color.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
+src/fancy_cam.o: src/fancy_cam.cpp.o
+.PHONY : src/fancy_cam.o
+
+# target to build an object file
+src/fancy_cam.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.o
+.PHONY : src/fancy_cam.cpp.o
+
+src/fancy_cam.i: src/fancy_cam.cpp.i
+.PHONY : src/fancy_cam.i
+
+# target to preprocess a source file
+src/fancy_cam.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.i
+.PHONY : src/fancy_cam.cpp.i
+
+src/fancy_cam.s: src/fancy_cam.cpp.s
+.PHONY : src/fancy_cam.s
+
+# target to generate assembly for a file
+src/fancy_cam.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.s
+.PHONY : src/fancy_cam.cpp.s
+
 src/fix.o: src/fix.cpp.o
 .PHONY : src/fix.o
 
@@ -389,6 +427,7 @@ help:
 	@echo "... color"
 	@echo "... cpub"
 	@echo "... edit_cache"
+	@echo "... fancy_cam"
 	@echo "... fix"
 	@echo "... install"
 	@echo "... install/local"
@@ -408,6 +447,9 @@ help:
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/fancy_cam.o"
+	@echo "... src/fancy_cam.i"
+	@echo "... src/fancy_cam.s"
 	@echo "... src/fix.o"
 	@echo "... src/fix.i"
 	@echo "... src/fix.s"

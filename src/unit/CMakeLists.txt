@@ -49,11 +49,13 @@ add_executable(test1 pide.cpp )
 add_executable(test_p unit_backup.cpp )
 
 add_executable(vel vel.cpp )
+add_executable(vel_check vel_check.cpp )
 
 
 target_link_libraries(unit ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(test1 ${roscpp_LIBRARIES} utils ode main  )
 target_link_libraries(test_p ${roscpp_LIBRARIES} utils ode main  )
 target_link_libraries(vel ${roscpp_LIBRARIES} utils ode main  )
+target_link_libraries(vel_check ${roscpp_LIBRARIES} utils ode main  )
 
 

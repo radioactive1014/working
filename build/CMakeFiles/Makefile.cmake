@@ -229,6 +229,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "app/CMakeFiles/SimplePTP1.dir/DependInfo.cmake"
   "app/CMakeFiles/bup.dir/DependInfo.cmake"
   "app/CMakeFiles/client.dir/DependInfo.cmake"
+  "app/CMakeFiles/fancy.dir/DependInfo.cmake"
   "app/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "app/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "app/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake"
@@ -263,6 +264,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "camera/CMakeFiles/click.dir/DependInfo.cmake"
   "camera/CMakeFiles/color.dir/DependInfo.cmake"
   "camera/CMakeFiles/cpub.dir/DependInfo.cmake"
+  "camera/CMakeFiles/fancy_cam.dir/DependInfo.cmake"
   "camera/CMakeFiles/fix.dir/DependInfo.cmake"
   "main/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
   "main/CMakeFiles/main.dir/DependInfo.cmake"
@@ -277,5 +279,6 @@ SET(CMAKE_DEPEND_INFO_FILES
   "unit/CMakeFiles/unit_genlisp.dir/DependInfo.cmake"
   "unit/CMakeFiles/unit_genpy.dir/DependInfo.cmake"
   "unit/CMakeFiles/vel.dir/DependInfo.cmake"
+  "unit/CMakeFiles/vel_check.dir/DependInfo.cmake"
   "utils/CMakeFiles/utils.dir/DependInfo.cmake"
   )

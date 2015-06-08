@@ -303,6 +303,20 @@ vel/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/build
 .PHONY : vel/fast
 
+# Convenience name for target.
+unit/CMakeFiles/vel_check.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/vel_check.dir/rule
+.PHONY : unit/CMakeFiles/vel_check.dir/rule
+
+# Convenience name for target.
+vel_check: unit/CMakeFiles/vel_check.dir/rule
+.PHONY : vel_check
+
+# fast build rule for target.
+vel_check/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/build
+.PHONY : vel_check/fast
+
 pide.o: pide.cpp.o
 .PHONY : pide.o
 
@@ -399,6 +413,30 @@ vel.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel.dir/build.make unit/CMakeFiles/vel.dir/vel.cpp.s
 .PHONY : vel.cpp.s
 
+vel_check.o: vel_check.cpp.o
+.PHONY : vel_check.o
+
+# target to build an object file
+vel_check.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/vel_check.cpp.o
+.PHONY : vel_check.cpp.o
+
+vel_check.i: vel_check.cpp.i
+.PHONY : vel_check.i
+
+# target to preprocess a source file
+vel_check.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/vel_check.cpp.i
+.PHONY : vel_check.cpp.i
+
+vel_check.s: vel_check.cpp.s
+.PHONY : vel_check.s
+
+# target to generate assembly for a file
+vel_check.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/vel_check.cpp.s
+.PHONY : vel_check.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -423,6 +461,7 @@ help:
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
 	@echo "... vel"
+	@echo "... vel_check"
 	@echo "... pide.o"
 	@echo "... pide.i"
 	@echo "... pide.s"
@@ -435,6 +474,9 @@ help:
 	@echo "... vel.o"
 	@echo "... vel.i"
 	@echo "... vel.s"
+	@echo "... vel_check.o"
+	@echo "... vel_check.i"
+	@echo "... vel_check.s"
 .PHONY : help
 
 

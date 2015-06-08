@@ -49,7 +49,7 @@ float control ;
 
 //debug variables
 
-float d_cam= 5;
+float d_cam= .2;
 
 //velocity 
 

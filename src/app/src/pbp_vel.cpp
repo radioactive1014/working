@@ -49,7 +49,7 @@ float control ;
 
 //debug variables
 
-float d_cam= 5;
+float d_cam= .1;
 
 //velocity 
 
@@ -108,7 +108,7 @@ void odeCallback(const std_msgs::Float32& ode)
 {
 
  ode_p = ode.data;
-ROS_INFO("In ode: [%f]", ode.data);
+//ROS_INFO("In ode: [%f]", ode.data);
  
 
 }
@@ -135,7 +135,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh { "Simple" };
 	ros::NodeHandle n;
 
-	ros::Rate loop_rate(33);
+	ros::Rate loop_rate(40);
 
 
 	std_srvs::Empty foo;
@@ -190,7 +190,7 @@ setControlModeClient.call(control_pos_mon);
 
 
 
-//for (int k= 0 ; k<10; k++)
+//for (int k= 0 ; k<20; k++)
 
 while (ros::ok())
 {
@@ -198,8 +198,21 @@ while (ros::ok())
 ros::Time begin = ros::Time::now();
 
 
-info.request.position = cam_p;
+double ball_pos;
+
+
+	
+ball_pos = (cam_p-20)/100 ;
+
+// d_cam = d_cam -.01  ;
+
+
+ info.request.position = ball_pos;
+//info.request.position = d_cam;
 info.request.angle = m;
+
+/*info.request.position = .05;
+info.request.angle = 10;*/
 
 
     if (client.call(info))
@@ -223,10 +236,24 @@ sensor_msgs::JointState msg;
 
 float degree = m*180/3.1416 ;
 
-double desired_vel =info.response.command ;
+/*// double desired_vel =info.response.command ;
+double desired_angle =info.response.command + 75.43;
+double current_angle =degree ;
 
+
+double error = (desired_angle - current_angle)*3.1416/180 ;
+
+double  desired_vel = error/.01 ;
+*/
+
+double  desired_vel = info.response.command  ;
+
+/*printf(" desired angle  %f\n", desired_angle);
+printf(" current angle  %f\n", current_angle);*/
+
+printf(" current angle  %f\n", m);
 printf(" des vel %f\n",desired_vel );
-printf(" current angle  %f\n", m );
+
 
 
 
@@ -237,7 +264,7 @@ printf(" current angle  %f\n", m );
 if (   degree> 30 &&  degree < 102 )
 
 {
-msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
+msg.position = {va1,va2,ve1,va3,va4,desired_vel*0.31,va6};
 chatter_pub.publish(msg);
 }		
 
@@ -266,7 +293,7 @@ double dt = (begin - end).toSec();
 
 c = c+1;
 
-//printf(" count : %d\n",c );
+printf(" count : %d\n",c );
 }
 	return 0;
 

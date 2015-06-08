@@ -269,7 +269,7 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/pbp_vel.cpp
+_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/fancy.cpp
 
 //Value Computed by CMake
 app_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/app

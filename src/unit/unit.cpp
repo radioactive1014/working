@@ -35,6 +35,8 @@ float last_angle ;
 float change;
 
 
+int cnt = 0 ;
+
 
 
 ros::ServiceServer service;
@@ -45,13 +47,13 @@ std_msgs::Float32 msg;
 
 
 
-	const int nSamples=70;
+	const int nSamples=80;
 	//physics simulation time step
 	float timeStep=1.0f/30.0f;
 
 
     ControlPBP pbp;
-	int nTimeSteps=30;		
+	int nTimeSteps=20;		
 	const int nStateDimensions=2;
 	const int nControlDimensions=1;
 	float minControl=-2;	//lower sampling bound
@@ -61,8 +63,8 @@ std_msgs::Float32 msg;
 	//Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 	//The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 	float C=10;
-	float controlStd=0.9f*C;	//sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
-	float controlDiffStd=1000.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
+	float controlStd=0.8f*C;	//sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+	float controlDiffStd=987.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 	float controlDiffDiffStd=1000.0f*C; //sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 	float mutationScale=0.25f;		//\sigma_m in the paper
 	
@@ -85,6 +87,17 @@ check = true ;
 
 
 
+setCurrentOdeContext(0);
+restoreOdeState(0);
+const dReal *pos_first = odeBodyGetPosition(body1);
+
+odeBodySetPosition(body1,pos_robot,pos_first[1],pos_first[2]);
+const dReal *pos_second = odeBodyGetPosition(body1);
+	
+saveOdeState(0);
+
+
+
 //init all trajectories to the master state
 		for (int i=0; i<nSamples; i++)
 		{
@@ -92,6 +105,16 @@ check = true ;
 			setCurrentOdeContext(i+1);
 			//load the state from the master context
 			restoreOdeState(0);
+
+			const dReal *pos = odeBodyGetPosition(body1);
+
+			
+
+
+			odeBodySetPosition(body1,pos_robot,pos[1],pos[2]);
+			const dReal *pos1 = odeBodyGetPosition(body1);
+
+			//printf(" checking position %f\n", pos1[0] );
 			//printf("sample no: %d \n" ,i);
 			//save the state to the sample context (needed later in resampling)
 			saveOdeState(i+1,0);
@@ -113,6 +136,10 @@ check = true ;
 		setCurrentOdeContext(0);
 		restoreOdeState(0);
 
+		const dReal *pos2 = odeBodyGetPosition(body1);
+
+		odeBodySetPosition(body1,pos_robot,pos2[1],pos2[2]);
+
 		//float angle=odeJointGetHingeAngle(hinge);
 		//float aVel=odeJointGetHingeAngleRate(hinge);
 		//float stateVector[2]={angle,aVel};
@@ -121,7 +148,7 @@ check = true ;
 		const dReal *pos = odeBodyGetPosition(body1);
 		float angle=odeJointGetHingeAngle(hinge);
 
-		//printf(" posX x :%f, aVel: %f  \n",pos[0],aVel);
+		printf(" posX x :%f\n",pos[0]);
 		float stateVector[2]={pos[0],angle};
 		pbp.startIteration(true,stateVector);
 
@@ -178,11 +205,11 @@ check = true ;
 
 				 change = angle -last_angle ;
 
-				float cost=squared((pos[0])*12.0f) +squared(control * 0.55)+ squared(angle*0.2f) ; //+squared(control * 5.2);
+				float cost=squared((pos[0])*25.5f) ; //+squared(control * 0.01)+ squared(angle*0.01f) ; //+squared(control * 5.2);
 			
 
 			///////////////////  need to remodel .//////////
-     if (pos[2]<2.3 || pos[2]>3.2)
+    /* if (pos[2]<2.3 || pos[2]>3.2)
 		{
 				cost=cost+1000;
 				//printf("I am in\n");
@@ -194,7 +221,7 @@ check = true ;
 				cost = cost +1000;
 				//printf("I am into degree cost:%f \n",cost);
 			}
-				
+				*/
 			//////////////////
 
 				//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as 					in this simple case.
@@ -232,12 +259,32 @@ check = true ;
 
 		
 
-
-
-
+	    if (cnt >3)
+	    {
+	    	/*if (control < 1.0 )
+	    	{*/
+           
     	dReal MaxForce = dInfinity;
 		odeJointSetHingeParam(hinge,dParamFMax,dInfinity);
 		odeJointSetHingeParam(hinge,dParamVel,control);
+
+	/*}
+		else {	control = control * .7;
+				odeJointSetHingeParam(hinge,dParamFMax,dInfinity);
+				odeJointSetHingeParam(hinge,dParamVel,control);
+
+
+	 		}
+*/	}
+
+	else 
+	{
+			control = 0;
+			odeJointSetHingeParam(hinge,dParamFMax,dInfinity);
+		odeJointSetHingeParam(hinge,dParamVel,control);
+
+
+	}
 
 		stepOde(0);
 	
@@ -256,16 +303,18 @@ check = true ;
 		conv = angle ;
 
 		last_angle = angle;
+
+		cnt = cnt +1 ;
 		
-		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f \n",pos[0],pos[2],angle*180/3.1416,cost);
+		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control %f \n",pos[0],pos[2],angle*180/3.1416,cost,control);
 	  	// printf("angle %1.3f, avel %1.3f, cost=%1.3f\n",angle,aVel,cost);
 
-		/*
-		int i = 0;
+		
+	/*	int i = 0;
 		loop : cin >> i;
 		if ( i != 1)
-		goto loop;
-		*/
+		goto loop;*/
+		
 	
 }
 
@@ -342,7 +391,7 @@ int main(int argc, char **argv)
 
     
     odeMassSetSphereTotal(body1,0.04,0.03);
-    odeBodySetPosition(body1,0.1,0,2.6f);
+    odeBodySetPosition(body1,0.0588,0,2.6f);
 	//odeBodySetMass (body1, 0.04);
 	odeGeomSetBody(geom1,body1);
 
