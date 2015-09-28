@@ -45,17 +45,27 @@ CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
 # Include the progress variables for this target.
 include unit/CMakeFiles/unit_generate_messages_cpp.dir/progress.make
 
+unit/CMakeFiles/unit_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/unit/for_double.h
 unit/CMakeFiles/unit_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h
+
+/home/intelligentrobotics/rokon/devel/include/unit/for_double.h: /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/intelligentrobotics/rokon/devel/include/unit/for_double.h: /home/intelligentrobotics/rokon/src/unit/srv/for_double.srv
+/home/intelligentrobotics/rokon/devel/include/unit/for_double.h: /opt/ros/groovy/share/gencpp/cmake/../msg.h.template
+/home/intelligentrobotics/rokon/devel/include/unit/for_double.h: /opt/ros/groovy/share/gencpp/cmake/../srv.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from unit/for_double.srv"
+	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/intelligentrobotics/rokon/src/unit/srv/for_double.srv -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p unit -o /home/intelligentrobotics/rokon/devel/include/unit -e /opt/ros/groovy/share/gencpp/cmake/..
 
 /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h: /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
 /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h: /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv
 /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h: /opt/ros/groovy/share/gencpp/cmake/../msg.h.template
 /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h: /opt/ros/groovy/share/gencpp/cmake/../srv.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from unit/from_robot.srv"
 	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p unit -o /home/intelligentrobotics/rokon/devel/include/unit -e /opt/ros/groovy/share/gencpp/cmake/..
 
 unit_generate_messages_cpp: unit/CMakeFiles/unit_generate_messages_cpp
+unit_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/unit/for_double.h
 unit_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/unit/from_robot.h
 unit_generate_messages_cpp: unit/CMakeFiles/unit_generate_messages_cpp.dir/build.make
 .PHONY : unit_generate_messages_cpp

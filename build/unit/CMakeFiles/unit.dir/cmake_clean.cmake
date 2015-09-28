@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/unit.dir/unit.cpp.o"
+  "CMakeFiles/unit.dir/unit_working.cpp.o"
   "/home/intelligentrobotics/rokon/devel/lib/unit/unit.pdb"
   "/home/intelligentrobotics/rokon/devel/lib/unit/unit"
 )

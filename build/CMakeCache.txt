@@ -17,6 +17,42 @@
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
+//The Boost FILESYSTEM library
+Boost_FILESYSTEM_LIBRARY:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Boost filesystem library (debug)
+Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Boost filesystem library (release)
+Boost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/usr/include
+
+//Boost library directory
+Boost_LIBRARY_DIRS:FILEPATH=/usr/lib
+
+//The Boost SYSTEM library
+Boost_SYSTEM_LIBRARY:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//Boost system library (debug)
+Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//Boost system library (release)
+Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//The Boost THREAD library
+Boost_THREAD_LIBRARY:FILEPATH=/usr/lib/libboost_thread-mt.so
+
+//Boost thread library (debug)
+Boost_THREAD_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_thread-mt.so
+
+//Boost thread library (release)
+Boost_THREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_thread-mt.so
+
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
 
@@ -41,7 +77,7 @@ CMAKE_BACKWARDS_COMPATIBILITY:STRING=2.4
 
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=RelWithDebInfo
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -229,6 +265,9 @@ OpenCV_LIB_DIR_DBG:PATH=
 //Path where release OpenCV libraries are located
 OpenCV_LIB_DIR_OPT:PATH=
 
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Path to a file.
 PROJECTCONFIG:FILEPATH=PROJECTCONFIG-NOTFOUND
 
@@ -269,7 +308,10 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/fancy.cpp
+_file_name:FILEPATH=/home/intelligentrobotics/rokon/src/app/src/pbp_test.cpp
+
+//The directory containing a CMake configuration file for actionlib_msgs.
+actionlib_msgs_DIR:PATH=/opt/ros/groovy/share/actionlib_msgs/cmake
 
 //Value Computed by CMake
 app_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/app
@@ -277,11 +319,20 @@ app_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/app
 //Value Computed by CMake
 app_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/app
 
+//The directory containing a CMake configuration file for bond.
+bond_DIR:PATH=/opt/ros/groovy/share/bond/cmake
+
+//The directory containing a CMake configuration file for bondcpp.
+bondcpp_DIR:PATH=/opt/ros/groovy/share/bondcpp/cmake
+
 //Value Computed by CMake
 camera_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/camera
 
 //Value Computed by CMake
 camera_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/camera
+
+//The directory containing a CMake configuration file for camera_info_manager.
+camera_info_manager_DIR:PATH=/opt/ros/groovy/share/camera_info_manager/cmake
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/groovy/share/catkin/cmake
@@ -297,6 +348,9 @@ cpp_common_DIR:PATH=/opt/ros/groovy/share/cpp_common/cmake
 
 //The directory containing a CMake configuration file for cv_bridge.
 cv_bridge_DIR:PATH=/opt/ros/groovy/share/cv_bridge/cmake
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/groovy/share/dynamic_reconfigure/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/groovy/share/gencpp/cmake
@@ -344,8 +398,20 @@ helpers_DIR:PATH=helpers_DIR-NOTFOUND
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/groovy/share/image_transport/cmake
 
+//Value Computed by CMake
+kuka_moveit_configuration_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/kuka_moveit_configuration
+
+//Value Computed by CMake
+kuka_moveit_configuration_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/kuka_moveit_configuration
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/groovy/lib/libxmlrpcpp.so
+
+//Value Computed by CMake
+lwr_description_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/lwr_description
+
+//Value Computed by CMake
+lwr_description_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/lwr_description
 
 //Value Computed by CMake
 main_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/main
@@ -371,8 +437,71 @@ message_runtime_DIR:PATH=/opt/ros/groovy/share/message_runtime/cmake
 //The directory containing a CMake configuration file for motion_control_msgs.
 motion_control_msgs_DIR:PATH=motion_control_msgs_DIR-NOTFOUND
 
+//Value Computed by CMake
+moveit_msgs_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_msgs
+
+//Value Computed by CMake
+moveit_msgs_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_msgs
+
+//Value Computed by CMake
+moveit_planners_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_planners/moveit_planners
+
+//Value Computed by CMake
+moveit_planners_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_planners/moveit_planners
+
+//Value Computed by CMake
+moveit_plugins_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_plugins/moveit_plugins
+
+//Value Computed by CMake
+moveit_plugins_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_plugins/moveit_plugins
+
+//Value Computed by CMake
+moveit_pr2_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_pr2/moveit_pr2
+
+//Value Computed by CMake
+moveit_pr2_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_pr2/moveit_pr2
+
+//Value Computed by CMake
+moveit_resources_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_resources
+
+//Value Computed by CMake
+moveit_resources_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_resources
+
+//Value Computed by CMake
+moveit_ros_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_ros/moveit_ros
+
+//Value Computed by CMake
+moveit_ros_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_ros/moveit_ros
+
+//The directory containing a CMake configuration file for nodelet.
+nodelet_DIR:PATH=/opt/ros/groovy/share/nodelet/cmake
+
+//The directory containing a CMake configuration file for object_recognition_msgs.
+object_recognition_msgs_DIR:PATH=object_recognition_msgs_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for octomap_msgs.
+octomap_msgs_DIR:PATH=octomap_msgs_DIR-NOTFOUND
+
+//Value Computed by CMake
+openni_camera_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/openni_camera
+
+//Value Computed by CMake
+openni_camera_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/openni_camera
+
+//Dependencies for the target
+openni_driver_LIB_DEPENDS:STATIC=general;/opt/ros/groovy/lib/libcamera_info_manager.so;general;/opt/ros/groovy/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/groovy/lib/libimage_transport.so;general;/opt/ros/groovy/lib/libmessage_filters.so;general;/opt/ros/groovy/lib/libnodeletlib.so;general;/opt/ros/groovy/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/usr/lib/libtinyxml.so;general;/opt/ros/groovy/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/groovy/lib/libconsole_bridge.so;general;/opt/ros/groovy/lib/libroslib.so;general;/opt/ros/groovy/lib/libroscpp.so;general;/usr/lib/libboost_signals-mt.so;general;/usr/lib/libboost_filesystem-mt.so;general;/opt/ros/groovy/lib/librosconsole.so;general;/usr/lib/libboost_regex-mt.so;general;/usr/lib/liblog4cxx.so;general;/opt/ros/groovy/lib/libxmlrpcpp.so;general;/opt/ros/groovy/lib/libroscpp_serialization.so;general;/opt/ros/groovy/lib/librostime.so;general;/usr/lib/libboost_date_time-mt.so;general;/usr/lib/libboost_system-mt.so;general;/usr/lib/libboost_thread-mt.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/opt/ros/groovy/lib/libcpp_common.so;general;/usr/lib/libboost_system-mt.so;general;/usr/lib/libboost_filesystem-mt.so;general;/usr/lib/libboost_thread-mt.so;general;pthread;general;OpenNI;general;usb-1.0;
+
+//Dependencies for the target
+openni_nodelet_LIB_DEPENDS:STATIC=general;openni_driver;general;/opt/ros/groovy/lib/libcamera_info_manager.so;general;/opt/ros/groovy/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/groovy/lib/libimage_transport.so;general;/opt/ros/groovy/lib/libmessage_filters.so;general;/opt/ros/groovy/lib/libnodeletlib.so;general;/opt/ros/groovy/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/usr/lib/libtinyxml.so;general;/opt/ros/groovy/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/groovy/lib/libconsole_bridge.so;general;/opt/ros/groovy/lib/libroslib.so;general;/opt/ros/groovy/lib/libroscpp.so;general;/usr/lib/libboost_signals-mt.so;general;/usr/lib/libboost_filesystem-mt.so;general;/opt/ros/groovy/lib/librosconsole.so;general;/usr/lib/libboost_regex-mt.so;general;/usr/lib/liblog4cxx.so;general;/opt/ros/groovy/lib/libxmlrpcpp.so;general;/opt/ros/groovy/lib/libroscpp_serialization.so;general;/opt/ros/groovy/lib/librostime.so;general;/usr/lib/libboost_date_time-mt.so;general;/usr/lib/libboost_system-mt.so;general;/usr/lib/libboost_thread-mt.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/opt/ros/groovy/lib/libcpp_common.so;general;/usr/lib/libboost_system-mt.so;general;/usr/lib/libboost_filesystem-mt.so;general;/usr/lib/libboost_thread-mt.so;general;pthread;
+
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/groovy/share/pluginlib/cmake
+
+//Value Computed by CMake
+pr2_moveit_config_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/moveit/src/moveit_pr2/pr2_moveit_config
+
+//Value Computed by CMake
+pr2_moveit_config_SOURCE_DIR:STATIC=/home/intelligentrobotics/rokon/src/moveit/src/moveit_pr2/pr2_moveit_config
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/groovy/share/rosconsole/cmake
@@ -401,6 +530,12 @@ rostime_DIR:PATH=/opt/ros/groovy/share/rostime/cmake
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/groovy/share/sensor_msgs/cmake
 
+//The directory containing a CMake configuration file for shape_msgs.
+shape_msgs_DIR:PATH=/opt/ros/groovy/share/shape_msgs/cmake
+
+//The directory containing a CMake configuration file for smclib.
+smclib_DIR:PATH=/opt/ros/groovy/share/smclib/cmake
+
 //Value Computed by CMake
 src_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/app
 
@@ -412,6 +547,9 @@ std_msgs_DIR:PATH=/opt/ros/groovy/share/std_msgs/cmake
 
 //The directory containing a CMake configuration file for std_srvs.
 std_srvs_DIR:PATH=/opt/ros/groovy/share/std_srvs/cmake
+
+//The directory containing a CMake configuration file for trajectory_msgs.
+trajectory_msgs_DIR:PATH=/opt/ros/groovy/share/trajectory_msgs/cmake
 
 //Value Computed by CMake
 unit_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon/build/unit
@@ -438,6 +576,38 @@ xmlrpcpp_DIR:PATH=/opt/ros/groovy/share/xmlrpcpp/cmake
 # INTERNAL cache entries
 ########################
 
+//Whether the Boost FILESYSTEM library found
+Boost_FILESYSTEM_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY
+Boost_FILESYSTEM_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
+Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
+Boost_FILESYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_INCLUDE_DIR
+Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIRS
+Boost_LIBRARY_DIRS-ADVANCED:INTERNAL=1
+//The library version string for boost libraries
+Boost_LIB_VERSION:INTERNAL=1_46_1
+//Whether the Boost SYSTEM library found
+Boost_SYSTEM_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY
+Boost_SYSTEM_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
+Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
+Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Whether the Boost THREAD library found
+Boost_THREAD_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_THREAD_LIBRARY
+Boost_THREAD_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_DEBUG
+Boost_THREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_RELEASE
+Boost_THREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//The version number for boost libraries
+Boost_VERSION:INTERNAL=104601
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/intelligentrobotics/rokon/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/intelligentrobotics/rokon/build/test_results
@@ -597,10 +767,82 @@ OpenCV_CONFIG_PATH-ADVANCED:INTERNAL=1
 OpenCV_LIB_DIR_DBG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_LIB_DIR_OPT
 OpenCV_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+PC_LIBOPENNI_CFLAGS:INTERNAL=-I/usr/include/ni
+PC_LIBOPENNI_CFLAGS_I:INTERNAL=
+PC_LIBOPENNI_CFLAGS_OTHER:INTERNAL=
+PC_LIBOPENNI_FOUND:INTERNAL=1
+PC_LIBOPENNI_INCLUDEDIR:INTERNAL=/usr/include/ni
+PC_LIBOPENNI_INCLUDE_DIRS:INTERNAL=/usr/include/ni
+PC_LIBOPENNI_LDFLAGS:INTERNAL=-lOpenNI
+PC_LIBOPENNI_LDFLAGS_OTHER:INTERNAL=
+PC_LIBOPENNI_LIBDIR:INTERNAL=/usr/lib
+PC_LIBOPENNI_LIBRARIES:INTERNAL=OpenNI
+PC_LIBOPENNI_LIBRARY_DIRS:INTERNAL=
+PC_LIBOPENNI_LIBS:INTERNAL=
+PC_LIBOPENNI_LIBS_L:INTERNAL=
+PC_LIBOPENNI_LIBS_OTHER:INTERNAL=
+PC_LIBOPENNI_LIBS_PATHS:INTERNAL=
+PC_LIBOPENNI_PREFIX:INTERNAL=/usr
+PC_LIBOPENNI_STATIC_CFLAGS:INTERNAL=-I/usr/include/ni
+PC_LIBOPENNI_STATIC_CFLAGS_I:INTERNAL=
+PC_LIBOPENNI_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_LIBOPENNI_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/ni
+PC_LIBOPENNI_STATIC_LDFLAGS:INTERNAL=-lOpenNI
+PC_LIBOPENNI_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBDIR:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBRARIES:INTERNAL=OpenNI
+PC_LIBOPENNI_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBS:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBS_L:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBS_OTHER:INTERNAL=
+PC_LIBOPENNI_STATIC_LIBS_PATHS:INTERNAL=
+PC_LIBOPENNI_VERSION:INTERNAL=1.5.4.0
+PC_LIBOPENNI_libopenni_INCLUDEDIR:INTERNAL=
+PC_LIBOPENNI_libopenni_LIBDIR:INTERNAL=
+PC_LIBOPENNI_libopenni_PREFIX:INTERNAL=
+PC_LIBOPENNI_libopenni_VERSION:INTERNAL=
+PC_LIBUSB_CFLAGS:INTERNAL=-I/usr/include/libusb-1.0
+PC_LIBUSB_CFLAGS_I:INTERNAL=
+PC_LIBUSB_CFLAGS_OTHER:INTERNAL=
+PC_LIBUSB_FOUND:INTERNAL=1
+PC_LIBUSB_INCLUDEDIR:INTERNAL=/usr/include
+PC_LIBUSB_INCLUDE_DIRS:INTERNAL=/usr/include/libusb-1.0
+PC_LIBUSB_LDFLAGS:INTERNAL=-lusb-1.0
+PC_LIBUSB_LDFLAGS_OTHER:INTERNAL=
+PC_LIBUSB_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+PC_LIBUSB_LIBRARIES:INTERNAL=usb-1.0
+PC_LIBUSB_LIBRARY_DIRS:INTERNAL=
+PC_LIBUSB_LIBS:INTERNAL=
+PC_LIBUSB_LIBS_L:INTERNAL=
+PC_LIBUSB_LIBS_OTHER:INTERNAL=
+PC_LIBUSB_LIBS_PATHS:INTERNAL=
+PC_LIBUSB_PREFIX:INTERNAL=/usr
+PC_LIBUSB_STATIC_CFLAGS:INTERNAL=-I/usr/include/libusb-1.0
+PC_LIBUSB_STATIC_CFLAGS_I:INTERNAL=
+PC_LIBUSB_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_LIBUSB_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/libusb-1.0
+PC_LIBUSB_STATIC_LDFLAGS:INTERNAL=-pthread;-lusb-1.0;-lrt
+PC_LIBUSB_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+PC_LIBUSB_STATIC_LIBDIR:INTERNAL=
+PC_LIBUSB_STATIC_LIBRARIES:INTERNAL=usb-1.0;rt
+PC_LIBUSB_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_LIBUSB_STATIC_LIBS:INTERNAL=
+PC_LIBUSB_STATIC_LIBS_L:INTERNAL=
+PC_LIBUSB_STATIC_LIBS_OTHER:INTERNAL=
+PC_LIBUSB_STATIC_LIBS_PATHS:INTERNAL=
+PC_LIBUSB_VERSION:INTERNAL=1.0.9-rc3
+PC_LIBUSB_libusb-1.0_INCLUDEDIR:INTERNAL=
+PC_LIBUSB_libusb-1.0_LIBDIR:INTERNAL=
+PC_LIBUSB_libusb-1.0_PREFIX:INTERNAL=
+PC_LIBUSB_libusb-1.0_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+__pkg_config_checked_PC_LIBOPENNI:INTERNAL=1
+__pkg_config_checked_PC_LIBUSB:INTERNAL=1
 

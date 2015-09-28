@@ -45,22 +45,31 @@ CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
 # Include the progress variables for this target.
 include unit/CMakeFiles/unit_generate_messages_py.dir/progress.make
 
+unit/CMakeFiles/unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_for_double.py
 unit/CMakeFiles/unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py
 unit/CMakeFiles/unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py
 
+/home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_for_double.py: /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/gensrv_py.py
+/home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_for_double.py: /home/intelligentrobotics/rokon/src/unit/srv/for_double.srv
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python code from SRV unit/for_double"
+	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/intelligentrobotics/rokon/src/unit/srv/for_double.srv -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p unit -o /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv
+
 /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py: /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/gensrv_py.py
 /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py: /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python code from SRV unit/from_robot"
 	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/intelligentrobotics/rokon/src/unit/srv/from_robot.srv -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p unit -o /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv
 
 /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py: /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_for_double.py
 /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python srv __init__.py for unit"
 	cd /home/intelligentrobotics/rokon/build/unit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv --initpy
 
 unit_generate_messages_py: unit/CMakeFiles/unit_generate_messages_py
+unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_for_double.py
 unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/_from_robot.py
 unit_generate_messages_py: /home/intelligentrobotics/rokon/devel/lib/python2.7/dist-packages/unit/srv/__init__.py
 unit_generate_messages_py: unit/CMakeFiles/unit_generate_messages_py.dir/build.make

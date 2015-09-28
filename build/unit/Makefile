@@ -192,6 +192,34 @@ unit/fast:
 .PHONY : unit/fast
 
 # Convenience name for target.
+unit/CMakeFiles/unit_amotor.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_amotor.dir/rule
+.PHONY : unit/CMakeFiles/unit_amotor.dir/rule
+
+# Convenience name for target.
+unit_amotor: unit/CMakeFiles/unit_amotor.dir/rule
+.PHONY : unit_amotor
+
+# fast build rule for target.
+unit_amotor/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_amotor.dir/build.make unit/CMakeFiles/unit_amotor.dir/build
+.PHONY : unit_amotor/fast
+
+# Convenience name for target.
+unit/CMakeFiles/unit_double.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_double.dir/rule
+.PHONY : unit/CMakeFiles/unit_double.dir/rule
+
+# Convenience name for target.
+unit_double: unit/CMakeFiles/unit_double.dir/rule
+.PHONY : unit_double
+
+# fast build rule for target.
+unit_double/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_double.dir/build.make unit/CMakeFiles/unit_double.dir/build
+.PHONY : unit_double/fast
+
+# Convenience name for target.
 unit/CMakeFiles/unit_gencpp.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_gencpp.dir/rule
 .PHONY : unit/CMakeFiles/unit_gencpp.dir/rule
@@ -290,6 +318,62 @@ unit_genpy/fast:
 .PHONY : unit_genpy/fast
 
 # Convenience name for target.
+unit/CMakeFiles/unit_obs.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_obs.dir/rule
+.PHONY : unit/CMakeFiles/unit_obs.dir/rule
+
+# Convenience name for target.
+unit_obs: unit/CMakeFiles/unit_obs.dir/rule
+.PHONY : unit_obs
+
+# fast build rule for target.
+unit_obs/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_obs.dir/build.make unit/CMakeFiles/unit_obs.dir/build
+.PHONY : unit_obs/fast
+
+# Convenience name for target.
+unit/CMakeFiles/unit_sim.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_sim.dir/rule
+.PHONY : unit/CMakeFiles/unit_sim.dir/rule
+
+# Convenience name for target.
+unit_sim: unit/CMakeFiles/unit_sim.dir/rule
+.PHONY : unit_sim
+
+# fast build rule for target.
+unit_sim/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_sim.dir/build.make unit/CMakeFiles/unit_sim.dir/build
+.PHONY : unit_sim/fast
+
+# Convenience name for target.
+unit/CMakeFiles/unit_single.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_single.dir/rule
+.PHONY : unit/CMakeFiles/unit_single.dir/rule
+
+# Convenience name for target.
+unit_single: unit/CMakeFiles/unit_single.dir/rule
+.PHONY : unit_single
+
+# fast build rule for target.
+unit_single/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_single.dir/build.make unit/CMakeFiles/unit_single.dir/build
+.PHONY : unit_single/fast
+
+# Convenience name for target.
+unit/CMakeFiles/unit_test.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/unit_test.dir/rule
+.PHONY : unit/CMakeFiles/unit_test.dir/rule
+
+# Convenience name for target.
+unit_test: unit/CMakeFiles/unit_test.dir/rule
+.PHONY : unit_test
+
+# fast build rule for target.
+unit_test/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_test.dir/build.make unit/CMakeFiles/unit_test.dir/build
+.PHONY : unit_test/fast
+
+# Convenience name for target.
 unit/CMakeFiles/vel.dir/rule:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/vel.dir/rule
 .PHONY : unit/CMakeFiles/vel.dir/rule
@@ -317,6 +401,20 @@ vel_check/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/build
 .PHONY : vel_check/fast
 
+# Convenience name for target.
+unit/CMakeFiles/vel_double.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/vel_double.dir/rule
+.PHONY : unit/CMakeFiles/vel_double.dir/rule
+
+# Convenience name for target.
+vel_double: unit/CMakeFiles/vel_double.dir/rule
+.PHONY : vel_double
+
+# fast build rule for target.
+vel_double/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_double.dir/build.make unit/CMakeFiles/vel_double.dir/build
+.PHONY : vel_double/fast
+
 pide.o: pide.cpp.o
 .PHONY : pide.o
 
@@ -341,29 +439,53 @@ pide.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test1.dir/build.make unit/CMakeFiles/test1.dir/pide.cpp.s
 .PHONY : pide.cpp.s
 
-unit.o: unit.cpp.o
-.PHONY : unit.o
+unit_amotor.o: unit_amotor.cpp.o
+.PHONY : unit_amotor.o
 
 # target to build an object file
-unit.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit.cpp.o
-.PHONY : unit.cpp.o
+unit_amotor.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_amotor.dir/build.make unit/CMakeFiles/unit_amotor.dir/unit_amotor.cpp.o
+.PHONY : unit_amotor.cpp.o
 
-unit.i: unit.cpp.i
-.PHONY : unit.i
+unit_amotor.i: unit_amotor.cpp.i
+.PHONY : unit_amotor.i
 
 # target to preprocess a source file
-unit.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit.cpp.i
-.PHONY : unit.cpp.i
+unit_amotor.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_amotor.dir/build.make unit/CMakeFiles/unit_amotor.dir/unit_amotor.cpp.i
+.PHONY : unit_amotor.cpp.i
 
-unit.s: unit.cpp.s
-.PHONY : unit.s
+unit_amotor.s: unit_amotor.cpp.s
+.PHONY : unit_amotor.s
 
 # target to generate assembly for a file
-unit.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit.cpp.s
-.PHONY : unit.cpp.s
+unit_amotor.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_amotor.dir/build.make unit/CMakeFiles/unit_amotor.dir/unit_amotor.cpp.s
+.PHONY : unit_amotor.cpp.s
+
+unit_amotor_obs.o: unit_amotor_obs.cpp.o
+.PHONY : unit_amotor_obs.o
+
+# target to build an object file
+unit_amotor_obs.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_obs.dir/build.make unit/CMakeFiles/unit_obs.dir/unit_amotor_obs.cpp.o
+.PHONY : unit_amotor_obs.cpp.o
+
+unit_amotor_obs.i: unit_amotor_obs.cpp.i
+.PHONY : unit_amotor_obs.i
+
+# target to preprocess a source file
+unit_amotor_obs.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_obs.dir/build.make unit/CMakeFiles/unit_obs.dir/unit_amotor_obs.cpp.i
+.PHONY : unit_amotor_obs.cpp.i
+
+unit_amotor_obs.s: unit_amotor_obs.cpp.s
+.PHONY : unit_amotor_obs.s
+
+# target to generate assembly for a file
+unit_amotor_obs.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_obs.dir/build.make unit/CMakeFiles/unit_obs.dir/unit_amotor_obs.cpp.s
+.PHONY : unit_amotor_obs.cpp.s
 
 unit_backup.o: unit_backup.cpp.o
 .PHONY : unit_backup.o
@@ -388,6 +510,126 @@ unit_backup.s: unit_backup.cpp.s
 unit_backup.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/test_p.dir/build.make unit/CMakeFiles/test_p.dir/unit_backup.cpp.s
 .PHONY : unit_backup.cpp.s
+
+unit_double.o: unit_double.cpp.o
+.PHONY : unit_double.o
+
+# target to build an object file
+unit_double.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_double.dir/build.make unit/CMakeFiles/unit_double.dir/unit_double.cpp.o
+.PHONY : unit_double.cpp.o
+
+unit_double.i: unit_double.cpp.i
+.PHONY : unit_double.i
+
+# target to preprocess a source file
+unit_double.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_double.dir/build.make unit/CMakeFiles/unit_double.dir/unit_double.cpp.i
+.PHONY : unit_double.cpp.i
+
+unit_double.s: unit_double.cpp.s
+.PHONY : unit_double.s
+
+# target to generate assembly for a file
+unit_double.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_double.dir/build.make unit/CMakeFiles/unit_double.dir/unit_double.cpp.s
+.PHONY : unit_double.cpp.s
+
+unit_similarity_test.o: unit_similarity_test.cpp.o
+.PHONY : unit_similarity_test.o
+
+# target to build an object file
+unit_similarity_test.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_sim.dir/build.make unit/CMakeFiles/unit_sim.dir/unit_similarity_test.cpp.o
+.PHONY : unit_similarity_test.cpp.o
+
+unit_similarity_test.i: unit_similarity_test.cpp.i
+.PHONY : unit_similarity_test.i
+
+# target to preprocess a source file
+unit_similarity_test.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_sim.dir/build.make unit/CMakeFiles/unit_sim.dir/unit_similarity_test.cpp.i
+.PHONY : unit_similarity_test.cpp.i
+
+unit_similarity_test.s: unit_similarity_test.cpp.s
+.PHONY : unit_similarity_test.s
+
+# target to generate assembly for a file
+unit_similarity_test.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_sim.dir/build.make unit/CMakeFiles/unit_sim.dir/unit_similarity_test.cpp.s
+.PHONY : unit_similarity_test.cpp.s
+
+unit_single.o: unit_single.cpp.o
+.PHONY : unit_single.o
+
+# target to build an object file
+unit_single.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_single.dir/build.make unit/CMakeFiles/unit_single.dir/unit_single.cpp.o
+.PHONY : unit_single.cpp.o
+
+unit_single.i: unit_single.cpp.i
+.PHONY : unit_single.i
+
+# target to preprocess a source file
+unit_single.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_single.dir/build.make unit/CMakeFiles/unit_single.dir/unit_single.cpp.i
+.PHONY : unit_single.cpp.i
+
+unit_single.s: unit_single.cpp.s
+.PHONY : unit_single.s
+
+# target to generate assembly for a file
+unit_single.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_single.dir/build.make unit/CMakeFiles/unit_single.dir/unit_single.cpp.s
+.PHONY : unit_single.cpp.s
+
+unit_test.o: unit_test.cpp.o
+.PHONY : unit_test.o
+
+# target to build an object file
+unit_test.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_test.dir/build.make unit/CMakeFiles/unit_test.dir/unit_test.cpp.o
+.PHONY : unit_test.cpp.o
+
+unit_test.i: unit_test.cpp.i
+.PHONY : unit_test.i
+
+# target to preprocess a source file
+unit_test.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_test.dir/build.make unit/CMakeFiles/unit_test.dir/unit_test.cpp.i
+.PHONY : unit_test.cpp.i
+
+unit_test.s: unit_test.cpp.s
+.PHONY : unit_test.s
+
+# target to generate assembly for a file
+unit_test.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit_test.dir/build.make unit/CMakeFiles/unit_test.dir/unit_test.cpp.s
+.PHONY : unit_test.cpp.s
+
+unit_working.o: unit_working.cpp.o
+.PHONY : unit_working.o
+
+# target to build an object file
+unit_working.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit_working.cpp.o
+.PHONY : unit_working.cpp.o
+
+unit_working.i: unit_working.cpp.i
+.PHONY : unit_working.i
+
+# target to preprocess a source file
+unit_working.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit_working.cpp.i
+.PHONY : unit_working.cpp.i
+
+unit_working.s: unit_working.cpp.s
+.PHONY : unit_working.s
+
+# target to generate assembly for a file
+unit_working.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/unit.dir/build.make unit/CMakeFiles/unit.dir/unit_working.cpp.s
+.PHONY : unit_working.cpp.s
 
 vel.o: vel.cpp.o
 .PHONY : vel.o
@@ -437,6 +679,30 @@ vel_check.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_check.dir/build.make unit/CMakeFiles/vel_check.dir/vel_check.cpp.s
 .PHONY : vel_check.cpp.s
 
+vel_double.o: vel_double.cpp.o
+.PHONY : vel_double.o
+
+# target to build an object file
+vel_double.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_double.dir/build.make unit/CMakeFiles/vel_double.dir/vel_double.cpp.o
+.PHONY : vel_double.cpp.o
+
+vel_double.i: vel_double.cpp.i
+.PHONY : vel_double.i
+
+# target to preprocess a source file
+vel_double.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_double.dir/build.make unit/CMakeFiles/vel_double.dir/vel_double.cpp.i
+.PHONY : vel_double.cpp.i
+
+vel_double.s: vel_double.cpp.s
+.PHONY : vel_double.s
+
+# target to generate assembly for a file
+vel_double.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f unit/CMakeFiles/vel_double.dir/build.make unit/CMakeFiles/vel_double.dir/vel_double.cpp.s
+.PHONY : vel_double.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -453,6 +719,8 @@ help:
 	@echo "... test1"
 	@echo "... test_p"
 	@echo "... unit"
+	@echo "... unit_amotor"
+	@echo "... unit_double"
 	@echo "... unit_gencpp"
 	@echo "... unit_generate_messages"
 	@echo "... unit_generate_messages_cpp"
@@ -460,23 +728,49 @@ help:
 	@echo "... unit_generate_messages_py"
 	@echo "... unit_genlisp"
 	@echo "... unit_genpy"
+	@echo "... unit_obs"
+	@echo "... unit_sim"
+	@echo "... unit_single"
+	@echo "... unit_test"
 	@echo "... vel"
 	@echo "... vel_check"
+	@echo "... vel_double"
 	@echo "... pide.o"
 	@echo "... pide.i"
 	@echo "... pide.s"
-	@echo "... unit.o"
-	@echo "... unit.i"
-	@echo "... unit.s"
+	@echo "... unit_amotor.o"
+	@echo "... unit_amotor.i"
+	@echo "... unit_amotor.s"
+	@echo "... unit_amotor_obs.o"
+	@echo "... unit_amotor_obs.i"
+	@echo "... unit_amotor_obs.s"
 	@echo "... unit_backup.o"
 	@echo "... unit_backup.i"
 	@echo "... unit_backup.s"
+	@echo "... unit_double.o"
+	@echo "... unit_double.i"
+	@echo "... unit_double.s"
+	@echo "... unit_similarity_test.o"
+	@echo "... unit_similarity_test.i"
+	@echo "... unit_similarity_test.s"
+	@echo "... unit_single.o"
+	@echo "... unit_single.i"
+	@echo "... unit_single.s"
+	@echo "... unit_test.o"
+	@echo "... unit_test.i"
+	@echo "... unit_test.s"
+	@echo "... unit_working.o"
+	@echo "... unit_working.i"
+	@echo "... unit_working.s"
 	@echo "... vel.o"
 	@echo "... vel.i"
 	@echo "... vel.s"
 	@echo "... vel_check.o"
 	@echo "... vel_check.i"
 	@echo "... vel_check.s"
+	@echo "... vel_double.o"
+	@echo "... vel_double.i"
+	@echo "... vel_double.s"
 .PHONY : help
 
 

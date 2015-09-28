@@ -247,6 +247,34 @@ fix/fast:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
 .PHONY : fix/fast
 
+# Convenience name for target.
+camera/CMakeFiles/fix_double.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_double.dir/rule
+.PHONY : camera/CMakeFiles/fix_double.dir/rule
+
+# Convenience name for target.
+fix_double: camera/CMakeFiles/fix_double.dir/rule
+.PHONY : fix_double
+
+# fast build rule for target.
+fix_double/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/build
+.PHONY : fix_double/fast
+
+# Convenience name for target.
+camera/CMakeFiles/fix_test.dir/rule:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_test.dir/rule
+.PHONY : camera/CMakeFiles/fix_test.dir/rule
+
+# Convenience name for target.
+fix_test: camera/CMakeFiles/fix_test.dir/rule
+.PHONY : fix_test
+
+# fast build rule for target.
+fix_test/fast:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/build
+.PHONY : fix_test/fast
+
 src/check.o: src/check.cpp.o
 .PHONY : src/check.o
 
@@ -391,6 +419,54 @@ src/fix.cpp.s:
 	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.s
 .PHONY : src/fix.cpp.s
 
+src/fix_double.o: src/fix_double.cpp.o
+.PHONY : src/fix_double.o
+
+# target to build an object file
+src/fix_double.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.o
+.PHONY : src/fix_double.cpp.o
+
+src/fix_double.i: src/fix_double.cpp.i
+.PHONY : src/fix_double.i
+
+# target to preprocess a source file
+src/fix_double.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.i
+.PHONY : src/fix_double.cpp.i
+
+src/fix_double.s: src/fix_double.cpp.s
+.PHONY : src/fix_double.s
+
+# target to generate assembly for a file
+src/fix_double.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.s
+.PHONY : src/fix_double.cpp.s
+
+src/fix_test.o: src/fix_test.cpp.o
+.PHONY : src/fix_test.o
+
+# target to build an object file
+src/fix_test.cpp.o:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.o
+.PHONY : src/fix_test.cpp.o
+
+src/fix_test.i: src/fix_test.cpp.i
+.PHONY : src/fix_test.i
+
+# target to preprocess a source file
+src/fix_test.cpp.i:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.i
+.PHONY : src/fix_test.cpp.i
+
+src/fix_test.s: src/fix_test.cpp.s
+.PHONY : src/fix_test.s
+
+# target to generate assembly for a file
+src/fix_test.cpp.s:
+	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.s
+.PHONY : src/fix_test.cpp.s
+
 src/image.o: src/image.cpp.o
 .PHONY : src/image.o
 
@@ -429,6 +505,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... fancy_cam"
 	@echo "... fix"
+	@echo "... fix_double"
+	@echo "... fix_test"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -453,6 +531,12 @@ help:
 	@echo "... src/fix.o"
 	@echo "... src/fix.i"
 	@echo "... src/fix.s"
+	@echo "... src/fix_double.o"
+	@echo "... src/fix_double.i"
+	@echo "... src/fix_double.s"
+	@echo "... src/fix_test.o"
+	@echo "... src/fix_test.i"
+	@echo "... src/fix_test.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
