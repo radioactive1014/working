@@ -87,7 +87,7 @@ double a1 = (86.17*3.1416)/180 ; // -0.350812
 double a2 = (-75.79*M_PI)/180 ;  // 1.75433
 double a3 = (-3.85*3.1416)/180 ; //1.5708
 double a4 = (88.36*3.1416)/180 ;  //1.4947
-double a5 = (74.85*3.1416)/180 ;   //-0.0195477
+double a5 = (75.43*3.1416)/180 ;   //-0.0195477
 double a6 = (-23.30*3.1416)/180 ;  // 2.04064
 double e1 = (-89.46*3.1416)/180 ;  // -0.0160571
 
@@ -102,7 +102,7 @@ void chatterCallback(const sensor_msgs::JointState& msg)
 {
 
  m = msg.position[5];
-ROS_INFO("From krc: [%f]", msg.position[5]*180/3.1416);
+//ROS_INFO("From krc: [%f]", msg.position[5]*180/3.1416);
 //ROS_INFO("From krc: [%f]", a5*180/3.1416);
 }
 
@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle nh { "Simple" };
 	ros::NodeHandle n;
 
-	ros::Rate loop_rate(100);
+	ros::Rate loop_rate(40);
 
 
 
@@ -200,14 +200,19 @@ while (ros::ok())
 
 ros::Time begin = ros::Time::now();
 
+
 double ball_pos;
+
+
+	
 ball_pos = (cam_p-20)/100 ;
 
 // d_cam = d_cam -.01  ;
 
-info.request.position = ball_pos;
+
+ info.request.position = ball_pos;
 //info.request.position = d_cam;
-info.request.angle = m-a5;
+info.request.angle = m-1.31650;
 
 /*info.request.position = .05;
 info.request.angle = 10;*/
@@ -265,8 +270,7 @@ if (   degree> 30 &&  degree < 102 )
 
 {
  //msg.position = {va1,va2,ve1,va3,va4,desired_vel*(0.198),va6};
-  //msg.position = {va1,va2,ve1,va3,va4,desired_vel*(-0.2),va6};  // best working so far  0.19 
-	msg.position = {va1,va2,ve1,va3,va4,0.125,va6};
+  msg.position = {va1,va2,ve1,va3,desired_vel*(-0.5),0.0,va6};  // best working so far  0.19 
 
 
 //msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};

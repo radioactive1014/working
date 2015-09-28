@@ -21,6 +21,7 @@ sensor_msgs
 geometry_msgs
 
 std_srvs
+ message_generation
 
 )
 
@@ -76,11 +77,12 @@ rosbuild_add_boost_directories()
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+ add_message_files(
+   DIRECTORY msg
+   FILES
+   cam.msg
+ 
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -97,10 +99,10 @@ rosbuild_add_boost_directories()
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ###################################
 ## catkin specific configuration ##
@@ -159,6 +161,9 @@ rosbuild_add_executable(client src/client.cpp)
 rosbuild_add_executable(pbp_vel src/pbp_vel.cpp)
 
 rosbuild_add_executable(fancy src/fancy.cpp)
+rosbuild_add_executable(pbp_double src/pbp_double.cpp)
+rosbuild_add_executable(pbp_test src/pbp_test.cpp)
+
 
 
 
@@ -238,6 +243,14 @@ target_link_libraries(pbp_vel
 target_link_libraries(fancy
   ${catkin_LIBRARIES}
  )
+
+target_link_libraries(pbp_double
+  ${catkin_LIBRARIES}
+ )
+target_link_libraries(pbp_test
+  ${catkin_LIBRARIES}
+ )
+
 #target_link_libraries(pub
  # ${catkin_LIBRARIES}
  #)
