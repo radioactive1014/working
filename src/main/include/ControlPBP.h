@@ -17,6 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <vector>
 #include "DiagonalGMM.h"
 #include "DynamicPdfSampler.h"
+#include <iostream>
 
 #ifdef SWIG
 #define __stdcall  //SWIG doesn't understand __stdcall, but fortunately c# assumes it for virtual calls

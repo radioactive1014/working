@@ -22,6 +22,8 @@ static const int AVEL=1;	//state variable index
 
 
 const dReal *pos1,*R1,*pos2,*R2,*pos3,*R3; 
+
+float last_position =0.1, current_position=0.1, ball_vel;
 /*
 void start()
 {
@@ -49,7 +51,7 @@ int main(int argc, char **argv)
 {
 	//prepDrawStuff();
 	//we're using 32 samples, i.e., forward-simulated trajectories per animation frame. This corresponds to the N in the paper.
-	const int nSamples=70;
+	const int nSamples=80;
 	//physics simulation time step
 	float timeStep=1.0f/30.0f;	
 
@@ -100,8 +102,10 @@ int main(int argc, char **argv)
 	//Create a body and attach it to the geom
 	int body1=odeBodyCreate();
 
-	odeMassSetSphereTotal(body1,0.04,0.03);
-	odeBodySetPosition(body1,0.1,0,2.6f);
+	odeBodySetMass (body1, 5);
+
+	// odeMassSetSphereTotal(body1,0.001,0.02);
+	odeBodySetPosition(body1,0.0554,0,2.554f);
 
 
 	//odeMassSetSphereTotal(body1,.05f,1.0f);
@@ -142,6 +146,7 @@ saveOdeState(0);
 
 //run the algorithm for 90 steps (3 seconds)
 	for (int n=0; n<5000; n++){
+		printf("%d\n",n);
 //init all trajectories to the master state
 		for (int i=0; i<nSamples; i++)
 		{
@@ -227,11 +232,19 @@ saveOdeState(0);
 
 
 			
-
+                
 
 				const dReal *pos = odeBodyGetPosition(body1);
 				float angle=odeJointGetHingeAngle(hinge);
-				float cost=squared((pos[0])*100.0f); // +squared(control * 0.05) + squared(angle*0.01f) ; //+squared(control * 5.2);
+
+
+				current_position = pos[0] ;
+				ball_vel = (current_position - last_position)/timeStep ;
+				//printf("current ball %f\n", current_position );
+				//printf("ball vel %f'\n", ball_vel );
+
+
+				float cost=squared((pos[0])*1000.0f) +squared(control * 0.6)+ squared(ball_vel*0.3)  + squared(angle*0.3f) ; //+squared(control * 5.2);
 			
 
 
@@ -284,13 +297,13 @@ saveOdeState(0);
 		pbp.getBestControl(0,&control);
 		
 		float cost=(float)pbp.getSquaredCost();
-		printf("Cost %f \n",cost);
+		//printf("Cost %f \n",cost);
 		
 	
 		
 		setCurrentOdeContext(0);
 		restoreOdeState(0);
-		printf("best control:%f \n ", control );
+		//printf("best control:%f \n ", control );
 		
 		
 	
@@ -312,7 +325,20 @@ saveOdeState(0);
 		pos = odeBodyGetPosition(body1);
 		//angle=odeJointGetHingeAngle(hinge);
 	   angle=odeJointGetHingeAngle(hinge);
-		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control = %f \n",pos[0],pos[2],(angle*180/PI),cost,control);
+	   
+	   float ma =odeBodyGetMass(body1) ;
+	   printf("mass %f\n",ma );
+	   
+	   
+	   
+	   
+
+
+
+	   last_position = pos[0] ;
+
+	  // printf("//////////////// last pos %f //////////////////////\n",last_position );
+		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control = %f \n",pos[0],pos[2],angle,cost,control);
 	  // printf("angle %1.3f, avel %1.3f, cost=%1.3f\n",angle,aVel,cost);
 	
 	

@@ -714,9 +714,16 @@ namespace AaltoGames
 
 	void  ControlPBP::getControl( int sampleIdx, float *out_control, const float *priorMean, const float *priorStd)
 	{
+
+		
+
 		if (!useStateKernels)
 		{
+
+			
 			getControlWithoutStateKernel(sampleIdx,out_control, priorMean,priorStd);
+				
+
 			return;
 		}
 		//link the marginal samples to each other so that full-dimensional samples can be recovered
@@ -810,6 +817,8 @@ namespace AaltoGames
 	void  ControlPBP::getControlWithoutStateKernel( int sampleIdx, float *out_control, const float *priorMean, const float *priorStd )
 	{
 		//link the marginal samples to each other so that full-dimensional samples can be recovered
+		
+
 		MarginalSample &nextSample=marginals[nextStep][sampleIdx];
 		MarginalSample &currentSample=marginals[currentStep][nextSample.previousMarginalSampleIdx];
 		Eigen::Map<VectorXf> control(out_control,nControlDimensions);
@@ -820,15 +829,19 @@ namespace AaltoGames
 			{
 				//the old best solution
 				control=oldBest[nextStep].control;	//nextStep as index because the control is always stored to the next sample ("control that brought me to this state")
+				;
+
 			}
 			else if (sampleIdx==1)
 			{
+				
 				control=gaussianBackPropagated.block(currentStep*nControlDimensions,0,nControlDimensions,1);
 			}
 		}
 		//processing for samples other than initial guesses
 		else
 		{
+			
 			//When no kernels used, we sample from the product of the static control prior, the difference priors given the previous sampled controls,
 			//and the "mutation prior" of the sample from previous frame
 			 static __thread DiagonalGMM *proposal=NULL;
@@ -876,7 +889,12 @@ namespace AaltoGames
 			}
 
 			//sample the new control vector
+			
+			
+
 			proposal->sampleWithLimits(control,controlMin,controlMax);
+			
+
 		}
 		nextSample.control=control;
 		nextSample.previousState=marginals[currentStep][nextSample.previousMarginalSampleIdx].state;

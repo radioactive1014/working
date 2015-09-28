@@ -2,6 +2,7 @@
 #include "ros/ros.h"
 #include"std_msgs/String.h"
 #include"std_msgs/Float32.h"
+#include "std_msgs/Int16.h"
 #include <math.h>
 #include "MathUtils.h"
 #include "ControlPBP.h"
@@ -12,6 +13,9 @@
 #include <cstdio>
 #include <iostream>
 #include <unit/from_robot.h>
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
 
 
 
@@ -22,6 +26,8 @@ static const int ANGLE=0;  //state variable index
 static const int AVEL=1;	//state variable index
 const dReal *pos,*R1,*pos2,*R2,*pos3,*R3;
 
+float last_position =0.0588, current_position=0.0588, ball_vel;
+ros::Publisher chatter;
 
 
 
@@ -44,16 +50,13 @@ ros::Publisher chatter_pub;
 std_msgs::Float32 msg; 
 
 
-
-
-
 	const int nSamples=80;
 	//physics simulation time step
 	float timeStep=1.0f/30.0f;
 
 
     ControlPBP pbp;
-	int nTimeSteps=20;		
+	int nTimeSteps=30;		
 	const int nStateDimensions=2;
 	const int nControlDimensions=1;
 	float minControl=-2;	//lower sampling bound
@@ -64,17 +67,20 @@ std_msgs::Float32 msg;
 	//The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 	float C=10;
 	float controlStd=0.8f*C;	//sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
-	float controlDiffStd=987.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
+	float controlDiffStd=100.0f*C;	//sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 	float controlDiffDiffStd=1000.0f*C; //sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 	float mutationScale=0.25f;		//\sigma_m in the paper
 	
-
-
+	ofstream myfile;
+	ofstream final;
+   
 
 
 bool robot(unit::from_robot::Request &req, unit::from_robot::Response &res)
 {
   
+ros::Time begin = ros::Time::now();
+
 pos_robot= req.position;
 ang_robot = req.angle ;
 
@@ -84,7 +90,9 @@ check = true ;
   msg.data = conv;
   chatter_pub.publish(msg); 	
 	
-
+ 	
+  
+   
 
 
 setCurrentOdeContext(0);
@@ -93,6 +101,8 @@ const dReal *pos_first = odeBodyGetPosition(body1);
 
 odeBodySetPosition(body1,pos_robot,pos_first[1],pos_first[2]);
 const dReal *pos_second = odeBodyGetPosition(body1);
+
+
 	
 saveOdeState(0);
 
@@ -128,6 +138,9 @@ saveOdeState(0);
 			setCurrentOdeContext(i);
 			const dReal *pos = odeBodyGetPosition(body1);
 	      //  printf(" position x :%f y:%f z:%f NUM: %d  \n",pos[0],pos[1],pos[2],i);
+
+
+			
 		}
 	
 
@@ -148,7 +161,7 @@ saveOdeState(0);
 		const dReal *pos = odeBodyGetPosition(body1);
 		float angle=odeJointGetHingeAngle(hinge);
 
-		printf(" posX x :%f\n",pos[0]);
+		//printf(" posX x :%f\n",pos[0]);
 		float stateVector[2]={pos[0],angle};
 		pbp.startIteration(true,stateVector);
 
@@ -185,7 +198,7 @@ saveOdeState(0);
 				//printf("previous state id: %d \n",previousStateIdx);
 				restoreOdeState(previousStateIdx+1); //continue the a trajectory (selected in the resampling operation inside ControlPBP)
 
-		;
+		
 
 				dReal Gain = 1;
 
@@ -203,15 +216,26 @@ saveOdeState(0);
 				const dReal *pos = odeBodyGetPosition(body1);
 				float angle=odeJointGetHingeAngle(hinge);
 
+
+				current_position = pos[0] ;
+				ball_vel = (current_position - last_position); ///timeStep ;
+
 				 change = angle -last_angle ;
 
-				float cost=squared((pos[0])*25.5f) ; //+squared(control * 0.01)+ squared(angle*0.01f) ; //+squared(control * 5.2);
-			
 
-			///////////////////  need to remodel .//////////
-    /* if (pos[2]<2.3 || pos[2]>3.2)
-		{
-				cost=cost+1000;
+				 
+			 // float cost=squared((0.03-pos[0])*800.0f) +squared(ball_vel*0.3)+squared(control * 0.5) ; //+ squared(ball_vel*0.2)+ squared(angle*0.3f)  ; // last working
+
+			 float cost=squared((0.03-pos[0])*1050.0f) +squared(ball_vel*0.1);//+squared(control * 0.5) ; //+ squared(ball_vel*0.2)+ squared(angle*0.3f)  ;
+
+		
+
+			//myfile  <<"number" <<std::setw(5)  << i <<std::setw(12)<<"control"<<std::setw(15) << control <<std::setw(10)<<"position" <<std::setw(10)<< pos[0] <<std::setw(10) <<"cost"<<std::setw(10)<< cost <<std::setw(15) <<"timestep"<< std::setw(5)<<k <<std::setw(10) <<"org step "<< std::setw(5)<<cnt <<endl;
+			/*
+					///////////////////  need to remodel .//////////
+    			 if (pos[2]<2.3 || pos[2]>3.2)
+			{
+					cost=cost+1000;
 				//printf("I am in\n");
 			}
 			float angle1 =abs( angle*180/PI);
@@ -221,8 +245,18 @@ saveOdeState(0);
 				cost = cost +1000;
 				//printf("I am into degree cost:%f \n",cost);
 			}
-				*/
-			//////////////////
+				
+		*/	//////////////////
+
+
+
+
+
+			// std_msgs::Int16  msg;
+			 //msg.data = 2 ;
+			 //chatter.publish(msg);
+			  //ros::spinOnce();
+  
 
 				//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as 					in this simple case.
 				//instead, one may use arbitrary state features
@@ -261,21 +295,12 @@ saveOdeState(0);
 
 	    if (cnt >3)
 	    {
-	    	/*if (control < 1.0 )
-	    	{*/
-           
+	    	
     	dReal MaxForce = dInfinity;
 		odeJointSetHingeParam(hinge,dParamFMax,dInfinity);
 		odeJointSetHingeParam(hinge,dParamVel,control);
 
-	/*}
-		else {	control = control * .7;
-				odeJointSetHingeParam(hinge,dParamFMax,dInfinity);
-				odeJointSetHingeParam(hinge,dParamVel,control);
-
-
-	 		}
-*/	}
+		}
 
 	else 
 	{
@@ -293,11 +318,16 @@ saveOdeState(0);
 		//save the resulting state as the starting state for the next iteration
 		saveOdeState(0);
 
+		
+  	
+  		//myfile.close();
+
 		//print output, both angle and aVel should converge to 0, with some sampling noise remaining
 
 	   pos = odeBodyGetPosition(body1);
 		//angle=odeJointGetHingeAngle(hinge);
 	   angle=odeJointGetHingeAngle(hinge);
+
 
         res.command = control;
 		conv = angle ;
@@ -305,15 +335,24 @@ saveOdeState(0);
 		last_angle = angle;
 
 		cnt = cnt +1 ;
+		last_position = pos[0] ;
+		//printf("cnt %d\n",cnt );
+		//final << " best control" <<std::setw(12) << control << std::setw(12) <<"best cost" <<std::setw(12)<< std::setw(12)<<cost <<std::setw(12)<< "position"<< std::setw(12)<<last_position <<endl ;
 		
-		printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control %f \n",pos[0],pos[2],angle*180/3.1416,cost,control);
-	  	// printf("angle %1.3f, avel %1.3f, cost=%1.3f\n",angle,aVel,cost);
+		//printf("FINAL Posx %1.3f,posz = %f  angle %1.3f, cost=%1.3f, control %f \n",pos[0],pos[2],angle*180/3.1416,cost,control);
+	  	 //printf("angle %1.3f, avel %1.3f, cost=%1.3f\n",angle,aVel,cost);
 
-		
+
+		//final << " best control" << control << "best cost" << cost << "position" << pos[0] <<endl ;
+		   
 	/*	int i = 0;
 		loop : cin >> i;
 		if ( i != 1)
 		goto loop;*/
+
+ros::Time end = ros::Time::now();
+double dt = (begin - end).toSec();
+printf("time needed %f \n", dt);
 		
 	
 }
@@ -333,11 +372,13 @@ int main(int argc, char **argv)
 
 	 chatter_pub = n.advertise<std_msgs::Float32>("from_ode", 1);
 	 service = n.advertiseService("from_robot", robot);
+	 //chatter = n.advertise<std_msgs::Int16 >("/cha", 1000);
 	
 
 
     ROS_INFO("%f", msg.data);
-
+//myfile.open ("example.txt");
+  final.open ("final.txt");
    
 
 	//Allocate one simulation context for each sample, plus one additional "master" context
@@ -365,7 +406,7 @@ int main(int argc, char **argv)
 	odeGeomSetBody(geom,body);
 
 		
-;
+
 
 	hinge=odeJointCreateHinge();
 	//printf("joint ID : %d",hinge);
@@ -391,7 +432,7 @@ int main(int argc, char **argv)
 
     
     odeMassSetSphereTotal(body1,0.04,0.03);
-    odeBodySetPosition(body1,0.0588,0,2.6f);
+    odeBodySetPosition(body1,0.0588,0,2.554f);
 	//odeBodySetMass (body1, 0.04);
 	odeGeomSetBody(geom1,body1);
 
@@ -416,8 +457,9 @@ int main(int argc, char **argv)
 	while (ros::ok())
 	{
 
-
+       
       ros::spinOnce();
+  
 	//printf("spinning");
 		
 

@@ -87,12 +87,12 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 			//	contact[i].surface.soft_cfm = context->contactSoftCFM;//1e-10;
 			//}
 			contact[i].surface.mode = dContactApprox1|dContactSoftERP|dContactSoftCFM;
-			contact[i].surface.mu = 1;//context->frictionCoefficient;//200;
+			contact[i].surface.mu = 50;//context->frictionCoefficient;//200;
 			//contact[i].surface.slip1 = 0.001f;
 			//contact[i].surface.slip2 = 0.001f;
-			//contact[i].surface.bounce = 0.0f;
-			contact[i].surface.soft_erp = 1.0;
-			contact[i].surface.soft_cfm = 1e-10;
+			contact[i].surface.bounce = 0.001f;
+			contact[i].surface.soft_erp = 0.2;
+			contact[i].surface.soft_cfm =1e-1;
 
 			dJointID c = dJointCreateContact (context->world,context->contactGroup,&contact[i]);
 			dBodyID body1=dGeomGetBody(contact[i].geom.g1);
@@ -914,6 +914,19 @@ float odeGeomCapsulePointDepth(int geomId, float x, float y, float z)
 	return static_cast<float>(d);
 }
 
+
+///////////////////by me/////////////////
+void odeJointSetFixed(int jointId)
+{
+	ITERATE_THREADS(i)
+	{
+		dJointID joint = contexts[i].joints[jointId];
+		dJointSetFixed(joint);
+	}
+}
+
+///////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////
 // Joints
 ///////////////////////////////////////////////////////////////////////////////
@@ -1484,7 +1497,7 @@ void odeJointAddAMotorTorques(int jointId, float torque1, float torque2, float t
 //bool EXPORT_API stepOde(float stepSize, bool breakOnErrors)
 void EXPORT_API stepOde(int pause)
 {
-	float stepSize = 1.0f/30.0f;
+	float stepSize = 1.0f/100.0f;
 
 	bool isError = false;
 

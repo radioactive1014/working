@@ -2,6 +2,8 @@
 #include "DynamicPdfSampler.h"
 #include "ClippedGaussianSampling.h"
 #include "Debug.h"
+#include <iostream>
+#include <stdlib.h>
 
 namespace AaltoGames
 {
@@ -169,7 +171,9 @@ namespace AaltoGames
 	}
 
 	void DiagonalGMM::sample( Eigen::VectorXf &dst )
+
 	{
+		
 		int idx=sampleComponent();
 		if (dst.rows()!=nDimensions)
 			dst.resize(nDimensions);
@@ -182,6 +186,8 @@ namespace AaltoGames
 
 	void DiagonalGMM::sampleWithLimits( Eigen::VectorXf &dst, const Eigen::VectorXf &minValues, const Eigen::VectorXf &maxValues  )
 	{
+
+		
 		int idx=sampleComponent();
 		//printf("sampleWithLimits selected component %d\n",idx);
 		if (dst.rows()!=nDimensions)
@@ -194,13 +200,17 @@ namespace AaltoGames
 
 	void DiagonalGMM::sampleWithLimits( Eigen::Map<Eigen::VectorXf> &dst, const Eigen::VectorXf &minValues, const Eigen::VectorXf &maxValues )
 	{
+
 		int idx=sampleComponent();
 		//printf("sampleWithLimits selected component %d\n",idx);
 		if (dst.rows()!=nDimensions)
 			Debug::throwError("Invalid dst dimensions for sampleWithLimits()!");
 		for (int d=0; d<nDimensions; d++)
 		{
-			dst[d]=randGaussianClipped(mean[idx][d],std[idx][d],minValues[d],maxValues[d]);
+			
+			//dst[d]=randGaussianClipped(mean[idx][d],std[idx][d],minValues[d],maxValues[d]);
+		
+			dst[d]=randGaussianClipped(mean[idx][d],std[idx][0],minValues[d],maxValues[d]);
 		}
 	}
 

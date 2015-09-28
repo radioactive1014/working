@@ -61,6 +61,12 @@ void EXPORT_API odeSetContactSoftCFM(float cfm);
 
 void EXPORT_API odeSetFrictionCoefficient(float mu);
 
+
+////////////////by me ////////////
+void EXPORT_API odeJointSetFixed(int jointId);
+
+/////////////////////////
+
 // Body: Creating and Destroying Bodies
 
 int  EXPORT_API odeBodyCreate();

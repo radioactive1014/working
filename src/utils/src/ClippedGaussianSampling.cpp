@@ -3,6 +3,7 @@
 #include <vector>
 #include "Debug.h"
 #include<stdlib.h>
+#include <iostream>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -106,23 +107,40 @@ namespace AaltoGames
 	//Sample a Gaussian random number between minValue and maxValue with the given mean and stdev. This is done using cdf inverting.
 	float ClippedGaussianSampler::sample(float mean, float stdev, float minValue, float maxValue ){
 		//If the lookup table is empty, populate it.
+		
+		
 		if (standardCdfTable.empty()){
 			computeCdfTable();
 		}
+
 
 		//Map the values to be used with standard normal distribution
 		float minValStd = nonstandardToStandard(minValue,mean,stdev);
 		float maxValStd = nonstandardToStandard(maxValue,mean,stdev);
 
+
+		
 		//Find the indices of the places corresponding to the minimum and maximum allowed value
 		int minPlace = (int)ceil( (minValStd - lowLim)/delta );
 		int maxPlace = (int)floor( (maxValStd - lowLim)/delta );
+
+
+		
+		
+		int ee = std::min((int)(standardCdfTable.size()-1),maxPlace);
+		int pp = standardCdfTable.size();
+	
+
 
 		//Find the standard normal distribution cdf values corresponding to the  minimum and maximum allowed value
 		minValStd = standardCdfTable[std::max(0,minPlace)]; 
 		maxValStd = standardCdfTable[std::min((int)(standardCdfTable.size()-1),maxPlace)];
 
+		
+
 		float transRand, position;
+
+		
 
 		//Sample a uniformly distributed random number from interval [0,1]
 		transRand = ((float) rand() / (RAND_MAX));
@@ -138,6 +156,7 @@ namespace AaltoGames
 		transRand = standardToNonstandard(position,mean,stdev);
 
 		transRand = clamp(transRand,minValue,maxValue);
+	
 
 		////Position will correspond to the sampled value in standard normal distribution
 		//float position = lowLim;
@@ -156,7 +175,7 @@ namespace AaltoGames
 		AALTO_ASSERT1(transRand >= minValue);
 		AALTO_ASSERT1(transRand <= maxValue);
 
-
+		;
 		//Return the value
 		return transRand;
 
@@ -165,6 +184,8 @@ namespace AaltoGames
 	static ClippedGaussianSampler s_sampler;
 	float randGaussianClipped( float mean, float stdev, float minValue, float maxValue )
 	{
+	
+		
 		return s_sampler.sample(mean,stdev,minValue,maxValue);
 	}
 

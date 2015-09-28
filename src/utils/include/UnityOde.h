@@ -66,6 +66,11 @@ void EXPORT_API odeSetFrictionCoefficient(float mu);
 int  EXPORT_API odeBodyCreate();
 void EXPORT_API odeBodyDestroy(int bodyId);
 
+
+////////////by me/////////////
+void EXPORT_API odeJointSetFixed(int jointId);
+////////////////////
+
 // Body: Position and orientation
 
 void EXPORT_API odeBodySetPosition(int bodyId, float x, float y, float z);

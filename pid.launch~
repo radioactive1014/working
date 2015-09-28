@@ -1,5 +1,5 @@
 <launch>
-<node name="n" pkg="unit" type="test1" output="screen" />
+<node name="n" pkg="unit" type="unit_double" output="screen" />
 <node name="ndfdjfkl" pkg="app" type="ppid" output="screen" launch-prefix="xterm -e"  />
 
 

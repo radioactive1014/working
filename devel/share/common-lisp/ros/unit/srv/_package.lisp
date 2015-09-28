@@ -1,6 +1,11 @@
 (cl:defpackage unit-srv
   (:use )
   (:export
+   "FOR_DOUBLE"
+   "<FOR_DOUBLE-REQUEST>"
+   "FOR_DOUBLE-REQUEST"
+   "<FOR_DOUBLE-RESPONSE>"
+   "FOR_DOUBLE-RESPONSE"
    "FROM_ROBOT"
    "<FROM_ROBOT-REQUEST>"
    "FROM_ROBOT-REQUEST"
