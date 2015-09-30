@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/fancy_cam.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/fancy_cam"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fancy_cam.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fancy_cam"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/intelligentrobotics/rokon/src/app/src/fricomm.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/fricomm.h
 
-/home/intelligentrobotics/rokon/src/app/src/simple_new.cpp
+/home/intelligentrobotics/rokon_clone/October/src/app/src/simple_new.cpp
 ros/ros.h
-/home/intelligentrobotics/rokon/src/app/src/ros/ros.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/ros/ros.h
 ros/console.h
-/home/intelligentrobotics/rokon/src/app/src/ros/console.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/ros/console.h
 math.h
-/home/intelligentrobotics/rokon/src/app/src/math.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/math.h
 iostream
-/home/intelligentrobotics/rokon/src/app/src/iostream
+/home/intelligentrobotics/rokon_clone/October/src/app/src/iostream
 signal.h
-/home/intelligentrobotics/rokon/src/app/src/signal.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/signal.h
 boost/filesystem.hpp
 -
 boost/process.hpp
@@ -26,29 +26,29 @@ boost/process.hpp
 boost/array.hpp
 -
 std_msgs/Empty.h
-/home/intelligentrobotics/rokon/src/app/src/std_msgs/Empty.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/std_msgs/Empty.h
 sensor_msgs/JointState.h
-/home/intelligentrobotics/rokon/src/app/src/sensor_msgs/JointState.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/sensor_msgs/JointState.h
 geometry_msgs/Point.h
-/home/intelligentrobotics/rokon/src/app/src/geometry_msgs/Point.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/geometry_msgs/Point.h
 geometry_msgs/Pose.h
-/home/intelligentrobotics/rokon/src/app/src/geometry_msgs/Pose.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/geometry_msgs/Pose.h
 geometry_msgs/Vector3.h
-/home/intelligentrobotics/rokon/src/app/src/geometry_msgs/Vector3.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/geometry_msgs/Vector3.h
 JointPositions.h
-/home/intelligentrobotics/rokon/src/app/src/JointPositions.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/JointPositions.h
 fricomm.h
-/home/intelligentrobotics/rokon/src/app/src/fricomm.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/fricomm.h
 std_srvs/Empty.h
 -
 KUKACommander/set_bool.h
-/home/intelligentrobotics/rokon/src/app/src/KUKACommander/set_bool.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/KUKACommander/set_bool.h
 KUKACommander/set_fri_ctrl.h
-/home/intelligentrobotics/rokon/src/app/src/KUKACommander/set_fri_ctrl.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/KUKACommander/set_fri_ctrl.h
 KUKACommander/joint_ptp_motion.h
-/home/intelligentrobotics/rokon/src/app/src/KUKACommander/joint_ptp_motion.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/KUKACommander/joint_ptp_motion.h
 KUKACommander/cart_ptp_motion.h
-/home/intelligentrobotics/rokon/src/app/src/KUKACommander/cart_ptp_motion.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/KUKACommander/cart_ptp_motion.h
 
 /home/intelligentrobotics/ws/orocos/motion_control/motion_control_msgs/msg_gen/cpp/include/motion_control_msgs/JointPositions.h
 string

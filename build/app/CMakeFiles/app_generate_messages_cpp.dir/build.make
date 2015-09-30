@@ -35,27 +35,27 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Utility rule file for app_generate_messages_cpp.
 
 # Include the progress variables for this target.
 include app/CMakeFiles/app_generate_messages_cpp.dir/progress.make
 
-app/CMakeFiles/app_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/app/cam.h
+app/CMakeFiles/app_generate_messages_cpp: /home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h
 
-/home/intelligentrobotics/rokon/devel/include/app/cam.h: /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/intelligentrobotics/rokon/devel/include/app/cam.h: /home/intelligentrobotics/rokon/src/app/msg/cam.msg
-/home/intelligentrobotics/rokon/devel/include/app/cam.h: /opt/ros/groovy/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+/home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h: /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h: /home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg
+/home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h: /opt/ros/groovy/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon_clone/October/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from app/cam.msg"
-	cd /home/intelligentrobotics/rokon/build/app && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/intelligentrobotics/rokon/src/app/msg/cam.msg -Iapp:/home/intelligentrobotics/rokon/src/app/msg -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p app -o /home/intelligentrobotics/rokon/devel/include/app -e /opt/ros/groovy/share/gencpp/cmake/..
+	cd /home/intelligentrobotics/rokon_clone/October/build/app && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/groovy/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg -Iapp:/home/intelligentrobotics/rokon_clone/October/src/app/msg -Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg -p app -o /home/intelligentrobotics/rokon_clone/October/devel/include/app -e /opt/ros/groovy/share/gencpp/cmake/..
 
 app_generate_messages_cpp: app/CMakeFiles/app_generate_messages_cpp
-app_generate_messages_cpp: /home/intelligentrobotics/rokon/devel/include/app/cam.h
+app_generate_messages_cpp: /home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h
 app_generate_messages_cpp: app/CMakeFiles/app_generate_messages_cpp.dir/build.make
 .PHONY : app_generate_messages_cpp
 
@@ -64,10 +64,10 @@ app/CMakeFiles/app_generate_messages_cpp.dir/build: app_generate_messages_cpp
 .PHONY : app/CMakeFiles/app_generate_messages_cpp.dir/build
 
 app/CMakeFiles/app_generate_messages_cpp.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/app && $(CMAKE_COMMAND) -P CMakeFiles/app_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/app && $(CMAKE_COMMAND) -P CMakeFiles/app_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : app/CMakeFiles/app_generate_messages_cpp.dir/clean
 
 app/CMakeFiles/app_generate_messages_cpp.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/app /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/app /home/intelligentrobotics/rokon/build/app/CMakeFiles/app_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/app /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/app /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/app_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : app/CMakeFiles/app_generate_messages_cpp.dir/depend
 

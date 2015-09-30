@@ -11,8 +11,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/utils.dir/src/Optimization.cpp.o"
   "CMakeFiles/utils.dir/src/RandomForestSampler.cpp.o"
   "CMakeFiles/utils.dir/src/SamplingTree.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/libutils.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/libutils.so"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/libutils.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/libutils.so"
 )
 
 # Per-language clean rules from dependency scanning.

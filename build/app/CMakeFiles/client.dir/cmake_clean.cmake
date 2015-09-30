@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/client.dir/src/client.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/app/client.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/app/client"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/client.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/client"
 )
 
 # Per-language clean rules from dependency scanning.

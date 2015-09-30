@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/fix_test.dir/src/fix_test.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/fix_test.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/fix_test"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix_test.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix_test"
 )
 
 # Per-language clean rules from dependency scanning.

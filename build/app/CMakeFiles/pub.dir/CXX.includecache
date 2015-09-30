@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/intelligentrobotics/rokon/src/app/src/publisher.cpp
+/home/intelligentrobotics/rokon_clone/October/src/app/src/publisher.cpp
 ros/ros.h
-/home/intelligentrobotics/rokon/src/app/src/ros/ros.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/ros/ros.h
 std_msgs/Int16.h
-/home/intelligentrobotics/rokon/src/app/src/std_msgs/Int16.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/std_msgs/Int16.h
 sstream
 -
 KUKACommander/move_to_jnt_pos.h
-/home/intelligentrobotics/rokon/src/app/src/KUKACommander/move_to_jnt_pos.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/KUKACommander/move_to_jnt_pos.h
 sensor_msgs/JointState.h
-/home/intelligentrobotics/rokon/src/app/src/sensor_msgs/JointState.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/sensor_msgs/JointState.h
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/cpub.dir/src/click_pub.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/cpub.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/camera/cpub"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/cpub.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/cpub"
 )
 
 # Per-language clean rules from dependency scanning.

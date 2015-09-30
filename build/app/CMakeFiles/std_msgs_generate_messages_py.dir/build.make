@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Utility rule file for std_msgs_generate_messages_py.
 
@@ -56,10 +56,10 @@ app/CMakeFiles/std_msgs_generate_messages_py.dir/build: std_msgs_generate_messag
 .PHONY : app/CMakeFiles/std_msgs_generate_messages_py.dir/build
 
 app/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/app && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/app && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : app/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 app/CMakeFiles/std_msgs_generate_messages_py.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/app /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/app /home/intelligentrobotics/rokon/build/app/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/app /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/app /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : app/CMakeFiles/std_msgs_generate_messages_py.dir/depend
 

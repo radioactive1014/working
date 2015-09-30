@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/intelligentrobotics/rokon/src/camera/src/check.cpp" "/home/intelligentrobotics/rokon/build/camera/CMakeFiles/check.dir/src/check.cpp.o"
+  "/home/intelligentrobotics/rokon_clone/October/src/camera/src/check.cpp" "/home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/check.dir/src/check.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

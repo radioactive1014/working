@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/fancy.dir/src/fancy.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/app/fancy.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/app/fancy"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/fancy.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/fancy"
 )
 
 # Per-language clean rules from dependency scanning.

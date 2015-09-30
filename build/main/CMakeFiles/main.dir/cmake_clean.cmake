@@ -1,8 +1,8 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/ControlPBP.cpp.o"
   "CMakeFiles/main.dir/src/UnityOde.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/libmain.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/libmain.so"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/libmain.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/libmain.so"
 )
 
 # Per-language clean rules from dependency scanning.

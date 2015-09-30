@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Include any dependencies generated for this target.
 include unit/CMakeFiles/test1.dir/depend.make
@@ -50,18 +50,18 @@ include unit/CMakeFiles/test1.dir/progress.make
 include unit/CMakeFiles/test1.dir/flags.make
 
 unit/CMakeFiles/test1.dir/pide.cpp.o: unit/CMakeFiles/test1.dir/flags.make
-unit/CMakeFiles/test1.dir/pide.cpp.o: /home/intelligentrobotics/rokon/src/unit/pide.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+unit/CMakeFiles/test1.dir/pide.cpp.o: /home/intelligentrobotics/rokon_clone/October/src/unit/pide.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon_clone/October/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object unit/CMakeFiles/test1.dir/pide.cpp.o"
-	cd /home/intelligentrobotics/rokon/build/unit && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test1.dir/pide.cpp.o -c /home/intelligentrobotics/rokon/src/unit/pide.cpp
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test1.dir/pide.cpp.o -c /home/intelligentrobotics/rokon_clone/October/src/unit/pide.cpp
 
 unit/CMakeFiles/test1.dir/pide.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test1.dir/pide.cpp.i"
-	cd /home/intelligentrobotics/rokon/build/unit && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/intelligentrobotics/rokon/src/unit/pide.cpp > CMakeFiles/test1.dir/pide.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/intelligentrobotics/rokon_clone/October/src/unit/pide.cpp > CMakeFiles/test1.dir/pide.cpp.i
 
 unit/CMakeFiles/test1.dir/pide.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test1.dir/pide.cpp.s"
-	cd /home/intelligentrobotics/rokon/build/unit && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/intelligentrobotics/rokon/src/unit/pide.cpp -o CMakeFiles/test1.dir/pide.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/intelligentrobotics/rokon_clone/October/src/unit/pide.cpp -o CMakeFiles/test1.dir/pide.cpp.s
 
 unit/CMakeFiles/test1.dir/pide.cpp.o.requires:
 .PHONY : unit/CMakeFiles/test1.dir/pide.cpp.o.requires
@@ -79,55 +79,55 @@ test1_OBJECTS = \
 # External object files for target test1
 test1_EXTERNAL_OBJECTS =
 
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/pide.cpp.o
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_signals-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_filesystem-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/librosconsole.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_regex-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/liblog4cxx.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp_serialization.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/librostime.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_date_time-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_system-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_thread-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libxmlrpcpp.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libcpp_common.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /home/intelligentrobotics/rokon/devel/lib/libutils.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /home/intelligentrobotics/rokon/devel/lib/libmain.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /home/intelligentrobotics/rokon/devel/lib/libutils.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_signals-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_filesystem-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/librosconsole.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_regex-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/liblog4cxx.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp_serialization.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/librostime.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_date_time-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_system-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/libboost_thread-mt.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libxmlrpcpp.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: /opt/ros/groovy/lib/libcpp_common.so
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/build.make
-/home/intelligentrobotics/rokon/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/intelligentrobotics/rokon/devel/lib/unit/test1"
-	cd /home/intelligentrobotics/rokon/build/unit && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test1.dir/link.txt --verbose=$(VERBOSE)
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/pide.cpp.o
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_signals-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_filesystem-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/librosconsole.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_regex-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/liblog4cxx.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp_serialization.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/librostime.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_date_time-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_system-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_thread-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libxmlrpcpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libcpp_common.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /home/intelligentrobotics/rokon_clone/October/devel/lib/libutils.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /home/intelligentrobotics/rokon_clone/October/devel/lib/libmain.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /home/intelligentrobotics/rokon_clone/October/devel/lib/libutils.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_signals-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_filesystem-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/librosconsole.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_regex-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/liblog4cxx.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libroscpp_serialization.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/librostime.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_date_time-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_system-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/libboost_thread-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libxmlrpcpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: /opt/ros/groovy/lib/libcpp_common.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/build.make
+/home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1: unit/CMakeFiles/test1.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1"
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-unit/CMakeFiles/test1.dir/build: /home/intelligentrobotics/rokon/devel/lib/unit/test1
+unit/CMakeFiles/test1.dir/build: /home/intelligentrobotics/rokon_clone/October/devel/lib/unit/test1
 .PHONY : unit/CMakeFiles/test1.dir/build
 
 unit/CMakeFiles/test1.dir/requires: unit/CMakeFiles/test1.dir/pide.cpp.o.requires
 .PHONY : unit/CMakeFiles/test1.dir/requires
 
 unit/CMakeFiles/test1.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/unit && $(CMAKE_COMMAND) -P CMakeFiles/test1.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && $(CMAKE_COMMAND) -P CMakeFiles/test1.dir/cmake_clean.cmake
 .PHONY : unit/CMakeFiles/test1.dir/clean
 
 unit/CMakeFiles/test1.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/unit /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/unit /home/intelligentrobotics/rokon/build/unit/CMakeFiles/test1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/unit /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/unit /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/test1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : unit/CMakeFiles/test1.dir/depend
 

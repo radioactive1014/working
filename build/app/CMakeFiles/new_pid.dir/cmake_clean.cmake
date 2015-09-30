@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/new_pid.dir/src/new_pid.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/app/new_pid.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/app/new_pid"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/new_pid.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/new_pid"
 )
 
 # Per-language clean rules from dependency scanning.

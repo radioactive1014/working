@@ -1,8 +1,8 @@
-# Install script for directory: /home/intelligentrobotics/rokon/src
+# Install script for directory: /home/intelligentrobotics/rokon_clone/October/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/intelligentrobotics/rokon/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/intelligentrobotics/rokon_clone/October/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ IF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     STRING(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   ELSE(BUILD_TYPE)
-    SET(CMAKE_INSTALL_CONFIG_NAME "RelWithDebInfo")
+    SET(CMAKE_INSTALL_CONFIG_NAME "release")
   ENDIF(BUILD_TYPE)
   MESSAGE(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 ENDIF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
@@ -44,38 +44,38 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/_setup_util.py")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE PROGRAM FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/_setup_util.py")
+   "/home/intelligentrobotics/rokon_clone/October/install/_setup_util.py")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE PROGRAM FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/_setup_util.py")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/env.sh")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE PROGRAM FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/env.sh")
+   "/home/intelligentrobotics/rokon_clone/October/install/env.sh")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE PROGRAM FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/env.sh")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/setup.bash")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE FILE FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/setup.bash")
+   "/home/intelligentrobotics/rokon_clone/October/install/setup.bash")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE FILE FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/setup.bash")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/setup.sh")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE FILE FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/setup.sh")
+   "/home/intelligentrobotics/rokon_clone/October/install/setup.sh")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE FILE FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/setup.sh")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/setup.zsh")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE FILE FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/setup.zsh")
+   "/home/intelligentrobotics/rokon_clone/October/install/setup.zsh")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE FILE FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/setup.zsh")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
-   "/home/intelligentrobotics/rokon/install/.rosinstall")
-FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon/install" TYPE FILE FILES "/home/intelligentrobotics/rokon/build/catkin_generated/installspace/.rosinstall")
+   "/home/intelligentrobotics/rokon_clone/October/install/.rosinstall")
+FILE(INSTALL DESTINATION "/home/intelligentrobotics/rokon_clone/October/install" TYPE FILE FILES "/home/intelligentrobotics/rokon_clone/October/build/catkin_generated/installspace/.rosinstall")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -88,12 +88,12 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/intelligentrobotics/rokon/build/gtest/cmake_install.cmake")
-  INCLUDE("/home/intelligentrobotics/rokon/build/app/cmake_install.cmake")
-  INCLUDE("/home/intelligentrobotics/rokon/build/camera/cmake_install.cmake")
-  INCLUDE("/home/intelligentrobotics/rokon/build/main/cmake_install.cmake")
-  INCLUDE("/home/intelligentrobotics/rokon/build/unit/cmake_install.cmake")
-  INCLUDE("/home/intelligentrobotics/rokon/build/utils/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/gtest/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/app/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/camera/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/main/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/unit/cmake_install.cmake")
+  INCLUDE("/home/intelligentrobotics/rokon_clone/October/build/utils/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -103,7 +103,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/intelligentrobotics/rokon/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/intelligentrobotics/rokon_clone/October/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/intelligentrobotics/rokon/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/intelligentrobotics/rokon_clone/October/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

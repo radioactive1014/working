@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/intelligentrobotics/rokon/devel/include/unit/from_robot.h
+/home/intelligentrobotics/rokon_clone/October/devel/include/unit/from_robot.h
 ros/service_traits.h
 -
 unit/from_robotRequest.h
@@ -14,7 +14,7 @@ unit/from_robotRequest.h
 unit/from_robotResponse.h
 -
 
-/home/intelligentrobotics/rokon/devel/include/unit/from_robotRequest.h
+/home/intelligentrobotics/rokon_clone/October/devel/include/unit/from_robotRequest.h
 string
 -
 vector
@@ -30,7 +30,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/intelligentrobotics/rokon/devel/include/unit/from_robotResponse.h
+/home/intelligentrobotics/rokon_clone/October/devel/include/unit/from_robotResponse.h
 string
 -
 vector
@@ -46,9 +46,9 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/intelligentrobotics/rokon/src/app/src/client.cpp
+/home/intelligentrobotics/rokon_clone/October/src/app/src/client.cpp
 ros/ros.h
-/home/intelligentrobotics/rokon/src/app/src/ros/ros.h
+/home/intelligentrobotics/rokon_clone/October/src/app/src/ros/ros.h
 cstdlib
 -
 ros/callback_queue.h

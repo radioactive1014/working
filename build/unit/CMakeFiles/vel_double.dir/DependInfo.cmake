@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/intelligentrobotics/rokon/src/unit/vel_double.cpp" "/home/intelligentrobotics/rokon/build/unit/CMakeFiles/vel_double.dir/vel_double.cpp.o"
+  "/home/intelligentrobotics/rokon_clone/October/src/unit/vel_double.cpp" "/home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/vel_double.dir/vel_double.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,6 +16,6 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/intelligentrobotics/rokon/build/utils/CMakeFiles/utils.dir/DependInfo.cmake"
-  "/home/intelligentrobotics/rokon/build/main/CMakeFiles/main.dir/DependInfo.cmake"
+  "/home/intelligentrobotics/rokon_clone/October/build/utils/CMakeFiles/utils.dir/DependInfo.cmake"
+  "/home/intelligentrobotics/rokon_clone/October/build/main/CMakeFiles/main.dir/DependInfo.cmake"
   )

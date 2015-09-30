@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/app_generate_messages_cpp"
-  "/home/intelligentrobotics/rokon/devel/include/app/cam.h"
+  "/home/intelligentrobotics/rokon_clone/October/devel/include/app/cam.h"
 )
 
 # Per-language clean rules from dependency scanning.

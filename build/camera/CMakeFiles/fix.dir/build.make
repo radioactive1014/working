@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Include any dependencies generated for this target.
 include camera/CMakeFiles/fix.dir/depend.make
@@ -50,18 +50,18 @@ include camera/CMakeFiles/fix.dir/progress.make
 include camera/CMakeFiles/fix.dir/flags.make
 
 camera/CMakeFiles/fix.dir/src/fix.cpp.o: camera/CMakeFiles/fix.dir/flags.make
-camera/CMakeFiles/fix.dir/src/fix.cpp.o: /home/intelligentrobotics/rokon/src/camera/src/fix.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon/build/CMakeFiles $(CMAKE_PROGRESS_1)
+camera/CMakeFiles/fix.dir/src/fix.cpp.o: /home/intelligentrobotics/rokon_clone/October/src/camera/src/fix.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/intelligentrobotics/rokon_clone/October/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object camera/CMakeFiles/fix.dir/src/fix.cpp.o"
-	cd /home/intelligentrobotics/rokon/build/camera && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/fix.dir/src/fix.cpp.o -c /home/intelligentrobotics/rokon/src/camera/src/fix.cpp
+	cd /home/intelligentrobotics/rokon_clone/October/build/camera && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/fix.dir/src/fix.cpp.o -c /home/intelligentrobotics/rokon_clone/October/src/camera/src/fix.cpp
 
 camera/CMakeFiles/fix.dir/src/fix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fix.dir/src/fix.cpp.i"
-	cd /home/intelligentrobotics/rokon/build/camera && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/intelligentrobotics/rokon/src/camera/src/fix.cpp > CMakeFiles/fix.dir/src/fix.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build/camera && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/intelligentrobotics/rokon_clone/October/src/camera/src/fix.cpp > CMakeFiles/fix.dir/src/fix.cpp.i
 
 camera/CMakeFiles/fix.dir/src/fix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fix.dir/src/fix.cpp.s"
-	cd /home/intelligentrobotics/rokon/build/camera && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/intelligentrobotics/rokon/src/camera/src/fix.cpp -o CMakeFiles/fix.dir/src/fix.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build/camera && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/intelligentrobotics/rokon_clone/October/src/camera/src/fix.cpp -o CMakeFiles/fix.dir/src/fix.cpp.s
 
 camera/CMakeFiles/fix.dir/src/fix.cpp.o.requires:
 .PHONY : camera/CMakeFiles/fix.dir/src/fix.cpp.o.requires
@@ -79,94 +79,94 @@ fix_OBJECTS = \
 # External object files for target fix
 fix_EXTERNAL_OBJECTS =
 
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/src/fix.cpp.o
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libcv_bridge.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_videostab.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_superres.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_stitching.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_contrib.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libimage_transport.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libmessage_filters.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libtinyxml.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libclass_loader.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libPocoFoundation.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libconsole_bridge.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libroscpp.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_signals-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_filesystem-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/librosconsole.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_regex-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/liblog4cxx.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libxmlrpcpp.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libroslib.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libroscpp_serialization.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/librostime.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_date_time-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_system-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/libboost_thread-mt.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libcpp_common.so
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_videostab.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_superres.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_stitching.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_contrib.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/build.make
-/home/intelligentrobotics/rokon/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/intelligentrobotics/rokon/devel/lib/camera/fix"
-	cd /home/intelligentrobotics/rokon/build/camera && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fix.dir/link.txt --verbose=$(VERBOSE)
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/src/fix.cpp.o
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libcv_bridge.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_videostab.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_superres.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_stitching.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_contrib.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libimage_transport.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libmessage_filters.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libtinyxml.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libclass_loader.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libPocoFoundation.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libconsole_bridge.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libroscpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_signals-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_filesystem-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/librosconsole.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_regex-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/liblog4cxx.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libxmlrpcpp.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libroslib.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libroscpp_serialization.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/librostime.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_date_time-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_system-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/libboost_thread-mt.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libcpp_common.so
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_videostab.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_superres.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_stitching.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_contrib.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_legacy.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_video.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_ml.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_features2d.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_highgui.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_flann.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/build.make
+/home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix: camera/CMakeFiles/fix.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix"
+	cd /home/intelligentrobotics/rokon_clone/October/build/camera && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fix.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-camera/CMakeFiles/fix.dir/build: /home/intelligentrobotics/rokon/devel/lib/camera/fix
+camera/CMakeFiles/fix.dir/build: /home/intelligentrobotics/rokon_clone/October/devel/lib/camera/fix
 .PHONY : camera/CMakeFiles/fix.dir/build
 
 camera/CMakeFiles/fix.dir/requires: camera/CMakeFiles/fix.dir/src/fix.cpp.o.requires
 .PHONY : camera/CMakeFiles/fix.dir/requires
 
 camera/CMakeFiles/fix.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/camera && $(CMAKE_COMMAND) -P CMakeFiles/fix.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/camera && $(CMAKE_COMMAND) -P CMakeFiles/fix.dir/cmake_clean.cmake
 .PHONY : camera/CMakeFiles/fix.dir/clean
 
 camera/CMakeFiles/fix.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/camera /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/camera /home/intelligentrobotics/rokon/build/camera/CMakeFiles/fix.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/camera /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/camera /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : camera/CMakeFiles/fix.dir/depend
 

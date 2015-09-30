@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/SimplePTP.dir/src/SimplePTP.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/app/SimplePTP.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/app/SimplePTP"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/SimplePTP.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/SimplePTP"
 )
 
 # Per-language clean rules from dependency scanning.

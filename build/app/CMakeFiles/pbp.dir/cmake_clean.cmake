@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/pbp.dir/src/with_pbp.cpp.o"
-  "/home/intelligentrobotics/rokon/devel/lib/app/pbp.pdb"
-  "/home/intelligentrobotics/rokon/devel/lib/app/pbp"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/pbp.pdb"
+  "/home/intelligentrobotics/rokon_clone/October/devel/lib/app/pbp"
 )
 
 # Per-language clean rules from dependency scanning.

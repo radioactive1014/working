@@ -58,7 +58,7 @@ float timeStep=1.0f/30.0f;
 ControlPBP pbp;
 int   nTimeSteps=15;		
 const int nStateDimensions=2;
-const int nControlDimensions=1;
+const int nControlDimensions=2;
 float minControl=-2;	//lower sampling bound
 float maxControl=2;		//upper sampling bound
 float controlMean=0;	//we're using torque as the control, makes sense to have zero mean
@@ -321,7 +321,7 @@ bool robot(unit::for_double::Request &req, unit::for_double::Response &res)
 		ros::Time end = ros::Time::now();
 		double dt = (begin - end).toSec();
 
-		//ROS_INFO("dt %f", dt);
+		ROS_INFO("dt %f", dt);
 
 		
 		printf("FINAL Posx %1.3f,posy = %f  angle %1.3f,  control %f,  control 1 %f \n",pos[0],pos[1],angle*180/3.1416,control[0],control[1]);

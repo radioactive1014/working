@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Utility rule file for unit_gencpp.
 
@@ -56,10 +56,10 @@ unit/CMakeFiles/unit_gencpp.dir/build: unit_gencpp
 .PHONY : unit/CMakeFiles/unit_gencpp.dir/build
 
 unit/CMakeFiles/unit_gencpp.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/unit && $(CMAKE_COMMAND) -P CMakeFiles/unit_gencpp.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/unit && $(CMAKE_COMMAND) -P CMakeFiles/unit_gencpp.dir/cmake_clean.cmake
 .PHONY : unit/CMakeFiles/unit_gencpp.dir/clean
 
 unit/CMakeFiles/unit_gencpp.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/unit /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/unit /home/intelligentrobotics/rokon/build/unit/CMakeFiles/unit_gencpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/unit /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/unit /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/unit_gencpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : unit/CMakeFiles/unit_gencpp.dir/depend
 

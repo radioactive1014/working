@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/intelligentrobotics/rokon/src/camera/src/click_pub.cpp
+/home/intelligentrobotics/rokon_clone/October/src/camera/src/click_pub.cpp
 ros/ros.h
 -
 image_transport/image_transport.h
@@ -22,9 +22,9 @@ opencv2/highgui/highgui.hpp
 iostream
 -
 std_msgs/Float32.h
-/home/intelligentrobotics/rokon/src/camera/src/std_msgs/Float32.h
+/home/intelligentrobotics/rokon_clone/October/src/camera/src/std_msgs/Float32.h
 std_msgs/Int16.h
-/home/intelligentrobotics/rokon/src/camera/src/std_msgs/Int16.h
+/home/intelligentrobotics/rokon_clone/October/src/camera/src/std_msgs/Int16.h
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

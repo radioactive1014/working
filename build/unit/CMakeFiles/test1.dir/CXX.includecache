@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/intelligentrobotics/rokon/src/unit/pide.cpp
+/home/intelligentrobotics/rokon_clone/October/src/unit/pide.cpp
 ode/ode.h
 -
 ros/ros.h
-/home/intelligentrobotics/rokon/src/unit/ros/ros.h
+/home/intelligentrobotics/rokon_clone/October/src/unit/ros/ros.h
 stdio.h
 -
 cstdio
@@ -18,7 +18,7 @@ cstdio
 iostream
 -
 std_msgs/Float32.h
-/home/intelligentrobotics/rokon/src/unit/std_msgs/Float32.h
+/home/intelligentrobotics/rokon_clone/October/src/unit/std_msgs/Float32.h
 ctime
 -
 ctime

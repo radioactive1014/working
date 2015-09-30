@@ -252,7 +252,7 @@ if __name__ == '__main__':
             sys.exit(1)
 
         # environment at generation time
-        CMAKE_PREFIX_PATH = '/home/intelligentrobotics/rokon/devel;/home/intelligentrobotics/ws/orocos/orocos_toolchain/install;/opt/ros/groovy'.split(';')
+        CMAKE_PREFIX_PATH = '/home/intelligentrobotics/rokon_clone/October/devel;/home/intelligentrobotics/ws/orocos/orocos_toolchain/install;/opt/ros/groovy'.split(';')
         # prepend current workspace if not already part of CPP
         base_path = os.path.dirname(__file__)
         if base_path not in CMAKE_PREFIX_PATH:

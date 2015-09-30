@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -120,14 +120,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles /home/intelligentrobotics/rokon/build/camera/CMakeFiles/progress.marks
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon/build/CMakeFiles 0
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon_clone/October/build/CMakeFiles /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/progress.marks
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/intelligentrobotics/rokon_clone/October/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/clean
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/clean
 .PHONY : clean
 
 # The main clean target
@@ -136,22 +136,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/preinstall
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/preinstall
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 camera/CMakeFiles/camera.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/camera.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/camera.dir/rule
 .PHONY : camera/CMakeFiles/camera.dir/rule
 
 # Convenience name for target.
@@ -160,12 +160,12 @@ camera: camera/CMakeFiles/camera.dir/rule
 
 # fast build rule for target.
 camera/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/build
 .PHONY : camera/fast
 
 # Convenience name for target.
 camera/CMakeFiles/check.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/check.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/check.dir/rule
 .PHONY : camera/CMakeFiles/check.dir/rule
 
 # Convenience name for target.
@@ -174,12 +174,12 @@ check: camera/CMakeFiles/check.dir/rule
 
 # fast build rule for target.
 check/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/build
 .PHONY : check/fast
 
 # Convenience name for target.
 camera/CMakeFiles/click.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/click.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/click.dir/rule
 .PHONY : camera/CMakeFiles/click.dir/rule
 
 # Convenience name for target.
@@ -188,12 +188,12 @@ click: camera/CMakeFiles/click.dir/rule
 
 # fast build rule for target.
 click/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/build
 .PHONY : click/fast
 
 # Convenience name for target.
 camera/CMakeFiles/color.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/color.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/color.dir/rule
 .PHONY : camera/CMakeFiles/color.dir/rule
 
 # Convenience name for target.
@@ -202,12 +202,12 @@ color: camera/CMakeFiles/color.dir/rule
 
 # fast build rule for target.
 color/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/build
 .PHONY : color/fast
 
 # Convenience name for target.
 camera/CMakeFiles/cpub.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/cpub.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/cpub.dir/rule
 .PHONY : camera/CMakeFiles/cpub.dir/rule
 
 # Convenience name for target.
@@ -216,12 +216,12 @@ cpub: camera/CMakeFiles/cpub.dir/rule
 
 # fast build rule for target.
 cpub/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/build
 .PHONY : cpub/fast
 
 # Convenience name for target.
 camera/CMakeFiles/fancy_cam.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fancy_cam.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fancy_cam.dir/rule
 .PHONY : camera/CMakeFiles/fancy_cam.dir/rule
 
 # Convenience name for target.
@@ -230,12 +230,12 @@ fancy_cam: camera/CMakeFiles/fancy_cam.dir/rule
 
 # fast build rule for target.
 fancy_cam/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/build
 .PHONY : fancy_cam/fast
 
 # Convenience name for target.
 camera/CMakeFiles/fix.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix.dir/rule
 .PHONY : camera/CMakeFiles/fix.dir/rule
 
 # Convenience name for target.
@@ -244,12 +244,12 @@ fix: camera/CMakeFiles/fix.dir/rule
 
 # fast build rule for target.
 fix/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/build
 .PHONY : fix/fast
 
 # Convenience name for target.
 camera/CMakeFiles/fix_double.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_double.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_double.dir/rule
 .PHONY : camera/CMakeFiles/fix_double.dir/rule
 
 # Convenience name for target.
@@ -258,12 +258,12 @@ fix_double: camera/CMakeFiles/fix_double.dir/rule
 
 # fast build rule for target.
 fix_double/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/build
 .PHONY : fix_double/fast
 
 # Convenience name for target.
 camera/CMakeFiles/fix_test.dir/rule:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_test.dir/rule
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_test.dir/rule
 .PHONY : camera/CMakeFiles/fix_test.dir/rule
 
 # Convenience name for target.
@@ -272,7 +272,7 @@ fix_test: camera/CMakeFiles/fix_test.dir/rule
 
 # fast build rule for target.
 fix_test/fast:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/build
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/build
 .PHONY : fix_test/fast
 
 src/check.o: src/check.cpp.o
@@ -280,7 +280,7 @@ src/check.o: src/check.cpp.o
 
 # target to build an object file
 src/check.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.o
 .PHONY : src/check.cpp.o
 
 src/check.i: src/check.cpp.i
@@ -288,7 +288,7 @@ src/check.i: src/check.cpp.i
 
 # target to preprocess a source file
 src/check.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.i
 .PHONY : src/check.cpp.i
 
 src/check.s: src/check.cpp.s
@@ -296,7 +296,7 @@ src/check.s: src/check.cpp.s
 
 # target to generate assembly for a file
 src/check.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/check.dir/build.make camera/CMakeFiles/check.dir/src/check.cpp.s
 .PHONY : src/check.cpp.s
 
 src/click.o: src/click.cpp.o
@@ -304,7 +304,7 @@ src/click.o: src/click.cpp.o
 
 # target to build an object file
 src/click.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.o
 .PHONY : src/click.cpp.o
 
 src/click.i: src/click.cpp.i
@@ -312,7 +312,7 @@ src/click.i: src/click.cpp.i
 
 # target to preprocess a source file
 src/click.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.i
 .PHONY : src/click.cpp.i
 
 src/click.s: src/click.cpp.s
@@ -320,7 +320,7 @@ src/click.s: src/click.cpp.s
 
 # target to generate assembly for a file
 src/click.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/click.dir/build.make camera/CMakeFiles/click.dir/src/click.cpp.s
 .PHONY : src/click.cpp.s
 
 src/click_pub.o: src/click_pub.cpp.o
@@ -328,7 +328,7 @@ src/click_pub.o: src/click_pub.cpp.o
 
 # target to build an object file
 src/click_pub.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.o
 .PHONY : src/click_pub.cpp.o
 
 src/click_pub.i: src/click_pub.cpp.i
@@ -336,7 +336,7 @@ src/click_pub.i: src/click_pub.cpp.i
 
 # target to preprocess a source file
 src/click_pub.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.i
 .PHONY : src/click_pub.cpp.i
 
 src/click_pub.s: src/click_pub.cpp.s
@@ -344,7 +344,7 @@ src/click_pub.s: src/click_pub.cpp.s
 
 # target to generate assembly for a file
 src/click_pub.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/cpub.dir/build.make camera/CMakeFiles/cpub.dir/src/click_pub.cpp.s
 .PHONY : src/click_pub.cpp.s
 
 src/color.o: src/color.cpp.o
@@ -352,7 +352,7 @@ src/color.o: src/color.cpp.o
 
 # target to build an object file
 src/color.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.o
 .PHONY : src/color.cpp.o
 
 src/color.i: src/color.cpp.i
@@ -360,7 +360,7 @@ src/color.i: src/color.cpp.i
 
 # target to preprocess a source file
 src/color.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.i
 .PHONY : src/color.cpp.i
 
 src/color.s: src/color.cpp.s
@@ -368,7 +368,7 @@ src/color.s: src/color.cpp.s
 
 # target to generate assembly for a file
 src/color.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/color.dir/build.make camera/CMakeFiles/color.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
 src/fancy_cam.o: src/fancy_cam.cpp.o
@@ -376,7 +376,7 @@ src/fancy_cam.o: src/fancy_cam.cpp.o
 
 # target to build an object file
 src/fancy_cam.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.o
 .PHONY : src/fancy_cam.cpp.o
 
 src/fancy_cam.i: src/fancy_cam.cpp.i
@@ -384,7 +384,7 @@ src/fancy_cam.i: src/fancy_cam.cpp.i
 
 # target to preprocess a source file
 src/fancy_cam.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.i
 .PHONY : src/fancy_cam.cpp.i
 
 src/fancy_cam.s: src/fancy_cam.cpp.s
@@ -392,7 +392,7 @@ src/fancy_cam.s: src/fancy_cam.cpp.s
 
 # target to generate assembly for a file
 src/fancy_cam.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fancy_cam.dir/build.make camera/CMakeFiles/fancy_cam.dir/src/fancy_cam.cpp.s
 .PHONY : src/fancy_cam.cpp.s
 
 src/fix.o: src/fix.cpp.o
@@ -400,7 +400,7 @@ src/fix.o: src/fix.cpp.o
 
 # target to build an object file
 src/fix.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.o
 .PHONY : src/fix.cpp.o
 
 src/fix.i: src/fix.cpp.i
@@ -408,7 +408,7 @@ src/fix.i: src/fix.cpp.i
 
 # target to preprocess a source file
 src/fix.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.i
 .PHONY : src/fix.cpp.i
 
 src/fix.s: src/fix.cpp.s
@@ -416,7 +416,7 @@ src/fix.s: src/fix.cpp.s
 
 # target to generate assembly for a file
 src/fix.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.s
 .PHONY : src/fix.cpp.s
 
 src/fix_double.o: src/fix_double.cpp.o
@@ -424,7 +424,7 @@ src/fix_double.o: src/fix_double.cpp.o
 
 # target to build an object file
 src/fix_double.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.o
 .PHONY : src/fix_double.cpp.o
 
 src/fix_double.i: src/fix_double.cpp.i
@@ -432,7 +432,7 @@ src/fix_double.i: src/fix_double.cpp.i
 
 # target to preprocess a source file
 src/fix_double.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.i
 .PHONY : src/fix_double.cpp.i
 
 src/fix_double.s: src/fix_double.cpp.s
@@ -440,7 +440,7 @@ src/fix_double.s: src/fix_double.cpp.s
 
 # target to generate assembly for a file
 src/fix_double.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_double.dir/build.make camera/CMakeFiles/fix_double.dir/src/fix_double.cpp.s
 .PHONY : src/fix_double.cpp.s
 
 src/fix_test.o: src/fix_test.cpp.o
@@ -448,7 +448,7 @@ src/fix_test.o: src/fix_test.cpp.o
 
 # target to build an object file
 src/fix_test.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.o
 .PHONY : src/fix_test.cpp.o
 
 src/fix_test.i: src/fix_test.cpp.i
@@ -456,7 +456,7 @@ src/fix_test.i: src/fix_test.cpp.i
 
 # target to preprocess a source file
 src/fix_test.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.i
 .PHONY : src/fix_test.cpp.i
 
 src/fix_test.s: src/fix_test.cpp.s
@@ -464,7 +464,7 @@ src/fix_test.s: src/fix_test.cpp.s
 
 # target to generate assembly for a file
 src/fix_test.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_test.dir/build.make camera/CMakeFiles/fix_test.dir/src/fix_test.cpp.s
 .PHONY : src/fix_test.cpp.s
 
 src/image.o: src/image.cpp.o
@@ -472,7 +472,7 @@ src/image.o: src/image.cpp.o
 
 # target to build an object file
 src/image.cpp.o:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.o
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.o
 .PHONY : src/image.cpp.o
 
 src/image.i: src/image.cpp.i
@@ -480,7 +480,7 @@ src/image.i: src/image.cpp.i
 
 # target to preprocess a source file
 src/image.cpp.i:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.i
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.i
 .PHONY : src/image.cpp.i
 
 src/image.s: src/image.cpp.s
@@ -488,7 +488,7 @@ src/image.s: src/image.cpp.s
 
 # target to generate assembly for a file
 src/image.cpp.s:
-	cd /home/intelligentrobotics/rokon/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.s
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/camera.dir/build.make camera/CMakeFiles/camera.dir/src/image.cpp.s
 .PHONY : src/image.cpp.s
 
 # Help Target
@@ -551,6 +551,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

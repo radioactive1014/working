@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon/src
+CMAKE_SOURCE_DIR = /home/intelligentrobotics/rokon_clone/October/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon/build
+CMAKE_BINARY_DIR = /home/intelligentrobotics/rokon_clone/October/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -56,10 +56,10 @@ main/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_exported_
 .PHONY : main/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 main/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/intelligentrobotics/rokon/build/main && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/intelligentrobotics/rokon_clone/October/build/main && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : main/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 main/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/intelligentrobotics/rokon/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon/src /home/intelligentrobotics/rokon/src/main /home/intelligentrobotics/rokon/build /home/intelligentrobotics/rokon/build/main /home/intelligentrobotics/rokon/build/main/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/intelligentrobotics/rokon_clone/October/src /home/intelligentrobotics/rokon_clone/October/src/main /home/intelligentrobotics/rokon_clone/October/build /home/intelligentrobotics/rokon_clone/October/build/main /home/intelligentrobotics/rokon_clone/October/build/main/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : main/CMakeFiles/_catkin_empty_exported_target.dir/depend
 
