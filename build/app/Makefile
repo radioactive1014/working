@@ -444,6 +444,34 @@ pbp_double/fast:
 .PHONY : pbp_double/fast
 
 # Convenience name for target.
+app/CMakeFiles/pbp_feedback.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_feedback.dir/rule
+.PHONY : app/CMakeFiles/pbp_feedback.dir/rule
+
+# Convenience name for target.
+pbp_feedback: app/CMakeFiles/pbp_feedback.dir/rule
+.PHONY : pbp_feedback
+
+# fast build rule for target.
+pbp_feedback/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_feedback.dir/build.make app/CMakeFiles/pbp_feedback.dir/build
+.PHONY : pbp_feedback/fast
+
+# Convenience name for target.
+app/CMakeFiles/pbp_sim_test.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_sim_test.dir/rule
+.PHONY : app/CMakeFiles/pbp_sim_test.dir/rule
+
+# Convenience name for target.
+pbp_sim_test: app/CMakeFiles/pbp_sim_test.dir/rule
+.PHONY : pbp_sim_test
+
+# fast build rule for target.
+pbp_sim_test/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_sim_test.dir/build.make app/CMakeFiles/pbp_sim_test.dir/build
+.PHONY : pbp_sim_test/fast
+
+# Convenience name for target.
 app/CMakeFiles/pbp_test.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_test.dir/rule
 .PHONY : app/CMakeFiles/pbp_test.dir/rule
@@ -967,6 +995,54 @@ src/pbp_double.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_double.dir/build.make app/CMakeFiles/pbp_double.dir/src/pbp_double.cpp.s
 .PHONY : src/pbp_double.cpp.s
 
+src/pbp_feedback.o: src/pbp_feedback.cpp.o
+.PHONY : src/pbp_feedback.o
+
+# target to build an object file
+src/pbp_feedback.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_feedback.dir/build.make app/CMakeFiles/pbp_feedback.dir/src/pbp_feedback.cpp.o
+.PHONY : src/pbp_feedback.cpp.o
+
+src/pbp_feedback.i: src/pbp_feedback.cpp.i
+.PHONY : src/pbp_feedback.i
+
+# target to preprocess a source file
+src/pbp_feedback.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_feedback.dir/build.make app/CMakeFiles/pbp_feedback.dir/src/pbp_feedback.cpp.i
+.PHONY : src/pbp_feedback.cpp.i
+
+src/pbp_feedback.s: src/pbp_feedback.cpp.s
+.PHONY : src/pbp_feedback.s
+
+# target to generate assembly for a file
+src/pbp_feedback.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_feedback.dir/build.make app/CMakeFiles/pbp_feedback.dir/src/pbp_feedback.cpp.s
+.PHONY : src/pbp_feedback.cpp.s
+
+src/pbp_sim_test.o: src/pbp_sim_test.cpp.o
+.PHONY : src/pbp_sim_test.o
+
+# target to build an object file
+src/pbp_sim_test.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_sim_test.dir/build.make app/CMakeFiles/pbp_sim_test.dir/src/pbp_sim_test.cpp.o
+.PHONY : src/pbp_sim_test.cpp.o
+
+src/pbp_sim_test.i: src/pbp_sim_test.cpp.i
+.PHONY : src/pbp_sim_test.i
+
+# target to preprocess a source file
+src/pbp_sim_test.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_sim_test.dir/build.make app/CMakeFiles/pbp_sim_test.dir/src/pbp_sim_test.cpp.i
+.PHONY : src/pbp_sim_test.cpp.i
+
+src/pbp_sim_test.s: src/pbp_sim_test.cpp.s
+.PHONY : src/pbp_sim_test.s
+
+# target to generate assembly for a file
+src/pbp_sim_test.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_sim_test.dir/build.make app/CMakeFiles/pbp_sim_test.dir/src/pbp_sim_test.cpp.s
+.PHONY : src/pbp_sim_test.cpp.s
+
 src/pbp_test.o: src/pbp_test.cpp.o
 .PHONY : src/pbp_test.o
 
@@ -1215,6 +1291,8 @@ help:
 	@echo "... new_pid"
 	@echo "... pbp"
 	@echo "... pbp_double"
+	@echo "... pbp_feedback"
+	@echo "... pbp_sim_test"
 	@echo "... pbp_test"
 	@echo "... pbp_vel"
 	@echo "... pid"
@@ -1266,6 +1344,12 @@ help:
 	@echo "... src/pbp_double.o"
 	@echo "... src/pbp_double.i"
 	@echo "... src/pbp_double.s"
+	@echo "... src/pbp_feedback.o"
+	@echo "... src/pbp_feedback.i"
+	@echo "... src/pbp_feedback.s"
+	@echo "... src/pbp_sim_test.o"
+	@echo "... src/pbp_sim_test.i"
+	@echo "... src/pbp_sim_test.s"
 	@echo "... src/pbp_test.o"
 	@echo "... src/pbp_test.i"
 	@echo "... src/pbp_test.s"

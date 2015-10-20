@@ -1,2 +1,2 @@
 app:camera:main:unit:utils
--DCMAKE_BUILD_TYPE=release
+-DCMAKE_BUILD_TYPE=RELEASE

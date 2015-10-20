@@ -248,6 +248,20 @@ fix/fast:
 .PHONY : fix/fast
 
 # Convenience name for target.
+camera/CMakeFiles/fix_corner.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_corner.dir/rule
+.PHONY : camera/CMakeFiles/fix_corner.dir/rule
+
+# Convenience name for target.
+fix_corner: camera/CMakeFiles/fix_corner.dir/rule
+.PHONY : fix_corner
+
+# fast build rule for target.
+fix_corner/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_corner.dir/build.make camera/CMakeFiles/fix_corner.dir/build
+.PHONY : fix_corner/fast
+
+# Convenience name for target.
 camera/CMakeFiles/fix_double.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_double.dir/rule
 .PHONY : camera/CMakeFiles/fix_double.dir/rule
@@ -419,6 +433,30 @@ src/fix.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix.dir/build.make camera/CMakeFiles/fix.dir/src/fix.cpp.s
 .PHONY : src/fix.cpp.s
 
+src/fix_corner.o: src/fix_corner.cpp.o
+.PHONY : src/fix_corner.o
+
+# target to build an object file
+src/fix_corner.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_corner.dir/build.make camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o
+.PHONY : src/fix_corner.cpp.o
+
+src/fix_corner.i: src/fix_corner.cpp.i
+.PHONY : src/fix_corner.i
+
+# target to preprocess a source file
+src/fix_corner.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_corner.dir/build.make camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.i
+.PHONY : src/fix_corner.cpp.i
+
+src/fix_corner.s: src/fix_corner.cpp.s
+.PHONY : src/fix_corner.s
+
+# target to generate assembly for a file
+src/fix_corner.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_corner.dir/build.make camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.s
+.PHONY : src/fix_corner.cpp.s
+
 src/fix_double.o: src/fix_double.cpp.o
 .PHONY : src/fix_double.o
 
@@ -505,6 +543,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... fancy_cam"
 	@echo "... fix"
+	@echo "... fix_corner"
 	@echo "... fix_double"
 	@echo "... fix_test"
 	@echo "... install"
@@ -531,6 +570,9 @@ help:
 	@echo "... src/fix.o"
 	@echo "... src/fix.i"
 	@echo "... src/fix.s"
+	@echo "... src/fix_corner.o"
+	@echo "... src/fix_corner.i"
+	@echo "... src/fix_corner.s"
 	@echo "... src/fix_double.o"
 	@echo "... src/fix_double.i"
 	@echo "... src/fix_double.s"

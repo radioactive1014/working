@@ -13,9 +13,12 @@
 
 #include <iostream>
 #include "std_msgs/Float32.h"
- #include "std_msgs/Int16.h"
+#include "std_msgs/Int16.h"
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
 
 using namespace std;
+using namespace cv;
  
 //Store all constants for image encodings in the enc namespace to be used later.
 namespace enc = sensor_msgs::image_encodings;
@@ -37,24 +40,24 @@ int UpperH = 180;
 int UpperS = 196;
 int UpperV = 170;
 
-    int iLowH = 114;
-    int iHighH = 179;
+int iLowH = 114;
+int iHighH = 179;
 
-    int iLowS = 88; 
-    int iHighS = 255;
+int iLowS = 88; 
+int iHighS = 255;
 
-    int iLowV = 142;
-    int iHighV = 255;
+int iLowV = 142;
+int iHighV = 255;
 
-    int posX;
+int posX;
 int posY; 
 
 
 float newX ;
 float newY;
 
-  int iLastX = -1; 
- int iLastY = -1;
+int iLastX = -1; 
+int iLastY = -1;
 
 
   void onMouse( int event, int x, int y, int, void* )
@@ -69,6 +72,8 @@ float newY;
 
 void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 {
+
+    ros::Time begin = ros::Time::now();
     //Convert from the ROS image message to a CvImage suitable for working with OpenCV for processing
     cv_bridge::CvImagePtr cv_ptr;
     try
@@ -92,8 +97,11 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
         cv::Mat grayImage;
         cv::Mat imgHSV;
         cv::Mat imgLines = cv::Mat::zeros( cv_ptr->image.size(), CV_8UC3 );
+        //cv::Rect region_of_interest = Rect(150,50,150,250);
 
         cv::cvtColor(cv_ptr->image, imgHSV, CV_BGR2HSV);
+
+         //imgHSV = imgHSV (Range(100,400), Range(100,400));
 
         cv::Mat imgThresholded;
 
@@ -113,47 +121,60 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 
 
          //Calculate the moments of the thresholded image
-      cv::Moments oMoments = cv::moments(imgThresholded);
+        cv::Moments oMoments = cv::moments(imgThresholded);
 
-      double dM01 = oMoments.m01;
-      double dM10 = oMoments.m10;
-      double dArea = oMoments.m00;
+        double dM01 = oMoments.m01;
+        double dM10 = oMoments.m10;
+        double dArea = oMoments.m00;
 
 
- // if the area <= 10000, I consider that the there are no object in the image and it's because of the noise, the area is not zero 
-  if (dArea > 10000)
-  {
-   //calculate the position of the ball
-    posX = dM10 / dArea;
-    posY = dM01 / dArea;        
-     // printf("x= %d,y=%d\n", posX,posY);  
-   if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
-   {
-    //Draw a red line from the previous point to the current point
-    cv::line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), cv::Scalar(0,0,255), 2);
-   }
+        // if the area <= 10000, I consider that the there are no object in the image and it's because of the noise, the area is not zero 
+        if (dArea > 10000)
+        {
+        //calculate the position of the ball
+        posX = dM10 / dArea;
+        posY = dM01 / dArea;        
+         // printf("x= %d,y=%d\n", posX,posY);  
+        if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
+        {
+        //Draw a red line from the previous point to the current point
+        cv::line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), cv::Scalar(0,0,255), 2);
+        }
 
-    iLastX = posX;
-   iLastY = posY;
-  }
+        iLastX = posX;
+        iLastY = posY;
+        }
 
   //printf("x: %d , y: %d \n", posX, posY);
 
+        int ref_minX = 119 ;
+        int ref_maxX = 422 ;
+        int ref_minY = 42 ;
+        int ref_maxY = 412 ;
+
   
-if ( posX > 41 && posX< 506 && posY > 6 && posY < 464 )
-{
+        if ( posX > ref_minX && posX< ref_maxX && posY > ref_minY && posY <ref_maxY  )
+        {
 
-         newX = (posX - 41) * .086021;
-         newY = (posY-6) *.086021 ;
-       printf("x= %f,y=%f\n", newX,newY); 
-  
-}
-
-   cv::imshow(WINDOW, imgThresholded); //show the thresholded image
+        int diffX = (ref_maxX - ref_minX);
+        int diffY = (ref_maxY - ref_minY);
+         float per_pixelX = 38.0/diffX;
+        float per_pixelY = 46.0/diffY;
 
 
-     cv_ptr->image = cv_ptr->image + imgLines;
-  //imshow("Original", bgrImage); //show the original image
+        newY = (posX - ref_minX) * per_pixelX;
+        newX = (posY- ref_minY) * per_pixelY ;
+
+        //printf( " per_pixelY %f, per_pixelX %f  ref X %d\n", per_pixelY, per_pixelX,diffX);
+        printf("x= %f,y=%f\n", (newX-20.0)/100.0, (newY-20.0)/100.0); 
+
+        }
+
+        cv::imshow(WINDOW, imgThresholded); //show the thresholded image
+
+
+        cv_ptr->image = cv_ptr->image + imgLines;
+        //imshow("Original", bgrImage); //show the original image
 
 
 
@@ -163,31 +184,36 @@ if ( posX > 41 && posX< 506 && posY > 6 && posY < 464 )
         cv::setMouseCallback( "Original", onMouse, 0 );
 
 
-cv::waitKey(1);
- std_msgs::Float32 cam_pos;
-    cam_pos.data = newX;
+        cv::waitKey(1);
+        std_msgs::Float32 cam_pos;
+        cam_pos.data = newX;
 
-chatter_pub.publish(cam_pos);
+        chatter_pub.publish(cam_pos);
 
 
-/*
-  cv::Mat img_mask,img_hsv; 
-  cv::cvtColor(cv_ptr->image,img_hsv,CV_BGR2HSV);
-  cv::inRange(img_hsv,cv::Scalar(LowerH,LowerS,LowerV),cv::Scalar(UpperH,UpperS,UpperV),img_mask); 
-    //Display the image using OpenCV
-    cv::imshow(WINDOW, img_mask);
-    //Add some delay in miliseconds. The function only works if there is at least one HighGUI window created and the window is active. If there are several HighGUI windows, any of them can be active.
-    cv::waitKey(3);
-    /**
-    * The publish() function is how you send messages. The parameter
-    * is the message object. The type of this object must agree with the type
-    * given as a template parameter to the advertise<>() call, as was done
-    * in the constructor in main().
-    */
-    //Convert the CvImage to a ROS image message and publish it on the "camera/image_processed" topic.
-    
+        /*
+        cv::Mat img_mask,img_hsv; 
+        cv::cvtColor(cv_ptr->image,img_hsv,CV_BGR2HSV);
+        cv::inRange(img_hsv,cv::Scalar(LowerH,LowerS,LowerV),cv::Scalar(UpperH,UpperS,UpperV),img_mask); 
+        //Display the image using OpenCV
+        cv::imshow(WINDOW, img_mask);
+        //Add some delay in miliseconds. The function only works if there is at least one HighGUI window created and the window is active. If there are several HighGUI windows, any of them can be active.
+        cv::waitKey(3);
+        /**
+        * The publish() function is how you send messages. The parameter
+        * is the message object. The type of this object must agree with the type
+        * given as a template parameter to the advertise<>() call, as was done
+        * in the constructor in main().
+        */
+        //Convert the CvImage to a ROS image message and publish it on the "camera/image_processed" topic.
 
-    pub.publish(cv_ptr->toImageMsg());
+
+        pub.publish(cv_ptr->toImageMsg());
+
+        //ros::Time end = ros::Time::now();
+        //double dt = (begin - end).toSec();
+
+        //ROS_INFO("dt %f", dt);
 }
 //This function is called everytime a new image is published
 void imageCallback(const sensor_msgs::ImageConstPtr& original_image)
@@ -235,7 +261,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& original_image)
     * in the constructor in main().
     */
     //Convert the CvImage to a ROS image message and publish it on the "camera/image_processed" topic.
-        pub.publish(cv_ptr->toImageMsg());
+    pub.publish(cv_ptr->toImageMsg());
 }
  
 /**
@@ -263,29 +289,29 @@ int main(int argc, char **argv)
     //Create an ImageTransport instance, initializing it with our NodeHandle.
     image_transport::ImageTransport it(nh);
 
-/*
-  cv::namedWindow("Ball");
-  cv::createTrackbar("LowerH","Ball",&LowerH,180,NULL);
-  cv::createTrackbar("UpperH","Ball",&UpperH,180,NULL);
-  cv::createTrackbar("LowerS","Ball",&LowerS,256,NULL);
-  cv::createTrackbar("UpperS","Ball",&UpperS,256,NULL);
-  cv::createTrackbar("LowerV","Ball",&LowerV,256,NULL);
-  cv::createTrackbar("UpperV","Ball",&UpperV,256,NULL);
-*/
-cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
- //cv::namedWindow("Ball");
- cvCreateTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
- cvCreateTrackbar("HighH", "Control", &iHighH, 179);
+    /*
+      cv::namedWindow("Ball");
+      cv::createTrackbar("LowerH","Ball",&LowerH,180,NULL);
+      cv::createTrackbar("UpperH","Ball",&UpperH,180,NULL);
+      cv::createTrackbar("LowerS","Ball",&LowerS,256,NULL);
+      cv::createTrackbar("UpperS","Ball",&UpperS,256,NULL);
+      cv::createTrackbar("LowerV","Ball",&LowerV,256,NULL);
+      cv::createTrackbar("UpperV","Ball",&UpperV,256,NULL);
+    */
+    cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
+    //cv::namedWindow("Ball");
+    cvCreateTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
+    cvCreateTrackbar("HighH", "Control", &iHighH, 179);
 
-  cvCreateTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
- cvCreateTrackbar("HighS", "Control", &iHighS, 255);
+    cvCreateTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
+    cvCreateTrackbar("HighS", "Control", &iHighS, 255);
 
-  cvCreateTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
- cvCreateTrackbar("HighV", "Control", &iHighV, 255);
+    cvCreateTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
+    cvCreateTrackbar("HighV", "Control", &iHighV, 255);
 
     //OpenCV HighGUI call to create a display window on start-up.
     cv::namedWindow("Original", CV_WINDOW_AUTOSIZE);
-      cv::namedWindow("Thresholded Image", CV_WINDOW_AUTOSIZE);
+    cv::namedWindow("Thresholded Image", CV_WINDOW_AUTOSIZE);
     /**
     * Subscribe to the "camera/image_raw" base topic. The actual ROS topic subscribed to depends on which transport is used. 
     * In the default case, "raw" transport, the topic is in fact "camera/image_raw" with type sensor_msgs/Image. ROS will call 
@@ -315,27 +341,27 @@ cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Contro
     * buffer up before throwing some away.
     */
 
-  ros::Rate loop_rate(100);
+     //ros::Rate loop_rate(100);
      while (ros::ok())
      {
   
 
-    ros::spinOnce();
-    pub = it.advertise("camera/image_processed", 1);
-    chatter_pub = nh.advertise <std_msgs::Float32>("/from_camera", 1);
-    /**
-    * In this application all user callbacks will be called from within the ros::spin() call. 
-    * ros::spin() will not return until the node has been shutdown, either through a call 
-    * to ros::shutdown() or a Ctrl-C.
-    */
- // ros::spin();
+      ros::spinOnce();
+      pub = it.advertise("camera/image_processed", 1);
+      chatter_pub = nh.advertise <std_msgs::Float32>("/from_camera", 1);
+      /**
+      * In this application all user callbacks will be called from within the ros::spin() call. 
+      * ros::spin() will not return until the node has been shutdown, either through a call 
+      * to ros::shutdown() or a Ctrl-C.
+      */
+      // ros::spin();
 
-    
 
-   loop_rate.sleep();
+
+      //loop_rate.sleep();
    
-  }
-    //ROS_INFO is the replacement for printf/cout.
-    ROS_INFO("tutorialROSOpenCV::main.cpp::No error.");
+     }
+      //ROS_INFO is the replacement for printf/cout.
+      ROS_INFO("tutorialROSOpenCV::main.cpp::No error.");
  
 }

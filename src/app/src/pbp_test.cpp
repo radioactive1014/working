@@ -266,24 +266,25 @@ printf(" current angle  %f\n", current_angle);*/
 
 
 //if (   desired_angle > 30 &&  desired_angle < 102 )
-if (   degree> 30 &&  degree < 102 )
+//if (   degree> 30 &&  degree < 102 )
 
-{
+//{
  //msg.position = {va1,va2,ve1,va3,va4,desired_vel*(0.198),va6};
-  msg.position = {va1,va2,ve1,va3,desired_vel*(-0.5),0.0,va6};  // best working so far  0.19 
+  msg.position = {va1,va2,ve1,va3,0.1,0.0,va6};  // best working so far  0.19 
 
 
 //msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
 chatter_pub.publish(msg);
-}		
+//}		
 
+/*
 else 
 {
 
 msg.position = {va1,va2,ve1,va3,va4,0.0,va6};	
 printf(" out  \n");
 }
-
+*/
 
 
 	ros::spinOnce();

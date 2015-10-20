@@ -59,7 +59,10 @@ CMAKE_BACKWARDS_COMPATIBILITY:STRING=2.4
 
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
-CMAKE_BUILD_TYPE:STRING=release
+CMAKE_BUILD_TYPE:STRING=RELEASE
+
+//No help, variable specified on the command line.
+CMAKE_BUILT_TYPE:UNINITIALIZED=RELEASE
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -281,7 +284,7 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=/home/intelligentrobotics/rokon_clone/October/src/app/src/pbp_test.cpp
+_file_name:FILEPATH=/home/intelligentrobotics/rokon_clone/October/src/app/src/pbp_feedback.cpp
 
 //Value Computed by CMake
 app_BINARY_DIR:STATIC=/home/intelligentrobotics/rokon_clone/October/build/app

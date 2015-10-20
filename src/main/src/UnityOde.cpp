@@ -87,12 +87,12 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 			//	contact[i].surface.soft_cfm = context->contactSoftCFM;//1e-10;
 			//}
 			contact[i].surface.mode = dContactApprox1|dContactSoftERP|dContactSoftCFM;
-			contact[i].surface.mu = 50;//context->frictionCoefficient;//200;
+			contact[i].surface.mu = 10;//context->frictionCoefficient;//200;
 			//contact[i].surface.slip1 = 0.001f;
 			//contact[i].surface.slip2 = 0.001f;
-			contact[i].surface.bounce = 0.001f;
-			contact[i].surface.soft_erp = 0.2;
-			contact[i].surface.soft_cfm =1e-1;
+			contact[i].surface.bounce = 0.001f; // working 0.0001
+			contact[i].surface.soft_erp = 0.35;
+			contact[i].surface.soft_cfm =.0008; // working 0.38
 
 			dJointID c = dJointCreateContact (context->world,context->contactGroup,&contact[i]);
 			dBodyID body1=dGeomGetBody(contact[i].geom.g1);
@@ -1497,7 +1497,7 @@ void odeJointAddAMotorTorques(int jointId, float torque1, float torque2, float t
 //bool EXPORT_API stepOde(float stepSize, bool breakOnErrors)
 void EXPORT_API stepOde(int pause)
 {
-	float stepSize = 1.0f/100.0f;
+	float stepSize = 1.0f/24.0f;
 
 	bool isError = false;
 
@@ -1546,8 +1546,8 @@ dJointID odeJoint = contexts[threadIdx].joints[3];
 //odeJointSetHingeParam(3, dParamFMax, 100);
 //odeJointSetHingeParam(3, dParamVel, 0.5f);
 
-	 dBodyGetPosition(c.bodies[2]);
-	  dBodyGetRotation(c.bodies[2]);
+	 //dBodyGetPosition(c.bodies[2]);
+	  //dBodyGetRotation(c.bodies[2]);
 
 
 //dVector3 torque={0,.001,0};

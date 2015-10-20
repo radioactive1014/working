@@ -1,14 +1,11 @@
 #include "ros/ros.h"
 #include <Types.hpp>
 #include "ros/console.h"
-
 #include "iostream"
 #include "signal.h"
-
 #include <boost/filesystem.hpp>
 #include <boost/process.hpp>
 #include <boost/array.hpp>
-
 #include "std_msgs/Empty.h"
 #include "sensor_msgs/JointState.h"
 #include "geometry_msgs/Point.h"
@@ -16,7 +13,6 @@
 #include "geometry_msgs/Vector3.h"
 #include "JointPositions.h"
 #include "fricomm.h"
-
 #include <std_srvs/Empty.h>
 #include "KUKACommander/set_bool.h"
 #include "KUKACommander/get_bool.h"
@@ -26,9 +22,7 @@
 #include "KUKACommander/cart_ptp_motion.h"
 #include "KUKACommander/get_fri_state.h"
 #include "KUKACommander/move_to_jnt_pos.h"
-
 #include <std_msgs/Float32.h>
-
 #include <std_msgs/Int16.h>
 #include "sensor_msgs/JointState.h"
 #include <unit/from_robot.h>
@@ -46,7 +40,7 @@ float ode_p ;
 float ode_pid ;
 float control ;
 
- unit::from_robot info;
+unit::from_robot info;
 
 
 //debug variables
@@ -76,18 +70,14 @@ double kp ;
 double kd ;
 double ki ;
 double step = .01 ;
-
 int c = 0;
-
-
-
 
 
 double a1 = (86.17*3.1416)/180 ; // -0.350812
 double a2 = (-75.79*M_PI)/180 ;  // 1.75433
 double a3 = (-3.85*3.1416)/180 ; //1.5708
 double a4 = (88.36*3.1416)/180 ;  //1.4947
-double a5 = (74.85*3.1416)/180 ;   //-0.0195477
+double a5 = (91.31*3.1416)/180 ;   //-0.0195477
 double a6 = (-23.30*3.1416)/180 ;  // 2.04064
 double e1 = (-89.46*3.1416)/180 ;  // -0.0160571
 
@@ -101,16 +91,16 @@ namespace cmd = ::boost::process;
 void chatterCallback(const sensor_msgs::JointState& msg)
 {
 
- m = msg.position[5];
-ROS_INFO("From krc: [%f]", msg.position[5]*180/3.1416);
-//ROS_INFO("From krc: [%f]", a5*180/3.1416);
+	m = msg.position[5];
+	ROS_INFO("From krc: [%f]", msg.position[5]*180/3.1416);
+	//ROS_INFO("From krc: [%f]", a5*180/3.1416);
 }
 
 void odeCallback(const std_msgs::Float32& ode)
 {
 
- ode_p = ode.data;
-//ROS_INFO("In ode: [%f]", ode.data);
+ 	ode_p = ode.data;
+	//ROS_INFO("In ode: [%f]", ode.data);
  
 
 }
@@ -118,8 +108,8 @@ void odeCallback(const std_msgs::Float32& ode)
 void cameraCallback(const std_msgs::Float32& cam)
 {
 
- cam_p = cam.data;
-//ROS_INFO("In camera: [%f]", cam.data);
+ 	cam_p = cam.data;
+	ROS_INFO("In camera: [%f]", cam.data);
  
 
 }
@@ -136,8 +126,7 @@ int main(int argc, char **argv) {
 	ros::init(argc, argv, "Simple");
 	ros::NodeHandle nh { "Simple" };
 	ros::NodeHandle n;
-
-	ros::Rate loop_rate(100);
+	ros::Rate loop_rate(24);
 
 
 
@@ -153,8 +142,7 @@ int main(int argc, char **argv) {
 	
 	 
 
-//publishers
-    ros::Publisher chatter_pub = n.advertise<sensor_msgs::JointState >("pid", 1);
+
     
 
 
@@ -170,135 +158,111 @@ int main(int argc, char **argv) {
 	KUKACommander::set_fri_ctrl control_pos_mon;
 	control_pos_mon.request.control = FRI_CTRL_POSITION;
 	control_pos_mon.request.state = FRI_STATE_CMD;
+	//publishers
+    ros::Publisher chatter_pub = n.advertise<sensor_msgs::JointState >("pid", 1);
+
+
+	//camera warmup
+
+	for (int j = 0 ; j< 50; j++)
+
+	{
+		ros::spinOnce();  //first callback
+
+		printf("%d\n",j );
+		printf("%f\n",cam_p );
+		loop_rate.sleep();	
+	}
 
 
 
-//camera warmup
-
-for (int j = 0 ; j< 50; j++)
-
-{
-	ros::spinOnce();  //first callback
-
-	printf("%d\n",j );
-	printf("%f\n",cam_p );
-	loop_rate.sleep();	
-}
+	//setting control mode
+	setControlModeClient.call(control_pos_mon); 
 
 
+ 	int tick = 0;
 
-//setting control mode
-setControlModeClient.call(control_pos_mon); 
+	//for (int k= 0 ; k<20; k++)
 
+	while (ros::ok())
+	{
+	
 
-
-
-//for (int k= 0 ; k<20; k++)
-
-while (ros::ok())
-{
-
-ros::Time begin = ros::Time::now();
-
-double ball_pos;
-ball_pos = (cam_p-20)/100 ;
-
-// d_cam = d_cam -.01  ;
-
-info.request.position = ball_pos;
-//info.request.position = d_cam;
-info.request.angle = m-a5;
-
-/*info.request.position = .05;
-info.request.angle = 10;*/
-
-
-    if (client.call(info))
-  {
-    ROS_INFO("command: %f", info.response.command);
-
-  }
-  else
-  {
-    ROS_ERROR("Failed to call service ");
-    return 1;
-  }
-
-
-
-
-
-
-sensor_msgs::JointState msg;
-
-
-float degree = m*180/3.1416 ;
-
-/*// double desired_vel =info.response.command ;
-double desired_angle =info.response.command + 75.43;
-double current_angle =degree ;
-
-
-double error = (desired_angle - current_angle)*3.1416/180 ;
-
-double  desired_vel = error/.01 ;
-*/
-
-double  desired_vel = info.response.command  ;
-
-//double  desired_vel = 0.5 ;
-
-/*printf(" desired angle  %f\n", desired_angle);
-printf(" current angle  %f\n", current_angle);*/
-
-//printf(" current angle:  %f des vel: %f , ball pos: %f \n", m ,desired_vel , ball_pos);
-
-
-
-
-
-
-
-
-//if (   desired_angle > 30 &&  desired_angle < 102 )
-if (   degree> 30 &&  degree < 102 )
-
-{
- //msg.position = {va1,va2,ve1,va3,va4,desired_vel*(0.198),va6};
-  //msg.position = {va1,va2,ve1,va3,va4,desired_vel*(-0.2),va6};  // best working so far  0.19 
-	msg.position = {va1,va2,ve1,va3,va4,0.125,va6};
-
-
-//msg.position = {va1,va2,ve1,va3,va4,desired_vel,va6};
-chatter_pub.publish(msg);
-}		
-
-else 
-{
-
-msg.position = {va1,va2,ve1,va3,va4,0.0,va6};	
-printf(" out  \n");
-}
-
-
+	tick = tick+1; 
+	printf("tick %d\n",tick );
+	ros::Time begin = ros::Time::now();
 
 	ros::spinOnce();
+
+	double ball_pos;
+	ball_pos = (cam_p-20)/100 ;
+	printf("ball pos %f \n", ball_pos );
+
+
+	info.request.position = ball_pos;
+	info.request.angle = m-a5;  //TODO: NEED TO CHANGE
+
+
+
+
+	if (client.call(info))
+	{
+		ROS_INFO("command: %f", info.response.command);
+
+	}
+	else
+	{
+		ROS_ERROR("Failed to call service ");
+		return 1;
+	}
+
+
+
+
+
+
+	sensor_msgs::JointState msg;
+
+
+	float degree = m*180/3.1416 ;
+	double  desired_vel = info.response.command  ;
+
+	
+	
+	//if (degree> 70 &&  degree < 110 )
+
+	//{
+	
+		msg.position = {va1,va2,ve1,va3,va4, -desired_vel,va6};
+		chatter_pub.publish(msg);
+	//}		
+/*
+	else 
+	{
+
+		msg.position = {va1,va2,ve1,va3,va4,0.0,va6};	
+		printf(" out  \n");
+	}
+
+
+*/
+	
 	loop_rate.sleep();	
 
-ros::Time end = ros::Time::now();
-double dt = (begin - end).toSec();
+	ros::Time end = ros::Time::now();
+	double dt = (begin - end).toSec();
 
 	ROS_INFO("dt %f", dt);
 
-/*	int i = 0;
+	/*	int i = 0;
 	loop : cin >> i;
 
-		   if ( i != 1)
-			   goto loop;*/
+	if ( i != 1)
+	goto loop;*/
 
-c = c+1;
+	c = c+1;
 
-//printf(" count : %d\n",c );
+	//printf(" count : %d\n",c );
 }
 	return 0;
 

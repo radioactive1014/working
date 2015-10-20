@@ -164,6 +164,118 @@ boost_first/fast:
 .PHONY : boost_first/fast
 
 # Convenience name for target.
+unit/CMakeFiles/fresh.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh.dir/rule
+.PHONY : unit/CMakeFiles/fresh.dir/rule
+
+# Convenience name for target.
+fresh: unit/CMakeFiles/fresh.dir/rule
+.PHONY : fresh
+
+# fast build rule for target.
+fresh/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh.dir/build.make unit/CMakeFiles/fresh.dir/build
+.PHONY : fresh/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_double.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_double.dir/rule
+.PHONY : unit/CMakeFiles/fresh_double.dir/rule
+
+# Convenience name for target.
+fresh_double: unit/CMakeFiles/fresh_double.dir/rule
+.PHONY : fresh_double
+
+# fast build rule for target.
+fresh_double/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double.dir/build.make unit/CMakeFiles/fresh_double.dir/build
+.PHONY : fresh_double/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_double_ros.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_double_ros.dir/rule
+.PHONY : unit/CMakeFiles/fresh_double_ros.dir/rule
+
+# Convenience name for target.
+fresh_double_ros: unit/CMakeFiles/fresh_double_ros.dir/rule
+.PHONY : fresh_double_ros
+
+# fast build rule for target.
+fresh_double_ros/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double_ros.dir/build.make unit/CMakeFiles/fresh_double_ros.dir/build
+.PHONY : fresh_double_ros/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_feedback.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_feedback.dir/rule
+.PHONY : unit/CMakeFiles/fresh_feedback.dir/rule
+
+# Convenience name for target.
+fresh_feedback: unit/CMakeFiles/fresh_feedback.dir/rule
+.PHONY : fresh_feedback
+
+# fast build rule for target.
+fresh_feedback/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback.dir/build.make unit/CMakeFiles/fresh_feedback.dir/build
+.PHONY : fresh_feedback/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_feedback_double.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_feedback_double.dir/rule
+.PHONY : unit/CMakeFiles/fresh_feedback_double.dir/rule
+
+# Convenience name for target.
+fresh_feedback_double: unit/CMakeFiles/fresh_feedback_double.dir/rule
+.PHONY : fresh_feedback_double
+
+# fast build rule for target.
+fresh_feedback_double/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/build
+.PHONY : fresh_feedback_double/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_single.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_single.dir/rule
+.PHONY : unit/CMakeFiles/fresh_single.dir/rule
+
+# Convenience name for target.
+fresh_single: unit/CMakeFiles/fresh_single.dir/rule
+.PHONY : fresh_single
+
+# fast build rule for target.
+fresh_single/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single.dir/build.make unit/CMakeFiles/fresh_single.dir/build
+.PHONY : fresh_single/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_single_y.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_single_y.dir/rule
+.PHONY : unit/CMakeFiles/fresh_single_y.dir/rule
+
+# Convenience name for target.
+fresh_single_y: unit/CMakeFiles/fresh_single_y.dir/rule
+.PHONY : fresh_single_y
+
+# fast build rule for target.
+fresh_single_y/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single_y.dir/build.make unit/CMakeFiles/fresh_single_y.dir/build
+.PHONY : fresh_single_y/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_test.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_test.dir/rule
+.PHONY : unit/CMakeFiles/fresh_test.dir/rule
+
+# Convenience name for target.
+fresh_test: unit/CMakeFiles/fresh_test.dir/rule
+.PHONY : fresh_test
+
+# fast build rule for target.
+fresh_test/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_test.dir/build.make unit/CMakeFiles/fresh_test.dir/build
+.PHONY : fresh_test/fast
+
+# Convenience name for target.
 unit/CMakeFiles/test1.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/test1.dir/rule
 .PHONY : unit/CMakeFiles/test1.dir/rule
@@ -452,6 +564,198 @@ boost_first.s: boost_first.cpp.s
 boost_first.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/boost_first.dir/build.make unit/CMakeFiles/boost_first.dir/boost_first.cpp.s
 .PHONY : boost_first.cpp.s
+
+fresh_double.o: fresh_double.cpp.o
+.PHONY : fresh_double.o
+
+# target to build an object file
+fresh_double.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double.dir/build.make unit/CMakeFiles/fresh_double.dir/fresh_double.cpp.o
+.PHONY : fresh_double.cpp.o
+
+fresh_double.i: fresh_double.cpp.i
+.PHONY : fresh_double.i
+
+# target to preprocess a source file
+fresh_double.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double.dir/build.make unit/CMakeFiles/fresh_double.dir/fresh_double.cpp.i
+.PHONY : fresh_double.cpp.i
+
+fresh_double.s: fresh_double.cpp.s
+.PHONY : fresh_double.s
+
+# target to generate assembly for a file
+fresh_double.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double.dir/build.make unit/CMakeFiles/fresh_double.dir/fresh_double.cpp.s
+.PHONY : fresh_double.cpp.s
+
+fresh_double_ros.o: fresh_double_ros.cpp.o
+.PHONY : fresh_double_ros.o
+
+# target to build an object file
+fresh_double_ros.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double_ros.dir/build.make unit/CMakeFiles/fresh_double_ros.dir/fresh_double_ros.cpp.o
+.PHONY : fresh_double_ros.cpp.o
+
+fresh_double_ros.i: fresh_double_ros.cpp.i
+.PHONY : fresh_double_ros.i
+
+# target to preprocess a source file
+fresh_double_ros.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double_ros.dir/build.make unit/CMakeFiles/fresh_double_ros.dir/fresh_double_ros.cpp.i
+.PHONY : fresh_double_ros.cpp.i
+
+fresh_double_ros.s: fresh_double_ros.cpp.s
+.PHONY : fresh_double_ros.s
+
+# target to generate assembly for a file
+fresh_double_ros.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_double_ros.dir/build.make unit/CMakeFiles/fresh_double_ros.dir/fresh_double_ros.cpp.s
+.PHONY : fresh_double_ros.cpp.s
+
+fresh_feedback.o: fresh_feedback.cpp.o
+.PHONY : fresh_feedback.o
+
+# target to build an object file
+fresh_feedback.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback.dir/build.make unit/CMakeFiles/fresh_feedback.dir/fresh_feedback.cpp.o
+.PHONY : fresh_feedback.cpp.o
+
+fresh_feedback.i: fresh_feedback.cpp.i
+.PHONY : fresh_feedback.i
+
+# target to preprocess a source file
+fresh_feedback.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback.dir/build.make unit/CMakeFiles/fresh_feedback.dir/fresh_feedback.cpp.i
+.PHONY : fresh_feedback.cpp.i
+
+fresh_feedback.s: fresh_feedback.cpp.s
+.PHONY : fresh_feedback.s
+
+# target to generate assembly for a file
+fresh_feedback.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback.dir/build.make unit/CMakeFiles/fresh_feedback.dir/fresh_feedback.cpp.s
+.PHONY : fresh_feedback.cpp.s
+
+fresh_feedback_double.o: fresh_feedback_double.cpp.o
+.PHONY : fresh_feedback_double.o
+
+# target to build an object file
+fresh_feedback_double.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/fresh_feedback_double.cpp.o
+.PHONY : fresh_feedback_double.cpp.o
+
+fresh_feedback_double.i: fresh_feedback_double.cpp.i
+.PHONY : fresh_feedback_double.i
+
+# target to preprocess a source file
+fresh_feedback_double.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/fresh_feedback_double.cpp.i
+.PHONY : fresh_feedback_double.cpp.i
+
+fresh_feedback_double.s: fresh_feedback_double.cpp.s
+.PHONY : fresh_feedback_double.s
+
+# target to generate assembly for a file
+fresh_feedback_double.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/fresh_feedback_double.cpp.s
+.PHONY : fresh_feedback_double.cpp.s
+
+fresh_short.o: fresh_short.cpp.o
+.PHONY : fresh_short.o
+
+# target to build an object file
+fresh_short.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh.dir/build.make unit/CMakeFiles/fresh.dir/fresh_short.cpp.o
+.PHONY : fresh_short.cpp.o
+
+fresh_short.i: fresh_short.cpp.i
+.PHONY : fresh_short.i
+
+# target to preprocess a source file
+fresh_short.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh.dir/build.make unit/CMakeFiles/fresh.dir/fresh_short.cpp.i
+.PHONY : fresh_short.cpp.i
+
+fresh_short.s: fresh_short.cpp.s
+.PHONY : fresh_short.s
+
+# target to generate assembly for a file
+fresh_short.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh.dir/build.make unit/CMakeFiles/fresh.dir/fresh_short.cpp.s
+.PHONY : fresh_short.cpp.s
+
+fresh_single.o: fresh_single.cpp.o
+.PHONY : fresh_single.o
+
+# target to build an object file
+fresh_single.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single.dir/build.make unit/CMakeFiles/fresh_single.dir/fresh_single.cpp.o
+.PHONY : fresh_single.cpp.o
+
+fresh_single.i: fresh_single.cpp.i
+.PHONY : fresh_single.i
+
+# target to preprocess a source file
+fresh_single.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single.dir/build.make unit/CMakeFiles/fresh_single.dir/fresh_single.cpp.i
+.PHONY : fresh_single.cpp.i
+
+fresh_single.s: fresh_single.cpp.s
+.PHONY : fresh_single.s
+
+# target to generate assembly for a file
+fresh_single.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single.dir/build.make unit/CMakeFiles/fresh_single.dir/fresh_single.cpp.s
+.PHONY : fresh_single.cpp.s
+
+fresh_single_y.o: fresh_single_y.cpp.o
+.PHONY : fresh_single_y.o
+
+# target to build an object file
+fresh_single_y.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single_y.dir/build.make unit/CMakeFiles/fresh_single_y.dir/fresh_single_y.cpp.o
+.PHONY : fresh_single_y.cpp.o
+
+fresh_single_y.i: fresh_single_y.cpp.i
+.PHONY : fresh_single_y.i
+
+# target to preprocess a source file
+fresh_single_y.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single_y.dir/build.make unit/CMakeFiles/fresh_single_y.dir/fresh_single_y.cpp.i
+.PHONY : fresh_single_y.cpp.i
+
+fresh_single_y.s: fresh_single_y.cpp.s
+.PHONY : fresh_single_y.s
+
+# target to generate assembly for a file
+fresh_single_y.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_single_y.dir/build.make unit/CMakeFiles/fresh_single_y.dir/fresh_single_y.cpp.s
+.PHONY : fresh_single_y.cpp.s
+
+fresh_test.o: fresh_test.cpp.o
+.PHONY : fresh_test.o
+
+# target to build an object file
+fresh_test.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_test.dir/build.make unit/CMakeFiles/fresh_test.dir/fresh_test.cpp.o
+.PHONY : fresh_test.cpp.o
+
+fresh_test.i: fresh_test.cpp.i
+.PHONY : fresh_test.i
+
+# target to preprocess a source file
+fresh_test.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_test.dir/build.make unit/CMakeFiles/fresh_test.dir/fresh_test.cpp.i
+.PHONY : fresh_test.cpp.i
+
+fresh_test.s: fresh_test.cpp.s
+.PHONY : fresh_test.s
+
+# target to generate assembly for a file
+fresh_test.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_test.dir/build.make unit/CMakeFiles/fresh_test.dir/fresh_test.cpp.s
+.PHONY : fresh_test.cpp.s
 
 pide.o: pide.cpp.o
 .PHONY : pide.o
@@ -749,6 +1053,14 @@ help:
 	@echo "... depend"
 	@echo "... boost_first"
 	@echo "... edit_cache"
+	@echo "... fresh"
+	@echo "... fresh_double"
+	@echo "... fresh_double_ros"
+	@echo "... fresh_feedback"
+	@echo "... fresh_feedback_double"
+	@echo "... fresh_single"
+	@echo "... fresh_single_y"
+	@echo "... fresh_test"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -777,6 +1089,30 @@ help:
 	@echo "... boost_first.o"
 	@echo "... boost_first.i"
 	@echo "... boost_first.s"
+	@echo "... fresh_double.o"
+	@echo "... fresh_double.i"
+	@echo "... fresh_double.s"
+	@echo "... fresh_double_ros.o"
+	@echo "... fresh_double_ros.i"
+	@echo "... fresh_double_ros.s"
+	@echo "... fresh_feedback.o"
+	@echo "... fresh_feedback.i"
+	@echo "... fresh_feedback.s"
+	@echo "... fresh_feedback_double.o"
+	@echo "... fresh_feedback_double.i"
+	@echo "... fresh_feedback_double.s"
+	@echo "... fresh_short.o"
+	@echo "... fresh_short.i"
+	@echo "... fresh_short.s"
+	@echo "... fresh_single.o"
+	@echo "... fresh_single.i"
+	@echo "... fresh_single.s"
+	@echo "... fresh_single_y.o"
+	@echo "... fresh_single_y.i"
+	@echo "... fresh_single_y.s"
+	@echo "... fresh_test.o"
+	@echo "... fresh_test.i"
+	@echo "... fresh_test.s"
 	@echo "... pide.o"
 	@echo "... pide.i"
 	@echo "... pide.s"

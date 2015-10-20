@@ -25,6 +25,10 @@ std_msgs/Float32.h
 /home/intelligentrobotics/rokon_clone/October/src/camera/src/std_msgs/Float32.h
 std_msgs/Int16.h
 /home/intelligentrobotics/rokon_clone/October/src/camera/src/std_msgs/Int16.h
+opencv2/core/core.hpp
+/home/intelligentrobotics/rokon_clone/October/src/camera/src/opencv2/core/core.hpp
+opencv2/highgui/highgui.hpp
+/home/intelligentrobotics/rokon_clone/October/src/camera/src/opencv2/highgui/highgui.hpp
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

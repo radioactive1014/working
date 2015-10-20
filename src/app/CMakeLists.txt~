@@ -163,6 +163,9 @@ rosbuild_add_executable(pbp_vel src/pbp_vel.cpp)
 rosbuild_add_executable(fancy src/fancy.cpp)
 rosbuild_add_executable(pbp_double src/pbp_double.cpp)
 rosbuild_add_executable(pbp_test src/pbp_test.cpp)
+rosbuild_add_executable(pbp_sim_test src/pbp_sim_test.cpp)
+rosbuild_add_executable(pbp_feedback src/pbp_feedback.cpp)
+
 
 
 
@@ -248,6 +251,13 @@ target_link_libraries(pbp_double
   ${catkin_LIBRARIES}
  )
 target_link_libraries(pbp_test
+  ${catkin_LIBRARIES}
+ )
+target_link_libraries(pbp_sim_test
+  ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(pbp_feedback
   ${catkin_LIBRARIES}
  )
 

@@ -141,13 +141,25 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 
   //printf("x: %d , y: %d \n", posX, posY);
 
+
+        int ref_minX = 119 ;
+        int ref_maxX = 422 ;
+        int ref_minY = 42 ;
+        int ref_maxY = 412 ;
+
   
-    if ( posX > 41 && posX< 506 && posY > 6 && posY < 464 )
+   if ( posX > ref_minX && posX< ref_maxX && posY > ref_minY && posY <ref_maxY  )
       {
 
-         newX = (posX - 41) * .086021;
-         newY = (posY-6) *.086021 ;
-       printf("x= %f,y=%f\n", newX,newY); 
+        int diffX = (ref_maxX - ref_minX);
+        int diffY = (ref_maxY - ref_minY);
+        float per_pixelX = 38.0/diffX;
+        float per_pixelY = 46.0/diffY;
+
+
+        newY = (posX - ref_minX) * per_pixelX;
+        newX = (posY- ref_minY) * per_pixelY ;
+        printf("x= %f,y=%f\n", newX,newY); 
   
       }
 
