@@ -159,7 +159,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 
         newY = (posX - ref_minX) * per_pixelX;
         newX = (posY- ref_minY) * per_pixelY ;
-        printf("x= %f,y=%f\n", newX,newY); 
+        printf("x= %f,y=%f\n", (newX-20)/100,(newY-20)/100); 
   
       }
 
