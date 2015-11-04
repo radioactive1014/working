@@ -140,7 +140,11 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	//odeJointSetHingeParam(LinkBall.joint,dParamFMax,dInfinity);
 	//odeJointSetHingeParam(LinkBall.joint,dParamVel,DesiredVelocity_a5);
-
+	/*
+	const dReal *vel_stage;
+	vel_stage =odeBodyGetLinearVel(stage.body);
+	odeBodySetLinearVel(stage.body, 0.0, 0.0, 0.0);
+	*/
 
 
 	//stepOde(1);

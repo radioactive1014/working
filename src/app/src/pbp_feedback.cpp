@@ -88,7 +88,7 @@ int c = 0;
 double a1 = (86.17*3.1416)/180 ; // -0.350812
 double a2 = (-75.79*M_PI)/180 ;  // 1.75433
 double a3 = (-3.85*3.1416)/180 ; //1.5708
-double a4 = (88.36*3.1416)/180 ;  //1.4947
+double a4 = (90.19*3.1416)/180 ;  //1.4947
 double a5 = (91.31*3.1416)/180 ;   //-0.0195477
 double a6 = (-23.30*3.1416)/180 ;  // 2.04064
 double e1 = (-89.46*3.1416)/180 ;  // -0.0160571
@@ -187,8 +187,8 @@ int main(int argc, char **argv) {
 
 
 
-		ball_posX = (cam_X-20)/100 ;
-		ball_posY = (cam_Y-20)/100 ;
+		ball_posX = (cam_X-23)/100 ;
+		ball_posY = (cam_Y-18)/100 ;
 		printf("BALL posx %f, posy %f\n",ball_posX, ball_posY );
 
 

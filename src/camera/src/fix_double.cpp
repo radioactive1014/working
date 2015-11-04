@@ -114,7 +114,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 
 
 
-         //Calculate the moments of the thresholded image
+        //Calculate the moments of the thresholded image
         cv::Moments oMoments = cv::moments(imgThresholded);
 
         double dM01 = oMoments.m01;
@@ -126,26 +126,26 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
     if (dArea > 10000)
     {
      //calculate the position of the ball
-      posX = dM10 / dArea;
-      posY = dM01 / dArea;        
+      	posX = dM10 / dArea;
+     	posY = dM01 / dArea;        
        // printf("x= %d,y=%d\n", posX,posY);  
-     if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
-     {
-      //Draw a red line from the previous point to the current point
-      cv::line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), cv::Scalar(0,0,255), 2);
-     }
+	    if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
+	    {
+	      	//Draw a red line from the previous point to the current point
+	      	cv::line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), cv::Scalar(0,0,255), 2);
+	    }
 
-      iLastX = posX;
-     iLastY = posY;
+      	iLastX = posX;
+     	iLastY = posY;
     }
 
-  //printf("x: %d , y: %d \n", posX, posY);
+  	//printf("x: %d , y: %d \n", posX, posY);
 
 
-        int ref_minX = 119 ;
-        int ref_maxX = 422 ;
-        int ref_minY = 42 ;
-        int ref_maxY = 412 ;
+    int ref_minX = 113 ;
+    int ref_maxX = 424 ;
+    int ref_minY = 65 ;
+    int ref_maxY = 440 ;
 
   
    if ( posX > ref_minX && posX< ref_maxX && posY > ref_minY && posY <ref_maxY  )
@@ -159,7 +159,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
 
         newY = (posX - ref_minX) * per_pixelX;
         newX = (posY- ref_minY) * per_pixelY ;
-        printf("x= %f,y=%f\n", (newX-20)/100,(newY-20)/100); 
+        printf("x= %f,y=%f\n", (newX-23)/100,(newY-18)/100); 
   
       }
 
@@ -181,8 +181,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
     //std_msgs::Float32 cam_posY;
 
     app::cam cam_poss ;
-
-    cam_poss.posx = newX;
+	cam_poss.posx = newX;
     cam_poss.posy = newY ;
 
     //cam_posX.data = newX;
@@ -338,11 +337,10 @@ int main(int argc, char **argv)
     */
 
     ros::Rate loop_rate(100);
-     while (ros::ok())
-     {
-  
-
-    ros::spinOnce();
+    
+    while (ros::ok())
+    {
+  	ros::spinOnce();
     pub = it.advertise("camera/image_processed", 1);
     chatter_pubX = nh.advertise <app::cam>("/from_cameraX", 1);
     // chatter_pubY = nh.advertise <std_msgs::Float32>("/from_cameraY", 1);
@@ -351,13 +349,10 @@ int main(int argc, char **argv)
     * ros::spin() will not return until the node has been shutdown, either through a call 
     * to ros::shutdown() or a Ctrl-C.
     */
- // ros::spin();
-
+ 	// ros::spin();
+	loop_rate.sleep();
     
-
-    loop_rate.sleep();
-    
-  }
+  	}
     //ROS_INFO is the replacement for printf/cout.
     ROS_INFO("tutorialROSOpenCV::main.cpp::No error.");
  

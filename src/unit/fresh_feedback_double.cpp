@@ -39,26 +39,26 @@ float h_first= 0.60f ;
 float h_main = 0.12f ;
 float h_sphere= 0.08f;
 float h_support = 0.14f ;
-float stage_dim[3]= {0.4f, 0.4f, 0.05f };
+float stage_dim[3]= {0.46f, 0.4f, 0.052f };
 
 
-const int nSamples=75;
+const int nSamples=65; //working 65
 //physics simulation time step
 float timeStep=1.0f/100.0f;
 ControlPBP pbp;
-int nTimeSteps=15;
+int nTimeSteps=15; // 15 working
 const int nStateDimensions=2;
 const int nControlDimensions=2;
-float minControl[2]={-1.35,-1.25}; //lower sampling bound
-float maxControl[2]={1.35,1.25}; //upper sampling bound
+float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
+float maxControl[2]={0.8,0.8}; //upper sampling bound 0.8 both working
 float controlMean[2]={0,0}; //we're using torque as the control, makes sense to have zero mean
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=10;
-float controlStd[2]={0.3f*C,0.3f*C}; //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
-float controlDiffStd[2]={8.0f*C,8.0f*C}; //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
-float controlDiffDiffStd[2]={50.0f*C,50.0f*C}; //sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
+float C=1;
+float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
+float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
 
 
@@ -69,15 +69,13 @@ bool final_debug = true;
 bool debug_inside =false ;
 
 
-float starting_posX = -0.06; //NEED TO SET IT EVERYTIME
-float starting_posY = -0.09;
+float starting_posX = -0.106; //NEED TO SET IT EVERYTIME
+float starting_posY = -0.008;
 
 float last_posX= starting_posX;
 float last_posY= starting_posY; 
 
 float current_posX, current_posY;
-
-
 
 
 class objects
@@ -111,7 +109,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 ///////////////////FEEDBACKS//////////////////
 	//joint angle feedbak
-
+	/*
 	float angle_sim_a4=odeJointGetHingeAngle(mainLink.joint);
 	float angle_sim_a5=odeJointGetHingeAngle(LinkBall.joint);
 	
@@ -134,20 +132,24 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	if (debug) printf("robot angle  a4:%f ,  a5: %f \n", ang_robot_a4,ang_robot_a5);
 	if (debug) printf("Error  a4%f, a5 %f \n", Error_a4, Error_a5);
 	if (debug) printf("desired velocity a4%f  a5 %f\n", DesiredVelocity_a4,DesiredVelocity_a5);
-
+	*/
 	//odeJointSetHingeParam(mainLink.joint,dParamFMax,dInfinity);
 	//odeJointSetHingeParam(mainLink.joint,dParamVel,DesiredVelocity_a4);
 
 	//odeJointSetHingeParam(LinkBall.joint,dParamFMax,dInfinity);
 	//odeJointSetHingeParam(LinkBall.joint,dParamVel,DesiredVelocity_a5);
-
+	
+	//const dReal *vel_stage;
+	//vel_stage =odeBodyGetLinearVel(stage.body);
+	//odeBodySetLinearVel(stage.body, 0.0, 0.0, 0.0);
+	
 
 
 	//stepOde(1);
 	
-	float angle_f=odeJointGetHingeAngle(mainLink.joint);
-	float angle_f1=odeJointGetHingeAngle(mainLink.joint);
-	if (debug) printf("angle after  a4%f  a5 %f\n", angle_f,angle_f1 );
+	//float angle_f=odeJointGetHingeAngle(mainLink.joint);
+	//float angle_f1=odeJointGetHingeAngle(mainLink.joint);
+	//if (debug) printf("angle after  a4%f  a5 %f\n", angle_f,angle_f1 );
 
 
 
@@ -164,10 +166,11 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	//velocity feedback
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
+
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
 
-	printf(" current_posX %f current_posY %f\n", current_posX, current_posY );
+	//printf(" current_posX %f current_posY %f\n", current_posX, current_posY );
 	vel_robotX = current_posX-last_posX;  //TODO: also get the values in other axes.
 	vel_robotY = current_posY-last_posY;
 
@@ -236,15 +239,19 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			pos = odeBodyGetPosition(ball.body);
 			angle=odeJointGetHingeAngle(mainLink.joint);
 			float angle_second = odeJointGetHingeAngle(LinkBall.joint);
+
+			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
-			float cost=squared((pos[0])*13.0f)+squared((pos[1])*13.0f)+squared(angle*9.0)+squared(angle_second*9.0);//+ squared(angle*30.0f) ;
+			//working 12.5, 12.5, 9.5,9.5
+			float cost=squared((0.08-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*1.0f) + squared(vel_inside[1]*1.0f) ;
+			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
-			/*
-			if (-0.05<pos[1] && pos[1] <0.05 && -0.05<pos[0] && pos[0]<0.05 )
+			
+			if (-0.03<pos[1] && pos[1] <0.03 && -0.03<pos[0] && pos[0]<0.03 )
 			{
 			cost = cost+1000;
 			}
-			*/
+			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
 			float stateVector[4]={pos[0],pos[1], angle, angle_second};
@@ -296,9 +303,10 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	ros::Time end = ros::Time::now();
 	double dt = (begin - end).toSec();
+	if (debug) printf(" dt %f\n", dt );
 
-		last_posX = pos_robotx;
-		last_posY = pos_roboty; 
+	last_posX = pos_robotx;
+	last_posY = pos_roboty; 
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
 	if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
@@ -334,8 +342,8 @@ int main(int argc, char **argv)
 
 	//creating stage
 	stage.body = odeBodyCreate();
-	stage.geom = odeCreateBox(0.4f, 0.4f, 0.05f);
-	odeMassSetBoxTotal(stage.body, 0.94, 0.4f,0.4f, 0.05f);
+	stage.geom = odeCreateBox(0.46f, 0.38f, 0.05f);
+	odeMassSetBoxTotal(stage.body, 1.05, 0.46f,0.38f, 0.05f);
 	odeBodySetPosition(stage.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]/2);
 	odeGeomSetBody(stage.geom,stage.body);
 	printf(" Stage body id %f, geom id %f \n", stage.body, stage.geom);
@@ -406,10 +414,6 @@ int main(int argc, char **argv)
 	odeGeomSetBody(obs.geom,obs.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
 	*/
-
-
-
-
 
 
 
