@@ -56,7 +56,7 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 float C=1;
-float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlStd[2]={0.45f*C,0.45f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -247,7 +247,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			if (-0.03<pos[1] && pos[1] <0.03 && -0.03<pos[0] && pos[0]<0.03 )
+			if (-0.04<pos[1] && pos[1] <0.04 && -0.06<pos[0] && pos[0]<0.04 )
 			{
 			cost = cost+1000;
 			}
