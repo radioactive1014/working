@@ -247,10 +247,10 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			if (-0.04<pos[1] && pos[1] <0.04 && -0.06<pos[0] && pos[0]<0.04 )
-			{
-			cost = cost+1000;
-			}
+			//if (-0.04<pos[1] && pos[1] <0.04 && -0.06<pos[0] && pos[0]<0.04 )
+			//{
+			//cost = cost+1000;
+			//}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
@@ -417,6 +417,17 @@ int main(int argc, char **argv)
 
 
 
+	//creating Obstacle
+	obs.radius = 0.02f;
+
+
+	obs.body = odeBodyCreate();
+	obs.geom = odeCreateBox( 0.06,0.03,0.02); 
+	odeMassSetBoxTotal(obs.body, 0.05,0.06,0.03,0.02); 
+	odeBodySetPosition(obs.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
+	odeGeomSetBody(obs.geom,obs.body);
+	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
+
 
 	// Main link and World
 	mainLink.joint =odeJointCreateHinge();
@@ -445,6 +456,11 @@ int main(int argc, char **argv)
 	stage.joint =odeJointCreateFixed();
 	odeJointAttach(stage.joint,stage.body,support.body);
 	odeJointSetFixed(stage.joint);
+
+	//Stage and Obstacle
+	obs.joint =odeJointCreateFixed();
+	odeJointAttach(obs.joint,stage.body,obs.body);
+	odeJointSetFixed(obs.joint);
 
 
 	

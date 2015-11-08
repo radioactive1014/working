@@ -69,6 +69,8 @@ add_executable(fresh_double_ros fresh_double_ros.cpp )
 add_executable(fresh_test fresh_test.cpp )
 add_executable(fresh_feedback fresh_feedback.cpp )
 add_executable(fresh_feedback_double fresh_feedback_double.cpp )
+add_executable(fresh_filter fresh_filter.cpp )
+add_executable(fresh_cone fresh_cone.cpp )
 #add_executable(unit_corrected unit_double_corrected.cpp )
 
 
@@ -94,5 +96,8 @@ target_link_libraries(fresh_test ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_feedback ${roscpp_LIBRARIES} utils ode main)
 #target_link_libraries(unit_corrected ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_feedback_double ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(fresh_filter ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(fresh_cone ${roscpp_LIBRARIES} utils ode main)
+
 
 

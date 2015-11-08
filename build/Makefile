@@ -995,6 +995,19 @@ fresh/fast:
 .PHONY : fresh/fast
 
 #=============================================================================
+# Target rules for targets named fresh_cone
+
+# Build rule for target.
+fresh_cone: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_cone
+.PHONY : fresh_cone
+
+# fast build rule for target.
+fresh_cone/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/build
+.PHONY : fresh_cone/fast
+
+#=============================================================================
 # Target rules for targets named fresh_double
 
 # Build rule for target.
@@ -1045,6 +1058,19 @@ fresh_feedback_double: cmake_check_build_system
 fresh_feedback_double/fast:
 	$(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/build
 .PHONY : fresh_feedback_double/fast
+
+#=============================================================================
+# Target rules for targets named fresh_filter
+
+# Build rule for target.
+fresh_filter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_filter
+.PHONY : fresh_filter
+
+# fast build rule for target.
+fresh_filter/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/build
+.PHONY : fresh_filter/fast
 
 #=============================================================================
 # Target rules for targets named fresh_single
@@ -1423,10 +1449,12 @@ help:
 	@echo "... main"
 	@echo "... boost_first"
 	@echo "... fresh"
+	@echo "... fresh_cone"
 	@echo "... fresh_double"
 	@echo "... fresh_double_ros"
 	@echo "... fresh_feedback"
 	@echo "... fresh_feedback_double"
+	@echo "... fresh_filter"
 	@echo "... fresh_single"
 	@echo "... fresh_single_y"
 	@echo "... fresh_test"

@@ -178,6 +178,20 @@ fresh/fast:
 .PHONY : fresh/fast
 
 # Convenience name for target.
+unit/CMakeFiles/fresh_cone.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_cone.dir/rule
+.PHONY : unit/CMakeFiles/fresh_cone.dir/rule
+
+# Convenience name for target.
+fresh_cone: unit/CMakeFiles/fresh_cone.dir/rule
+.PHONY : fresh_cone
+
+# fast build rule for target.
+fresh_cone/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/build
+.PHONY : fresh_cone/fast
+
+# Convenience name for target.
 unit/CMakeFiles/fresh_double.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_double.dir/rule
 .PHONY : unit/CMakeFiles/fresh_double.dir/rule
@@ -232,6 +246,20 @@ fresh_feedback_double: unit/CMakeFiles/fresh_feedback_double.dir/rule
 fresh_feedback_double/fast:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/build
 .PHONY : fresh_feedback_double/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_filter.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_filter.dir/rule
+.PHONY : unit/CMakeFiles/fresh_filter.dir/rule
+
+# Convenience name for target.
+fresh_filter: unit/CMakeFiles/fresh_filter.dir/rule
+.PHONY : fresh_filter
+
+# fast build rule for target.
+fresh_filter/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/build
+.PHONY : fresh_filter/fast
 
 # Convenience name for target.
 unit/CMakeFiles/fresh_single.dir/rule:
@@ -565,6 +593,30 @@ boost_first.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/boost_first.dir/build.make unit/CMakeFiles/boost_first.dir/boost_first.cpp.s
 .PHONY : boost_first.cpp.s
 
+fresh_cone.o: fresh_cone.cpp.o
+.PHONY : fresh_cone.o
+
+# target to build an object file
+fresh_cone.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/fresh_cone.cpp.o
+.PHONY : fresh_cone.cpp.o
+
+fresh_cone.i: fresh_cone.cpp.i
+.PHONY : fresh_cone.i
+
+# target to preprocess a source file
+fresh_cone.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/fresh_cone.cpp.i
+.PHONY : fresh_cone.cpp.i
+
+fresh_cone.s: fresh_cone.cpp.s
+.PHONY : fresh_cone.s
+
+# target to generate assembly for a file
+fresh_cone.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/fresh_cone.cpp.s
+.PHONY : fresh_cone.cpp.s
+
 fresh_double.o: fresh_double.cpp.o
 .PHONY : fresh_double.o
 
@@ -660,6 +712,30 @@ fresh_feedback_double.s: fresh_feedback_double.cpp.s
 fresh_feedback_double.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_feedback_double.dir/build.make unit/CMakeFiles/fresh_feedback_double.dir/fresh_feedback_double.cpp.s
 .PHONY : fresh_feedback_double.cpp.s
+
+fresh_filter.o: fresh_filter.cpp.o
+.PHONY : fresh_filter.o
+
+# target to build an object file
+fresh_filter.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/fresh_filter.cpp.o
+.PHONY : fresh_filter.cpp.o
+
+fresh_filter.i: fresh_filter.cpp.i
+.PHONY : fresh_filter.i
+
+# target to preprocess a source file
+fresh_filter.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/fresh_filter.cpp.i
+.PHONY : fresh_filter.cpp.i
+
+fresh_filter.s: fresh_filter.cpp.s
+.PHONY : fresh_filter.s
+
+# target to generate assembly for a file
+fresh_filter.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/fresh_filter.cpp.s
+.PHONY : fresh_filter.cpp.s
 
 fresh_short.o: fresh_short.cpp.o
 .PHONY : fresh_short.o
@@ -1054,10 +1130,12 @@ help:
 	@echo "... boost_first"
 	@echo "... edit_cache"
 	@echo "... fresh"
+	@echo "... fresh_cone"
 	@echo "... fresh_double"
 	@echo "... fresh_double_ros"
 	@echo "... fresh_feedback"
 	@echo "... fresh_feedback_double"
+	@echo "... fresh_filter"
 	@echo "... fresh_single"
 	@echo "... fresh_single_y"
 	@echo "... fresh_test"
@@ -1089,6 +1167,9 @@ help:
 	@echo "... boost_first.o"
 	@echo "... boost_first.i"
 	@echo "... boost_first.s"
+	@echo "... fresh_cone.o"
+	@echo "... fresh_cone.i"
+	@echo "... fresh_cone.s"
 	@echo "... fresh_double.o"
 	@echo "... fresh_double.i"
 	@echo "... fresh_double.s"
@@ -1101,6 +1182,9 @@ help:
 	@echo "... fresh_feedback_double.o"
 	@echo "... fresh_feedback_double.i"
 	@echo "... fresh_feedback_double.s"
+	@echo "... fresh_filter.o"
+	@echo "... fresh_filter.i"
+	@echo "... fresh_filter.s"
 	@echo "... fresh_short.o"
 	@echo "... fresh_short.i"
 	@echo "... fresh_short.s"

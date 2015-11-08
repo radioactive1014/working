@@ -67,6 +67,20 @@ void onMouse( int event, int x, int y, int, void* )
       cv::Point pt = cv::Point(x,y);
       cout<<"x="<<pt.x<<"\ty="<<pt.y<<endl;
  
+ 		int ref_minX = 113 ;
+    	int ref_maxX = 424 ;
+    	int ref_minY = 65 ;
+    	int ref_maxY = 440 ;
+      	int diffX = (ref_maxX - ref_minX);
+        int diffY = (ref_maxY - ref_minY);
+        float per_pixelX = 38.0/diffX;
+        float per_pixelY = 46.0/diffY;
+
+
+        newY = (pt.x - ref_minX) * per_pixelX;
+        newX = (pt.y- ref_minY) * per_pixelY ;
+        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-18)/100); 
+
   }
 
 void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
