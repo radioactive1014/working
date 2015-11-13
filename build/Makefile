@@ -1073,6 +1073,45 @@ fresh_filter/fast:
 .PHONY : fresh_filter/fast
 
 #=============================================================================
+# Target rules for targets named fresh_maze
+
+# Build rule for target.
+fresh_maze: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_maze
+.PHONY : fresh_maze
+
+# fast build rule for target.
+fresh_maze/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_maze.dir/build.make unit/CMakeFiles/fresh_maze.dir/build
+.PHONY : fresh_maze/fast
+
+#=============================================================================
+# Target rules for targets named fresh_maze_rel
+
+# Build rule for target.
+fresh_maze_rel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_maze_rel
+.PHONY : fresh_maze_rel
+
+# fast build rule for target.
+fresh_maze_rel/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_maze_rel.dir/build.make unit/CMakeFiles/fresh_maze_rel.dir/build
+.PHONY : fresh_maze_rel/fast
+
+#=============================================================================
+# Target rules for targets named fresh_pieces
+
+# Build rule for target.
+fresh_pieces: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_pieces
+.PHONY : fresh_pieces
+
+# fast build rule for target.
+fresh_pieces/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_pieces.dir/build.make unit/CMakeFiles/fresh_pieces.dir/build
+.PHONY : fresh_pieces/fast
+
+#=============================================================================
 # Target rules for targets named fresh_single
 
 # Build rule for target.
@@ -1455,6 +1494,9 @@ help:
 	@echo "... fresh_feedback"
 	@echo "... fresh_feedback_double"
 	@echo "... fresh_filter"
+	@echo "... fresh_maze"
+	@echo "... fresh_maze_rel"
+	@echo "... fresh_pieces"
 	@echo "... fresh_single"
 	@echo "... fresh_single_y"
 	@echo "... fresh_test"

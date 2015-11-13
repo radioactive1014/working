@@ -16,8 +16,23 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <unit/for_double.h>
+#include <unit/for_feedback.h>
 dsFunctions fn;
+
+
 using namespace AaltoGames;
+
+float pos_robotx;
+float pos_roboty;
+float ang_robot_a4;
+float ang_robot_a5;
+
+
+ros::ServiceServer service;
+ros::Publisher chatter_pub;
+std_msgs::Float32 msg; 
+
 
 
 float h_floor_table = 0.65f ;
@@ -26,28 +41,55 @@ float h_first= 0.60f ;
 float h_main = 0.12f ;
 float h_sphere= 0.08f;
 float h_support = 0.14f ;
-float stage_dim[3]= {0.4f, 0.4f, 0.05f };
-const int nSamples=70;
+float stage_dim[3]= {0.46f, 0.4f, 0.052f };
+
+
+const int nSamples=65; //working 65
 //physics simulation time step
-float timeStep=1.0f/100.0f;
+float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=15;
+int nTimeSteps=15; // 15 working
 const int nStateDimensions=4;
 const int nControlDimensions=2;
-float minControl[2]={-2.0,-2.0}; //lower sampling bound
-float maxControl[2]={2.0,2.0}; //upper sampling bound
+float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
+float maxControl[2]={0.8,0.8}; //upper sampling bound 0.8 both working
 float controlMean[2]={0,0}; //we're using torque as the control, makes sense to have zero mean
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=1;
-float controlStd[2]={0.8f*C,0.8f*C}; //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
-float controlDiffStd[2]={100.0f*C,100.0f*C}; //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
-float controlDiffDiffStd[2]={1000.0f*C,1000.0f*C}; //sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
+float C=1.0;
+float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
+float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
+
+
+
 bool tick=true;
+bool debug = false;
+bool final_debug = true;
+bool debug_inside =false ;
 
 
+float starting_posX = -0.106; //NEED TO SET IT EVERYTIME
+float starting_posY = -0.008;
+
+float last_posX= starting_posX;
+float last_posY= starting_posY; 
+
+
+float vel_estx;
+float vel_esty;
+float last_vel_estx=0.0;
+float last_vel_esty=0.0;
+
+const dReal *vel_sim;
+
+
+std::ofstream sim_test;
+
+
+float current_posX, current_posY;
 
 
 class objects
@@ -61,14 +103,120 @@ class objects
 	float length;
 };
 
+objects stage, support, LinkBall, mainLink,firstLink,base, ball, obs,cone,obs2;
 
 
-objects stage, support, LinkBall, mainLink,firstLink,base, ball, obs, cone, obs2;
-void robot(int com)
+
+bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 {
-	
+
+	ros::Time begin = ros::Time::now();
+
+	pos_robotx= req.positionx;
+	pos_roboty= req.positiony;
+	ang_robot_a4 = req.angle_a4 ;
+	ang_robot_a5 = req.angle_a5 ;
+
+
 	setCurrentOdeContext(0);
 	restoreOdeState(0);
+
+///////////////////FEEDBACKS//////////////////
+	//joint angle feedbak
+	/*
+	float angle_sim_a4=odeJointGetHingeAngle(mainLink.joint);
+	float angle_sim_a5=odeJointGetHingeAngle(LinkBall.joint);
+	
+	if (debug) printf(" simlutor  angle before a4:%f  a5:%f  \n", angle_sim_a4, angle_sim_a5);
+
+	float time_step =24  ;
+	dReal MaxForce = dInfinity;
+
+	dReal DesiredPosition_a4 = ang_robot_a4;
+	dReal DesiredPosition_a5 = ang_robot_a5;
+
+	dReal Error_a4 = angle_sim_a4 - DesiredPosition_a4;
+	dReal Error_a5 = angle_sim_a5 - DesiredPosition_a5;
+
+	dReal DesiredVelocity_a4 = -Error_a4*time_step;
+	dReal DesiredVelocity_a5 = -Error_a5*time_step;
+		
+		
+		
+	if (debug) printf("robot angle  a4:%f ,  a5: %f \n", ang_robot_a4,ang_robot_a5);
+	if (debug) printf("Error  a4%f, a5 %f \n", Error_a4, Error_a5);
+	if (debug) printf("desired velocity a4%f  a5 %f\n", DesiredVelocity_a4,DesiredVelocity_a5);
+	*/
+	//odeJointSetHingeParam(mainLink.joint,dParamFMax,dInfinity);
+	//odeJointSetHingeParam(mainLink.joint,dParamVel,DesiredVelocity_a4);
+
+	//odeJointSetHingeParam(LinkBall.joint,dParamFMax,dInfinity);
+	//odeJointSetHingeParam(LinkBall.joint,dParamVel,DesiredVelocity_a5);
+	
+	//const dReal *vel_stage;
+	//vel_stage =odeBodyGetLinearVel(stage.body);
+	//odeBodySetLinearVel(stage.body, 0.0, 0.0, 0.0);
+	
+
+
+	//stepOde(1);
+	
+	//float angle_f=odeJointGetHingeAngle(mainLink.joint);
+	//float angle_f1=odeJointGetHingeAngle(mainLink.joint);
+	//if (debug) printf("angle after  a4%f  a5 %f\n", angle_f,angle_f1 );
+
+
+
+	//position feedback
+	const dReal *pos_first = odeBodyGetPosition(ball.body);
+	
+
+	//printf(" ball position befor setting  x %f  y %f \n", pos_first[0],pos_first[1] );
+	//printf(" setting postion x%f , y %f \n",pos_robotx,pos_roboty  );
+
+	odeBodySetPosition(ball.body,pos_robotx,pos_roboty,pos_first[2]);
+	vel_sim =odeBodyGetLinearVel(ball.body);
+
+	//pos_first = odeBodyGetPosition(ball.body);
+
+	//printf("pos global x %f y %f\n", pos_robotx, pos_roboty);
+
+	//printf("pos rel x %f y %f\n", pos_first[0], pos_first[1]);
+
+
+
+
+	//velocity feedback
+
+	//velocity filter
+
+	const dReal *vel;
+	float vel_robotX,vel_robotY ;
+
+	float alpha = 0.0;
+
+	current_posX = pos_robotx;
+	current_posY = pos_roboty;
+
+	//printf(" current_posX %f current_posY %f\n", current_posX, current_posY );
+	vel_robotX = (current_posX-last_posX)/timeStep;  //TODO: also get the values in other axes.
+	vel_robotY = (current_posY-last_posY)/timeStep;
+
+	vel_estx = alpha*last_vel_estx +(1-alpha)*vel_robotX; 
+	vel_esty = alpha*last_vel_esty +(1-alpha)*vel_robotY; 
+
+
+	vel =odeBodyGetLinearVel(ball.body);
+
+	if (debug) printf("vel of the body %f and real ball x%f  y%f \n", vel[1], vel_estx, vel_esty);
+	
+	odeBodySetLinearVel(ball.body, vel_estx, vel_esty, vel[2]);
+	stepOde(1);
+
+
+///////////////////////////////////////////////////////////////////
+
+
 	saveOdeState(0);
 
 	//init all trajectories to the master state
@@ -86,15 +234,20 @@ void robot(int com)
 	const dReal *pos = odeBodyGetPosition(ball.body);
 	float angle=odeJointGetHingeAngle(mainLink.joint);
 	float angle_second=odeJointGetHingeAngle(LinkBall.joint);
-	//printf("position befor simulate forward %f \n", pos[1]);
+	
+	if(debug) printf("position befor simulate forward  x%f  y %f \n", pos[0],pos[1]);
+
+
 
 	float rel, rel_second;
 	rel= odeBodyGetPosRelPoint( stage.body, pos[0], pos[1], pos[2]);
 	rel_second=odeBodyGetPosRelPoint1( stage.body, pos[0], pos[1], pos[2]);
-	float stateVector[4]={rel,rel_second, angle, angle_second};
 
+	const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 
-	//float stateVector[4]={pos[0],pos[1], angle, angle_second};
+	//float stateVector[6]={rel,rel_second, angle, angle_second,vel_inside[0], vel_inside[1]};
+
+	float stateVector[4]={pos[0],pos[1], angle, angle_second};
 	pbp.startIteration(true,stateVector);
 
 	//simulate forward
@@ -115,40 +268,46 @@ void robot(int com)
 			restoreOdeState(previousStateIdx+1);
 			const dReal *pos = odeBodyGetPosition(ball.body);
 			float angle=odeJointGetHingeAngle(mainLink.joint);
-			float rel,rel_second;
-			rel = odeBodyGetPosRelPoint( stage.body, pos[0], pos[1], pos[2]);
-			rel_second = odeBodyGetPosRelPoint1( stage.body, pos[0], pos[1], pos[2]);		
-
+			
+			dReal Gain = 1;
 			dReal MaxForce = dInfinity;
+			
 			odeJointSetHingeParam(mainLink.joint, dParamFMax, MaxForce);
 			odeJointSetHingeParam(mainLink.joint, dParamVel,control[0] );
 			odeJointSetHingeParam(LinkBall.joint, dParamFMax, MaxForce);
 			odeJointSetHingeParam(LinkBall.joint, dParamVel,control[1] );
-			//odeJointSetHingeParam(LinkBall.joint,dParamFMax,dInfinity);
-			//odeJointSetHingeParam(LinkBall.joint,dParamVel,control );
+
 			stepOde(1);
 			pos = odeBodyGetPosition(ball.body);
 			angle=odeJointGetHingeAngle(mainLink.joint);
 			float angle_second = odeJointGetHingeAngle(LinkBall.joint);
+
+			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
+
+			float rel,rel_second;
 			rel = odeBodyGetPosRelPoint( stage.body, pos[0], pos[1], pos[2]);
 			rel_second = odeBodyGetPosRelPoint1( stage.body, pos[0], pos[1], pos[2]);
-			float cost=squared((-0.08-rel)*15.0f)+squared((0.00-rel_second)*15.0f)+squared(angle*3)+squared(angle_second*3);//+ squared(angle*30.0f) ;
+			//printf("after rel %f \n", rel);
 			
+			//working 12.5, 12.5, 9.5,9.5
+			float cost=squared((0.08-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*9.5)+squared(angle_second*9.5);//+squared(vel_inside[0]*(0.08-pos[0])*5.5f) + squared(vel_inside[1]*(pos[1] )*5.5f) ;
 
-
-
+			//float cost=squared((0.09-rel)*12.5f)+squared((rel_second)*12.5f)+squared(angle*8.5)+squared(angle_second*8.5)+squared(vel_inside[0]*(0.09-rel)*18.5f) + squared(vel_inside[1]*(rel_second)*20.5f) ;
+			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
+			//if (-0.08<rel_second && rel_second <0.08 && -0.02<rel && rel<-0.09 )
+			//{
+			//cost = cost+500;
+			//}
 			
-			//float cost=squared((-0.1-pos[0])*10.0f)+squared((0.00-pos[1])*10.0f)+squared(angle*2.0f)+squared(angle_second*2.0f);//+ squared(angle*30.0f) ;
-						
-			if (-0.03<rel_second && rel_second <0.03 && -0.04<rel && rel<0.04 )
-			{
-			cost = cost+1000;
-			}
+			//if (-0.06<pos[1] && pos[1] <0.06 && -0.09<pos[0] && pos[0]<-0.02 )
+			//{
+			//cost = cost+ squared(1/pos[1])+ squared(1/pos[0]);
+			//}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
-			float stateVector[4]={rel,rel_second, angle, angle_second};
-			//float stateVector[4]={pos[0],pos[1], angle, angle_second};
+			//float stateVector[6]={rel,rel_second, angle, angle_second, vel_inside[0], vel_inside[1]};
+			float stateVector[4]={pos[0],pos[1], angle, angle_second};
 			pbp.updateResults(i,control,stateVector,cost);
 		}
 		/*
@@ -176,26 +335,42 @@ void robot(int com)
 	float cost=(float)pbp.getSquaredCost();
 	setCurrentOdeContext(0);
 	restoreOdeState(0);
-	dReal MaxForce = dInfinity;
 	
 
 	odeJointSetHingeParam(mainLink.joint,dParamFMax,dInfinity);
-	odeJointSetHingeParam(mainLink.joint,dParamVel,0);
+	odeJointSetHingeParam(mainLink.joint,dParamVel,control[0]);
 	odeJointSetHingeParam(LinkBall.joint,dParamFMax,dInfinity);
-	odeJointSetHingeParam(LinkBall.joint,dParamVel,0);
-	stepOde(0);
+	odeJointSetHingeParam(LinkBall.joint,dParamVel,control[1]);
+
+	stepOde(1);
 	saveOdeState(0);
+
+
 	const dReal *pos1 = odeBodyGetPosition(ball.body);
-	float angle1=odeJointGetHingeAngle(mainLink.joint);
-	float rel1,rel1_second;
-	rel1 = odeBodyGetPosRelPoint( stage.body, pos1[0], pos1[1], pos1[2]);
-	rel1_second = odeBodyGetPosRelPoint1( stage.body, pos1[0], pos1[1], pos1[2]);
-	const dReal *stage_pos = odeBodyGetPosition( stage.body);
-	//float re_vec= odeBodyVectorFromWorld(stage.body,pos1[0], pos1[1], pos1[2] );
-	printf("relx %f and rel y %f\n", rel1,rel1_second);
+	float angle1=odeJointGetHingeAngle(LinkBall.joint);
+
 	
-	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
-	printf("FINAL Posx %1.3f,posz = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
+	rel = odeBodyGetPosRelPoint( stage.body, pos1[0], pos1[1], pos1[2]);
+	rel_second = odeBodyGetPosRelPoint1( stage.body, pos1[0], pos1[1], pos1[2]);
+	
+	//sending the control for real robot
+	res.commandx = control[0];
+    	res.commandy = control[1];
+
+
+	ros::Time end = ros::Time::now();
+	double dt = (begin - end).toSec();
+	if (debug) printf(" dt %f\n", dt );
+
+	last_posX = pos_robotx;
+	last_posY = pos_roboty; 
+	last_vel_estx = vel_estx;
+	last_vel_esty = vel_esty;
+
+	//sim_test << std::setw(10)<<"sim " <<std::setw(10)<<pos1[0] << std::setw(10)<< "original " << std::setw(10)<< pos_robotx<< std::setw(10)<<"velx " <<std::setw(10)<<vel_estx << std::setw(10)<<"vel_sim" <<std::setw(10)<<vel_sim[0]<< std::setw(10)<<"ang_robot_a5 " <<std::setw(10)<<ang_robot_a5<<std::setw(10)<<"sim_angle " <<std::setw(15)<< angle1<<std::endl ;
+	
+	//printf("rel_x %f and y %f\n", rel, rel_second);
+	if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
 	/*
 	int j = 0;
 	loop : std::cin >> j;
@@ -206,27 +381,20 @@ void robot(int com)
 
 
 
-void start()
-{
-	static float xyz[3] = {0.0,-0.9,2.0};
-	static float hpr[3] = {50.0,-50.0,20.0};
-	dsSetViewpoint (xyz,hpr);
-}
 
-void prepDrawStuff()
-{
-	fn.version = DS_VERSION;
-	fn.start = &start;
-	fn.step = &robot;
-	fn.command = NULL;
-	fn.stop = NULL;
-	fn.path_to_textures = "/home/rokon/ode-0.12/drawstuff/textures";
-}
+
 
 
 int main(int argc, char **argv)
 {
-	prepDrawStuff();
+	ros::init(argc,argv, "talker");
+	ros::NodeHandle n ;
+
+
+	chatter_pub = n.advertise<std_msgs::Float32>("from_ode", 1);
+	service = n.advertiseService("for_feedback", robot);
+
+	  sim_test.open ("fresh_sim.txt");
 	initOde(nSamples+1);
 	setCurrentOdeContext(ALLTHREADS);
 	odeRandSetSeed(0);
@@ -235,8 +403,8 @@ int main(int argc, char **argv)
 
 	//creating stage
 	stage.body = odeBodyCreate();
-	stage.geom = odeCreateBox(0.4f, 0.4f, 0.05f);
-	odeMassSetBoxTotal(stage.body, 0.94, 0.4f,0.4f, 0.05f);
+	stage.geom = odeCreateBox(0.46f, 0.38f, 0.05f);
+	odeMassSetBoxTotal(stage.body, 1.15, 0.46f,0.38f, 0.05f);
 	odeBodySetPosition(stage.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]/2);
 	odeGeomSetBody(stage.geom,stage.body);
 	printf(" Stage body id %f, geom id %f \n", stage.body, stage.geom);
@@ -269,22 +437,7 @@ int main(int argc, char **argv)
 	printf("Ball link body id %f, geom id %f \n", LinkBall.body, LinkBall.geom);
 
 
-	/*
-	//creating main link
-	mainLink.radius= 0.05f;
-	mainLink.length= 0.12f;
-	mainLink.body = odeBodyCreate();
-	mainLink.geom = odeCreateCapsule(0, mainLink.radius, mainLink.length-mainLink.radius);
-	odeMassSetCapsuleTotal(mainLink.body, 0.5,mainLink.radius, mainLink.length-mainLink.length);
-	odeBodySetPosition(mainLink.body,(mainLink.length+mainLink.radius),0, h_floor_table+h_base-mainLink.radius);
-	odeGeomSetBody(mainLink.geom,mainLink.body);
-	printf("capsule main link link body id %f, geom id %f \n", mainLink.body, mainLink.geom);
-	dQuaternion q1;
-	dQFromAxisAndAngle (q1,0,1,0,1.57) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
-	odeGeomSetQuaternion(mainLink.geom,q1);
-	pos= odeBodyGetPosition(mainLink.body);
-	printf("main link position x %f y %f z%f \n",pos[0],pos[1], pos[2]);
-	*/
+
 
 
 	//creating main link
@@ -303,11 +456,11 @@ int main(int argc, char **argv)
 
 
 	//Creating Ball
-	ball.radius = 0.015f ;
+	ball.radius = 0.02f ;
 	ball.body = odeBodyCreate();
 	ball.geom = odeCreateSphere( ball.radius);
-	odeMassSetSphereTotal(ball.body, 0.026,ball.radius);
-	odeBodySetPosition(ball.body,0.065,0.065,h_floor_table+h_base+h_sphere+h_support+2*stage_dim[2]);
+	//odeMassSetSphereTotal(ball.body, 0.026,ball.radius);
+	odeBodySetPosition(ball.body,-0.08,0.05,h_floor_table+h_base+h_sphere+h_support+2*stage_dim[2]);
 	odeGeomSetBody(ball.geom,ball.body);
 	printf("ball body id %f, geom id %f \n", ball.body, ball.geom);
 
@@ -323,51 +476,52 @@ int main(int argc, char **argv)
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
 	*/
 
-	
-	//creating Obstacle cone first part
+
+
+
+/*
+//creating Obstacle cone first part
 	obs.radius = 0.02f;
 	obs.body = odeBodyCreate();
-	obs.geom = odeCreateBox(0.062,0.031,0.02);
-	odeMassSetBoxTotal(obs.body,0.05,0.062,0.031,0.02 );
-	odeBodySetPosition(obs.body,0.025,0.045,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius/2);
+	obs.geom = odeCreateBox(0.031,0.031,0.02);
+	odeMassSetBoxTotal(obs.body,0.006,0.031,0.031,0.02 );
+	odeBodySetPosition(obs.body,0.045,0.043,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs.geom,obs.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
 
+
 	dQuaternion q1;
-	dQFromAxisAndAngle (q1,0,0,1,0.87) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
+	dQFromAxisAndAngle (q1,0,0,1,0.47) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
 	odeGeomSetQuaternion(obs.geom,q1);
 
-		//creating Obstacle cone second part
+	
+	//creating Obstacle cone second part
 	cone.radius = 0.02f;
 	cone.body = odeBodyCreate();
-	cone.geom = odeCreateBox(0.062,0.031,0.02);
-	odeMassSetBoxTotal(cone.body,0.05,0.062,0.031,0.02 );
-	odeBodySetPosition(cone.body,0.025,-0.045,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius/2);
+	cone.geom = odeCreateBox(0.031,0.031,0.02);
+	odeMassSetBoxTotal(cone.body,0.006,0.031,0.031,0.02 );
+	odeBodySetPosition(cone.body,0.045,-0.043,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(cone.geom,cone.body);
 	printf("capsule obstacle body id %f, geom id %f \n", cone.body, cone.geom);
 
 	dQuaternion q2;
-	dQFromAxisAndAngle (q2,0,0,1,-0.87) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
+	dQFromAxisAndAngle (q2,0,0,1,-0.47) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
 	odeGeomSetQuaternion(cone.geom,q2);
 
-	//creating Obstacle cone third part
+		
+		//creating Obstacle cone third part
 	obs2.radius = 0.02f;
 	obs2.body = odeBodyCreate();
 	obs2.geom = odeCreateBox(0.031,0.031,0.02);
-	odeMassSetBoxTotal(obs2.body,0.05,0.031,0.031,0.02 );
-	odeBodySetPosition(obs2.body,0.0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius/2);
+	odeMassSetBoxTotal(obs2.body,0.006,0.031,0.031,0.02 );
+	odeBodySetPosition(obs2.body,0.04,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs2.geom,obs2.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs2.body, obs2.geom);
 
-	dQuaternion q3;
-	dQFromAxisAndAngle (q2,0,0,1,1.57) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
-	odeGeomSetQuaternion(obs2.geom,q2);
-
-
-
-
-
-
+	//dQuaternion q3;
+	//dQFromAxisAndAngle (q3,0,0,1,1.57) ; //dQFromAxisAndAngle (dQuaternion q, dReal ax, dReal ay, dReal az, dReal angle);
+	//odeGeomSetQuaternion(obs2.geom,q3);
+    */
 
 
 	// Main link and World
@@ -398,11 +552,15 @@ int main(int argc, char **argv)
 	odeJointAttach(stage.joint,stage.body,support.body);
 	odeJointSetFixed(stage.joint);
 
-	
+
+/*
 	//Stage and Obstacle
 	obs.joint =odeJointCreateFixed();
 	odeJointAttach(obs.joint,stage.body,obs.body);
 	odeJointSetFixed(obs.joint);
+
+
+
 
 	//Stage and Obstacle
 	cone.joint =odeJointCreateFixed();
@@ -414,6 +572,7 @@ int main(int argc, char **argv)
 	odeJointAttach(obs2.joint,stage.body,obs2.body);
 	odeJointSetFixed(obs2.joint);
 
+*/
 	
 
 
@@ -424,7 +583,12 @@ int main(int argc, char **argv)
 	//set further params: portion of "no prior" samples, resampling threshold, whether to use the backwards smoothing pass, and the regularization of the smoothing pass
 	pbp.setParams(0.1f,0.5f,true,0.001f);
 
+	while (ros::ok())
+	{
 
-	dsSimulationLoop (argc,argv,900,600,&fn);
+        	ros::spinOnce();
+	}
+
+	return 0;
 }
 

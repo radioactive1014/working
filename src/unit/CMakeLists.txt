@@ -71,6 +71,10 @@ add_executable(fresh_feedback fresh_feedback.cpp )
 add_executable(fresh_feedback_double fresh_feedback_double.cpp )
 add_executable(fresh_filter fresh_filter.cpp )
 add_executable(fresh_cone fresh_cone.cpp )
+add_executable(fresh_maze fresh_maze.cpp )
+
+add_executable(fresh_maze_rel fresh_maze_rel.cpp )
+add_executable(fresh_pieces fresh_pieces.cpp )
 #add_executable(unit_corrected unit_double_corrected.cpp )
 
 
@@ -99,5 +103,9 @@ target_link_libraries(fresh_feedback_double ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_filter ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_cone ${roscpp_LIBRARIES} utils ode main)
 
+
+target_link_libraries(fresh_maze ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(fresh_maze_rel ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(fresh_pieces ${roscpp_LIBRARIES} utils ode main)
 
 

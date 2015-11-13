@@ -31,6 +31,9 @@
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_feedback.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_feedback_double.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_filter.dir
+/home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_maze.dir
+/home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_maze_rel.dir
+/home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_pieces.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_single.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_single_y.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_test.dir

@@ -122,5 +122,7 @@ camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/s
 camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/sensor_msgs/Image.h
 camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/sensor_msgs/RegionOfInterest.h
 camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/sensor_msgs/image_encodings.h
+camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/std_msgs/Float32.h
 camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/std_msgs/Header.h
+camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.o: /opt/ros/groovy/include/std_msgs/Int16.h
 

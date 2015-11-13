@@ -44,7 +44,7 @@ float stage_dim[3]= {0.46f, 0.4f, 0.052f };
 
 const int nSamples=65; //working 65
 //physics simulation time step
-float timeStep=1.0f/100.0f;
+float timeStep=1.0f/24.0f;
 ControlPBP pbp;
 int nTimeSteps=15; // 15 working
 const int nStateDimensions=4;
@@ -56,7 +56,7 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 float C=1;
-float controlStd[2]={0.45f*C,0.45f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -177,14 +177,14 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.475;
+	float alpha = 0.0;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
 
 	//printf(" current_posX %f current_posY %f\n", current_posX, current_posY );
-	vel_robotX = current_posX-last_posX;  //TODO: also get the values in other axes.
-	vel_robotY = current_posY-last_posY;
+	vel_robotX = (current_posX-last_posX)/timeStep;  //TODO: also get the values in other axes.
+	vel_robotY = (current_posY-last_posY)/timeStep;
 
 	vel_estx = alpha*last_vel_estx +(1-alpha)*vel_robotX; 
 	vel_esty = alpha*last_vel_esty +(1-alpha)*vel_robotY; 
@@ -259,7 +259,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.08-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*1.0f) + squared(vel_inside[1]*1.0f) ;
+			float cost=squared((0.08-pos[0])*14.5f)+squared((pos[1])*14.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.08-pos[0])*1.5f) + squared(vel_inside[1]*pos[1]*1.5f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			

@@ -92,7 +92,7 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 			//contact[i].surface.slip2 = 0.001f;
 			contact[i].surface.bounce = 0.001f; // working 0.0001
 			contact[i].surface.soft_erp = 0.35;
-			contact[i].surface.soft_cfm =.0008; // working 0.38
+			contact[i].surface.soft_cfm =.0008; // working 0.38 or .0008
 
 			dJointID c = dJointCreateContact (context->world,context->contactGroup,&contact[i]);
 			dBodyID body1=dGeomGetBody(contact[i].geom.g1);
@@ -925,6 +925,44 @@ void odeJointSetFixed(int jointId)
 	}
 }
 
+///////////////by me ////////////
+
+float odeBodyGetPosRelPoint(int bodyId, float x, float y, float z)
+{
+	OdeThreadContext & c = contexts[s_getIdx];
+	dVector3 dv;
+	dBodyGetPosRelPoint(c.bodies[bodyId], x, y, z, dv);
+	return dv[0];
+}
+
+
+float odeBodyGetPosRelPoint1(int bodyId, float x, float y, float z)
+{
+	OdeThreadContext & c = contexts[s_getIdx];
+	dVector3 dv;
+	dBodyGetPosRelPoint(c.bodies[bodyId], x, y, z, dv);
+	
+	return dv[1];
+}
+
+
+float odeBodyGetRelPointPos(int bodyId, float x, float y, float z)
+{
+	OdeThreadContext & c = contexts[s_getIdx];
+	dVector3 dv;
+	dBodyGetRelPointPos(c.bodies[bodyId], x, y, z, dv);
+	return dv[0];
+}
+
+
+float odeBodyGetRelPointPos1(int bodyId, float x, float y, float z)
+{
+	OdeThreadContext & c = contexts[s_getIdx];
+	dVector3 dv;
+	dBodyGetRelPointPos(c.bodies[bodyId], x, y, z, dv);
+	
+	return dv[1];
+}
 ///////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////

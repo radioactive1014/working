@@ -69,6 +69,11 @@ void EXPORT_API odeBodyDestroy(int bodyId);
 
 ////////////by me/////////////
 void EXPORT_API odeJointSetFixed(int jointId);
+float odeBodyGetPosRelPoint(int bodyId, float x, float y, float z);
+float odeBodyGetPosRelPoint1(int bodyId, float x, float y, float z);
+
+float odeBodyGetRelPointPos(int bodyId, float x, float y, float z);
+float odeBodyGetRelPointPos1(int bodyId, float x, float y, float z);
 ////////////////////
 
 // Body: Position and orientation

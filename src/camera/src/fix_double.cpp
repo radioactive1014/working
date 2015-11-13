@@ -364,7 +364,7 @@ int main(int argc, char **argv)
     * to ros::shutdown() or a Ctrl-C.
     */
  	// ros::spin();
-	loop_rate.sleep();
+	//loop_rate.sleep();
     
   	}
     //ROS_INFO is the replacement for printf/cout.

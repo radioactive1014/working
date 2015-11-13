@@ -262,6 +262,48 @@ fresh_filter/fast:
 .PHONY : fresh_filter/fast
 
 # Convenience name for target.
+unit/CMakeFiles/fresh_maze.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_maze.dir/rule
+.PHONY : unit/CMakeFiles/fresh_maze.dir/rule
+
+# Convenience name for target.
+fresh_maze: unit/CMakeFiles/fresh_maze.dir/rule
+.PHONY : fresh_maze
+
+# fast build rule for target.
+fresh_maze/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze.dir/build.make unit/CMakeFiles/fresh_maze.dir/build
+.PHONY : fresh_maze/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_maze_rel.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_maze_rel.dir/rule
+.PHONY : unit/CMakeFiles/fresh_maze_rel.dir/rule
+
+# Convenience name for target.
+fresh_maze_rel: unit/CMakeFiles/fresh_maze_rel.dir/rule
+.PHONY : fresh_maze_rel
+
+# fast build rule for target.
+fresh_maze_rel/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze_rel.dir/build.make unit/CMakeFiles/fresh_maze_rel.dir/build
+.PHONY : fresh_maze_rel/fast
+
+# Convenience name for target.
+unit/CMakeFiles/fresh_pieces.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_pieces.dir/rule
+.PHONY : unit/CMakeFiles/fresh_pieces.dir/rule
+
+# Convenience name for target.
+fresh_pieces: unit/CMakeFiles/fresh_pieces.dir/rule
+.PHONY : fresh_pieces
+
+# fast build rule for target.
+fresh_pieces/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_pieces.dir/build.make unit/CMakeFiles/fresh_pieces.dir/build
+.PHONY : fresh_pieces/fast
+
+# Convenience name for target.
 unit/CMakeFiles/fresh_single.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_single.dir/rule
 .PHONY : unit/CMakeFiles/fresh_single.dir/rule
@@ -737,6 +779,78 @@ fresh_filter.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_filter.dir/build.make unit/CMakeFiles/fresh_filter.dir/fresh_filter.cpp.s
 .PHONY : fresh_filter.cpp.s
 
+fresh_maze.o: fresh_maze.cpp.o
+.PHONY : fresh_maze.o
+
+# target to build an object file
+fresh_maze.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze.dir/build.make unit/CMakeFiles/fresh_maze.dir/fresh_maze.cpp.o
+.PHONY : fresh_maze.cpp.o
+
+fresh_maze.i: fresh_maze.cpp.i
+.PHONY : fresh_maze.i
+
+# target to preprocess a source file
+fresh_maze.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze.dir/build.make unit/CMakeFiles/fresh_maze.dir/fresh_maze.cpp.i
+.PHONY : fresh_maze.cpp.i
+
+fresh_maze.s: fresh_maze.cpp.s
+.PHONY : fresh_maze.s
+
+# target to generate assembly for a file
+fresh_maze.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze.dir/build.make unit/CMakeFiles/fresh_maze.dir/fresh_maze.cpp.s
+.PHONY : fresh_maze.cpp.s
+
+fresh_maze_rel.o: fresh_maze_rel.cpp.o
+.PHONY : fresh_maze_rel.o
+
+# target to build an object file
+fresh_maze_rel.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze_rel.dir/build.make unit/CMakeFiles/fresh_maze_rel.dir/fresh_maze_rel.cpp.o
+.PHONY : fresh_maze_rel.cpp.o
+
+fresh_maze_rel.i: fresh_maze_rel.cpp.i
+.PHONY : fresh_maze_rel.i
+
+# target to preprocess a source file
+fresh_maze_rel.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze_rel.dir/build.make unit/CMakeFiles/fresh_maze_rel.dir/fresh_maze_rel.cpp.i
+.PHONY : fresh_maze_rel.cpp.i
+
+fresh_maze_rel.s: fresh_maze_rel.cpp.s
+.PHONY : fresh_maze_rel.s
+
+# target to generate assembly for a file
+fresh_maze_rel.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_maze_rel.dir/build.make unit/CMakeFiles/fresh_maze_rel.dir/fresh_maze_rel.cpp.s
+.PHONY : fresh_maze_rel.cpp.s
+
+fresh_pieces.o: fresh_pieces.cpp.o
+.PHONY : fresh_pieces.o
+
+# target to build an object file
+fresh_pieces.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_pieces.dir/build.make unit/CMakeFiles/fresh_pieces.dir/fresh_pieces.cpp.o
+.PHONY : fresh_pieces.cpp.o
+
+fresh_pieces.i: fresh_pieces.cpp.i
+.PHONY : fresh_pieces.i
+
+# target to preprocess a source file
+fresh_pieces.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_pieces.dir/build.make unit/CMakeFiles/fresh_pieces.dir/fresh_pieces.cpp.i
+.PHONY : fresh_pieces.cpp.i
+
+fresh_pieces.s: fresh_pieces.cpp.s
+.PHONY : fresh_pieces.s
+
+# target to generate assembly for a file
+fresh_pieces.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_pieces.dir/build.make unit/CMakeFiles/fresh_pieces.dir/fresh_pieces.cpp.s
+.PHONY : fresh_pieces.cpp.s
+
 fresh_short.o: fresh_short.cpp.o
 .PHONY : fresh_short.o
 
@@ -1136,6 +1250,9 @@ help:
 	@echo "... fresh_feedback"
 	@echo "... fresh_feedback_double"
 	@echo "... fresh_filter"
+	@echo "... fresh_maze"
+	@echo "... fresh_maze_rel"
+	@echo "... fresh_pieces"
 	@echo "... fresh_single"
 	@echo "... fresh_single_y"
 	@echo "... fresh_test"
@@ -1185,6 +1302,15 @@ help:
 	@echo "... fresh_filter.o"
 	@echo "... fresh_filter.i"
 	@echo "... fresh_filter.s"
+	@echo "... fresh_maze.o"
+	@echo "... fresh_maze.i"
+	@echo "... fresh_maze.s"
+	@echo "... fresh_maze_rel.o"
+	@echo "... fresh_maze_rel.i"
+	@echo "... fresh_maze_rel.s"
+	@echo "... fresh_pieces.o"
+	@echo "... fresh_pieces.i"
+	@echo "... fresh_pieces.s"
 	@echo "... fresh_short.o"
 	@echo "... fresh_short.i"
 	@echo "... fresh_short.s"

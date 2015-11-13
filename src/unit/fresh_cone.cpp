@@ -46,17 +46,17 @@ const int nSamples=65; //working 65
 //physics simulation time step
 float timeStep=1.0f/100.0f;
 ControlPBP pbp;
-int nTimeSteps=15; // 15 working
+int nTimeSteps=20; // 15 working
 const int nStateDimensions=4;
 const int nControlDimensions=2;
-float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
-float maxControl[2]={0.8,0.8}; //upper sampling bound 0.8 both working
+float minControl[2]={-0.5,-0.5}; //lower sampling bound -0.8 both working
+float maxControl[2]={0.5,0.5}; //upper sampling bound 0.8 both working
 float controlMean[2]={0,0}; //we're using torque as the control, makes sense to have zero mean
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=1;
-float controlStd[2]={0.45f*C,0.45f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float C=0.2;
+float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -177,7 +177,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.01;
+	float alpha = 0.1;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -259,14 +259,14 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.1-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*1.5f) + squared(vel_inside[1]*1.5f) ;
+			float cost=squared((0.1-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*10.5)+squared(angle_second*10.5)+squared(vel_inside[0]*5.0f) + squared(vel_inside[1]*5.0f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			if (-0.06<pos[1] && pos[1] <0.06 && -0.06<pos[0] && pos[0]<0.02 )
-			{
-			cost = cost+ squared(1/pos[1])+ squared(1/pos[0]);
-			}
+			//if (-0.06<pos[1] && pos[1] <0.06 && -0.06<pos[0] && pos[0]<0.06 )
+			//{
+			//cost = cost+  squared(0.01/pos[0])+squared(0.01/pos[1]);
+			//}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features

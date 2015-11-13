@@ -25,10 +25,21 @@ using namespace cv;
 //Include headers for OpenCV GUI handling
 #include <opencv2/highgui/highgui.hpp>
 //#include "object.h"
+#include <iostream>
+#include "std_msgs/Float32.h"
+#include "std_msgs/Int16.h"
+#include "app/cam.h"
 
 using namespace std;
 using namespace cv;
 namespace enc = sensor_msgs::image_encodings;
+static const char WINDOW[] = "Image Processed";
+ 
+//Use method of ImageTransport to create image publisher
+image_transport::Publisher pub;
+ros::Publisher chatter_pubX ;
+ros::Publisher chatter_pubY ;
+
 
 vector<float> red_cornerX ;
 vector<float> blue_cornerX ;
@@ -191,16 +202,21 @@ int callback(const sensor_msgs::ImageConstPtr& original_image)
 
 
 	//printf("result %d , %d , %d, %d \n", result[0], result[1], result[2], result[3] );
-	printf("red x %d red y %d \n" ,result_red[0],result_red[1]);
+	printf("yellow x %d yellow y %d \n" ,result_red[0],result_red[1]);
 	printf("green x %d green y %d \n", result_green[0],result_green[1]);
-	printf("yellow x %d yellow y %d \n", result_blue[0],result_blue[1]);
+	printf("blue x %d blue y %d \n", result_blue[0],result_blue[1]);
+	printf("ball x %d ball y %d \n", result_ball[0],result_ball[1]);
+	
+	
+	
+
 
 
 	int minX= result_green[0];
 	int maxX = result_red[0];
 	
-	int minY = result_red[1];
-	int maxY = result_blue[1];
+	int minY = result_blue[1];
+	int maxY = result_red[1];
 
 	if ( result_ball[0] > minX && result_ball[0]< maxX && result_ball[1] > minY && result_ball[1] <maxY  )
         {
@@ -215,16 +231,16 @@ int callback(const sensor_msgs::ImageConstPtr& original_image)
         float newX = (result_ball[1]- minY) * per_pixelY ;
 
         //printf( " per_pixelY %f, per_pixelX %f  ref X %d\n", per_pixelY, per_pixelX,diffX);
-        printf("x= %f,y=%f\n", (newX-20.0)/100.0, (newY-20.0)/100.0); 
+        printf("x= %f,y=%f\n", (newX-23.0)/100.0, (newY-18.0)/100.0); 
 
         }
 
 	 
 
 
-	circle(cv_ptr->image, Point(result_red[0],result_red[1]), 10,Scalar( 0, 0, 255 ),1,8 );
-	circle(cv_ptr->image, Point(result_blue[0],result_blue[1]), 10,Scalar( 255, 0, 0 ),1,8 );
-	circle(cv_ptr->image, Point(result_green[0],result_green[1]), 10,Scalar( 0, 255, 0 ),1,8 );
+	circle(cv_ptr->image, Point(result_red[0],result_red[1]), 5,Scalar( 0, 0, 255 ),1,8 );
+	circle(cv_ptr->image, Point(result_blue[0],result_blue[1]), 5,Scalar( 255, 0, 0 ),1,8 );
+	circle(cv_ptr->image, Point(result_green[0],result_green[1]), 5,Scalar( 0, 255, 0 ),1,8 );
 
 
 	cv::imshow("Original",cv_ptr->image ); //show the original image
@@ -240,11 +256,11 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "image_processor");
 	ros::NodeHandle nh;
 	image_transport::ImageTransport it(nh);
-	image_transport::Publisher pub;
+	//image_transport::Publisher pub;
 
    	image_transport::Subscriber sub = it.subscribe("camera/rgb/image_raw", 1, callback);
 
-	pub = it.advertise("camera/image_processed", 1);
+	//pub = it.advertise("camera/image_processed", 1);
 	red.color = "red";
 	green.color = "green";
 	blue.color = "blue";
@@ -256,38 +272,38 @@ int main(int argc, char **argv)
 	ball.window = "ball_window";
 
 
-	//orange
-	red.iLowH= 0;
-	red.iHighH = 255 ;
-	red.iLowS = 76;
+	//yellow
+	red.iLowH= 15;
+	red.iHighH = 104 ;
+	red.iLowS = 196;
 	red.iHighS= 255;
-	red.iLowV = 166;
-	red.iHighV = 178;
+	red.iLowV = 154;
+	red.iHighV = 230;
 
 
-//yellow
-	blue.iLowH= 22;
-	blue.iHighH = 157 ;
-	blue.iLowS = 83;
+//blue
+	blue.iLowH= 113;
+	blue.iHighH = 169 ;
+	blue.iLowS = 107;
 	blue.iHighS= 255;
-	blue.iLowV = 57 ;
+	blue.iLowV = 47 ;
 	blue.iHighV = 255;
 //green
-	green.iLowH= 17;
-	green.iHighH = 36 ;
-	green.iLowS = 0;
-	green.iHighS= 116;
-	green.iLowV = 149 ;
+	green.iLowH= 27;
+	green.iHighH = 91 ;
+	green.iLowS = 78;
+	green.iHighS= 255;
+	green.iLowV = 87 ;
 	green.iHighV = 255;
 
 
 //Ball
 	
-	ball.iLowH= 17;
-	ball.iHighH = 36 ;
-	ball.iLowS = 0;
-	ball.iHighS= 116;
-	ball.iLowV = 149 ;
+	ball.iLowH= 134;
+	ball.iHighH = 255 ;
+	ball.iLowS = 129;
+	ball.iHighS= 255;
+	ball.iLowV = 58 ;
 	ball.iHighV = 255;
 	
 	
@@ -343,11 +359,22 @@ int main(int argc, char **argv)
 
 	//trackbar("red", 114,179,74,255,45,255);
 
-
-	for (int i =0; i <10000; i++)
+    ros::Rate loop_rate(100);
+    
+    while (ros::ok())
 	{
 
-	ros::spin();
+	ros::spinOnce();
+    pub = it.advertise("camera/image_processed", 1);
+    chatter_pubX = nh.advertise <app::cam>("/from_cameraX", 1);
+    // chatter_pubY = nh.advertise <std_msgs::Float32>("/from_cameraY", 1);
+    /**
+    * In this application all user callbacks will be called from within the ros::spin() call. 
+    * ros::spin() will not return until the node has been shutdown, either through a call 
+    * to ros::shutdown() or a Ctrl-C.
+    */
+ 	// ros::spin();
+	loop_rate.sleep();
 
 	}
 
