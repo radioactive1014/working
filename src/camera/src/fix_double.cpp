@@ -79,7 +79,7 @@ void onMouse( int event, int x, int y, int, void* )
 
         newY = (pt.x - ref_minX) * per_pixelX;
         newX = (pt.y- ref_minY) * per_pixelY ;
-        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-18)/100); 
+        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-19)/100); 
 
   }
 
@@ -177,7 +177,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
   
       }
 
-    cv::imshow(WINDOW, imgThresholded); //show the thresholded image
+    //cv::imshow(WINDOW, imgThresholded); //show the thresholded image
 
 
     cv_ptr->image = cv_ptr->image + imgLines;
@@ -310,7 +310,7 @@ int main(int argc, char **argv)
   cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
  //cv::namedWindow("Ball");
   cvCreateTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
-  cvCreateTrackbar("HighH", "Control", &iHighH, 179);
+  cvCreateTrackbar("HighH", "Control", &iHighH, 255);
 
   cvCreateTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
   cvCreateTrackbar("HighS", "Control", &iHighS, 255);

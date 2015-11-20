@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "app: 1 messages, 0 services")
+message(STATUS "app: 2 messages, 0 services")
 
 set(MSG_I_FLAGS "-Iapp:/home/intelligentrobotics/rokon_clone/October/src/app/msg;-Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg")
 
@@ -19,6 +19,12 @@ add_custom_target(app_generate_messages ALL)
 ### Generating Messages
 _generate_msg_cpp(app
   "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/app
+)
+_generate_msg_cpp(app
+  "/home/intelligentrobotics/rokon_clone/October/src/app/msg/twoBall.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/app
@@ -52,6 +58,12 @@ _generate_msg_lisp(app
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/app
 )
+_generate_msg_lisp(app
+  "/home/intelligentrobotics/rokon_clone/October/src/app/msg/twoBall.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/app
+)
 
 ### Generating Services
 
@@ -77,6 +89,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS app_generate_messages_lisp)
 ### Generating Messages
 _generate_msg_py(app
   "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/app
+)
+_generate_msg_py(app
+  "/home/intelligentrobotics/rokon_clone/October/src/app/msg/twoBall.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/app

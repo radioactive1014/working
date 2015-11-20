@@ -10,4 +10,6 @@
     (:file "_package_for_double" :depends-on ("_package"))
     (:file "from_robot" :depends-on ("_package_from_robot"))
     (:file "_package_from_robot" :depends-on ("_package"))
+    (:file "twoBall" :depends-on ("_package_twoBall"))
+    (:file "_package_twoBall" :depends-on ("_package"))
   ))

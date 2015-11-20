@@ -488,6 +488,19 @@ pbp/fast:
 .PHONY : pbp/fast
 
 #=============================================================================
+# Target rules for targets named pbp_cross
+
+# Build rule for target.
+pbp_cross: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pbp_cross
+.PHONY : pbp_cross
+
+# fast build rule for target.
+pbp_cross/fast:
+	$(MAKE) -f app/CMakeFiles/pbp_cross.dir/build.make app/CMakeFiles/pbp_cross.dir/build
+.PHONY : pbp_cross/fast
+
+#=============================================================================
 # Target rules for targets named pbp_double
 
 # Build rule for target.
@@ -917,6 +930,19 @@ fix_corner/fast:
 .PHONY : fix_corner/fast
 
 #=============================================================================
+# Target rules for targets named fix_cross
+
+# Build rule for target.
+fix_cross: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fix_cross
+.PHONY : fix_cross
+
+# fast build rule for target.
+fix_cross/fast:
+	$(MAKE) -f camera/CMakeFiles/fix_cross.dir/build.make camera/CMakeFiles/fix_cross.dir/build
+.PHONY : fix_cross/fast
+
+#=============================================================================
 # Target rules for targets named fix_double
 
 # Build rule for target.
@@ -1006,6 +1032,19 @@ fresh_cone: cmake_check_build_system
 fresh_cone/fast:
 	$(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/build
 .PHONY : fresh_cone/fast
+
+#=============================================================================
+# Target rules for targets named fresh_cross
+
+# Build rule for target.
+fresh_cross: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fresh_cross
+.PHONY : fresh_cross
+
+# fast build rule for target.
+fresh_cross/fast:
+	$(MAKE) -f unit/CMakeFiles/fresh_cross.dir/build.make unit/CMakeFiles/fresh_cross.dir/build
+.PHONY : fresh_cross/fast
 
 #=============================================================================
 # Target rules for targets named fresh_double
@@ -1449,6 +1488,7 @@ help:
 	@echo "... new"
 	@echo "... new_pid"
 	@echo "... pbp"
+	@echo "... pbp_cross"
 	@echo "... pbp_double"
 	@echo "... pbp_feedback"
 	@echo "... pbp_sim_test"
@@ -1482,6 +1522,7 @@ help:
 	@echo "... fancy_cam"
 	@echo "... fix"
 	@echo "... fix_corner"
+	@echo "... fix_cross"
 	@echo "... fix_double"
 	@echo "... fix_test"
 	@echo "... _catkin_empty_exported_target"
@@ -1489,6 +1530,7 @@ help:
 	@echo "... boost_first"
 	@echo "... fresh"
 	@echo "... fresh_cone"
+	@echo "... fresh_cross"
 	@echo "... fresh_double"
 	@echo "... fresh_double_ros"
 	@echo "... fresh_feedback"

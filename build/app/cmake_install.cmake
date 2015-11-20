@@ -33,7 +33,10 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/app/msg" TYPE FILE FILES "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/app/msg" TYPE FILE FILES
+    "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg"
+    "/home/intelligentrobotics/rokon_clone/October/src/app/msg/twoBall.msg"
+    )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

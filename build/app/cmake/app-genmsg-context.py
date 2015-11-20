@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg"
+messages_str = "/home/intelligentrobotics/rokon_clone/October/src/app/msg/cam.msg;/home/intelligentrobotics/rokon_clone/October/src/app/msg/twoBall.msg"
 services_str = ""
 pkg_name = "app"
 dependencies_str = "std_msgs"

@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "unit: 0 messages, 3 services")
+message(STATUS "unit: 0 messages, 4 services")
 
 set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/groovy/share/std_msgs/cmake/../msg")
 
@@ -27,6 +27,12 @@ _generate_srv_cpp(unit
 )
 _generate_srv_cpp(unit
   "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/from_robot.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/unit
+)
+_generate_srv_cpp(unit
+  "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/twoBall.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/unit
@@ -73,6 +79,12 @@ _generate_srv_lisp(unit
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/unit
 )
 _generate_srv_lisp(unit
+  "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/twoBall.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/unit
+)
+_generate_srv_lisp(unit
   "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/for_double.srv"
   "${MSG_I_FLAGS}"
   ""
@@ -109,6 +121,12 @@ _generate_srv_py(unit
 )
 _generate_srv_py(unit
   "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/from_robot.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/unit
+)
+_generate_srv_py(unit
+  "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/twoBall.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/unit

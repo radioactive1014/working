@@ -262,6 +262,20 @@ fix_corner/fast:
 .PHONY : fix_corner/fast
 
 # Convenience name for target.
+camera/CMakeFiles/fix_cross.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_cross.dir/rule
+.PHONY : camera/CMakeFiles/fix_cross.dir/rule
+
+# Convenience name for target.
+fix_cross: camera/CMakeFiles/fix_cross.dir/rule
+.PHONY : fix_cross
+
+# fast build rule for target.
+fix_cross/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_cross.dir/build.make camera/CMakeFiles/fix_cross.dir/build
+.PHONY : fix_cross/fast
+
+# Convenience name for target.
 camera/CMakeFiles/fix_double.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 camera/CMakeFiles/fix_double.dir/rule
 .PHONY : camera/CMakeFiles/fix_double.dir/rule
@@ -457,6 +471,30 @@ src/fix_corner.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_corner.dir/build.make camera/CMakeFiles/fix_corner.dir/src/fix_corner.cpp.s
 .PHONY : src/fix_corner.cpp.s
 
+src/fix_cross.o: src/fix_cross.cpp.o
+.PHONY : src/fix_cross.o
+
+# target to build an object file
+src/fix_cross.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_cross.dir/build.make camera/CMakeFiles/fix_cross.dir/src/fix_cross.cpp.o
+.PHONY : src/fix_cross.cpp.o
+
+src/fix_cross.i: src/fix_cross.cpp.i
+.PHONY : src/fix_cross.i
+
+# target to preprocess a source file
+src/fix_cross.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_cross.dir/build.make camera/CMakeFiles/fix_cross.dir/src/fix_cross.cpp.i
+.PHONY : src/fix_cross.cpp.i
+
+src/fix_cross.s: src/fix_cross.cpp.s
+.PHONY : src/fix_cross.s
+
+# target to generate assembly for a file
+src/fix_cross.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f camera/CMakeFiles/fix_cross.dir/build.make camera/CMakeFiles/fix_cross.dir/src/fix_cross.cpp.s
+.PHONY : src/fix_cross.cpp.s
+
 src/fix_double.o: src/fix_double.cpp.o
 .PHONY : src/fix_double.o
 
@@ -544,6 +582,7 @@ help:
 	@echo "... fancy_cam"
 	@echo "... fix"
 	@echo "... fix_corner"
+	@echo "... fix_cross"
 	@echo "... fix_double"
 	@echo "... fix_test"
 	@echo "... install"
@@ -573,6 +612,9 @@ help:
 	@echo "... src/fix_corner.o"
 	@echo "... src/fix_corner.i"
 	@echo "... src/fix_corner.s"
+	@echo "... src/fix_cross.o"
+	@echo "... src/fix_cross.i"
+	@echo "... src/fix_cross.s"
 	@echo "... src/fix_double.o"
 	@echo "... src/fix_double.i"
 	@echo "... src/fix_double.s"

@@ -37,6 +37,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/from_robot.srv"
     "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/for_double.srv"
     "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/for_feedback.srv"
+    "/home/intelligentrobotics/rokon_clone/October/src/unit/srv/twoBall.srv"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

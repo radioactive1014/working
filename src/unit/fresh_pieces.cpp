@@ -40,6 +40,8 @@ float h_main = 0.12f ;
 float h_sphere= 0.08f;
 float h_support = 0.14f ;
 float stage_dim[3]= {0.46f, 0.4f, 0.052f };
+std::ofstream work;
+
 
 
 const int nSamples=65; //working 65
@@ -55,7 +57,7 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=1;
+float C=1.00;
 float controlStd[2]={0.75f*C,0.75f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
@@ -177,7 +179,8 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.0;
+	float alpha = 0.01;
+	float beta = 0.01;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -187,7 +190,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	vel_robotY = (current_posY-last_posY)/timeStep;
 
 	vel_estx = alpha*last_vel_estx +(1-alpha)*vel_robotX; 
-	vel_esty = alpha*last_vel_esty +(1-alpha)*vel_robotY; 
+	vel_esty = beta*last_vel_esty +(1-beta)*vel_robotY; 
 
 
 	vel =odeBodyGetLinearVel(ball.body);
@@ -259,7 +262,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.1-pos[0])*13.5f)+squared((pos[1])*13.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.1-pos[0])*6.5f) + squared(vel_inside[1]*pos[1]*6.5f) ;
+			float cost=squared((0.1-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.1-pos[0])*6.5f) + squared(vel_inside[1]*pos[1]*6.5f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
@@ -311,6 +314,10 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	const dReal *pos1 = odeBodyGetPosition(ball.body);
 	float angle1=odeJointGetHingeAngle(mainLink.joint);
+
+		const dReal *vel_sim;
+
+	vel_sim =odeBodyGetLinearVel(ball.body);
 	
 	//sending the control for real robot
 	res.commandx = control[0];
@@ -324,9 +331,12 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	last_posX = pos_robotx;
 	last_posY = pos_roboty; 
 	last_vel_estx = vel_estx;
+
+	work << std::setw(10)<<pos1[0] <<std::setw(10)<<pos1[0] << std::setw(10)<< pos_robotx  << std::setw(10)<< pos_roboty<< std::setw(10)<<vel_estx  <<std::setw(10)<<vel_esty << std::setw(10)<<vel_sim[0] <<std::setw(10)<<vel_sim[1]<< std::setw(10)<<ang_robot_a5  <<std::setw(10)<<ang_robot_a4<<std::setw(10)<<angle  <<std::setw(15)<< angle1<<std::endl ;
+	
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
-	if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
+	//if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
 	/*
 	int j = 0;
 	loop : std::cin >> j;
@@ -356,7 +366,7 @@ int main(int argc, char **argv)
 	odeRandSetSeed(0);
 	odeSetContactSoftCFM(0);
 	odeWorldSetGravity(0, 0, -9.81f);
-
+	work.open ("fresh_working.txt");
 	//creating stage
 	stage.body = odeBodyCreate();
 	stage.geom = odeCreateBox(0.46f, 0.38f, 0.05f);

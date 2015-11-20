@@ -81,7 +81,7 @@ rosbuild_add_boost_directories()
    DIRECTORY msg
    FILES
    cam.msg
- 
+   twoBall.msg	
  )
 
 ## Generate services in the 'srv' folder
@@ -165,6 +165,7 @@ rosbuild_add_executable(pbp_double src/pbp_double.cpp)
 rosbuild_add_executable(pbp_test src/pbp_test.cpp)
 rosbuild_add_executable(pbp_sim_test src/pbp_sim_test.cpp)
 rosbuild_add_executable(pbp_feedback src/pbp_feedback.cpp)
+rosbuild_add_executable(pbp_cross src/pbp_cross.cpp)
 
 
 
@@ -260,6 +261,10 @@ target_link_libraries(pbp_sim_test
 target_link_libraries(pbp_feedback
   ${catkin_LIBRARIES}
  )
+
+target_link_libraries(pbp_cross
+ ${catkin_LIBRARIES}
+)
 
 #target_link_libraries(pub
  # ${catkin_LIBRARIES}

@@ -22,10 +22,12 @@
 /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fancy_cam.dir
 /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix.dir
 /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix_corner.dir
+/home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix_cross.dir
 /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix_double.dir
 /home/intelligentrobotics/rokon_clone/October/build/camera/CMakeFiles/fix_test.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_cone.dir
+/home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_cross.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_double.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_double_ros.dir
 /home/intelligentrobotics/rokon_clone/October/build/unit/CMakeFiles/fresh_feedback.dir
@@ -48,6 +50,7 @@
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/new.dir
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/new_pid.dir
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/pbp.dir
+/home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/pbp_cross.dir
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/pbp_double.dir
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/pbp_feedback.dir
 /home/intelligentrobotics/rokon_clone/October/build/app/CMakeFiles/pbp_sim_test.dir

@@ -430,6 +430,20 @@ pbp/fast:
 .PHONY : pbp/fast
 
 # Convenience name for target.
+app/CMakeFiles/pbp_cross.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_cross.dir/rule
+.PHONY : app/CMakeFiles/pbp_cross.dir/rule
+
+# Convenience name for target.
+pbp_cross: app/CMakeFiles/pbp_cross.dir/rule
+.PHONY : pbp_cross
+
+# fast build rule for target.
+pbp_cross/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_cross.dir/build.make app/CMakeFiles/pbp_cross.dir/build
+.PHONY : pbp_cross/fast
+
+# Convenience name for target.
 app/CMakeFiles/pbp_double.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 app/CMakeFiles/pbp_double.dir/rule
 .PHONY : app/CMakeFiles/pbp_double.dir/rule
@@ -971,6 +985,30 @@ src/new_pid.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/new_pid.dir/build.make app/CMakeFiles/new_pid.dir/src/new_pid.cpp.s
 .PHONY : src/new_pid.cpp.s
 
+src/pbp_cross.o: src/pbp_cross.cpp.o
+.PHONY : src/pbp_cross.o
+
+# target to build an object file
+src/pbp_cross.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_cross.dir/build.make app/CMakeFiles/pbp_cross.dir/src/pbp_cross.cpp.o
+.PHONY : src/pbp_cross.cpp.o
+
+src/pbp_cross.i: src/pbp_cross.cpp.i
+.PHONY : src/pbp_cross.i
+
+# target to preprocess a source file
+src/pbp_cross.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_cross.dir/build.make app/CMakeFiles/pbp_cross.dir/src/pbp_cross.cpp.i
+.PHONY : src/pbp_cross.cpp.i
+
+src/pbp_cross.s: src/pbp_cross.cpp.s
+.PHONY : src/pbp_cross.s
+
+# target to generate assembly for a file
+src/pbp_cross.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f app/CMakeFiles/pbp_cross.dir/build.make app/CMakeFiles/pbp_cross.dir/src/pbp_cross.cpp.s
+.PHONY : src/pbp_cross.cpp.s
+
 src/pbp_double.o: src/pbp_double.cpp.o
 .PHONY : src/pbp_double.o
 
@@ -1290,6 +1328,7 @@ help:
 	@echo "... new"
 	@echo "... new_pid"
 	@echo "... pbp"
+	@echo "... pbp_cross"
 	@echo "... pbp_double"
 	@echo "... pbp_feedback"
 	@echo "... pbp_sim_test"
@@ -1341,6 +1380,9 @@ help:
 	@echo "... src/new_pid.o"
 	@echo "... src/new_pid.i"
 	@echo "... src/new_pid.s"
+	@echo "... src/pbp_cross.o"
+	@echo "... src/pbp_cross.i"
+	@echo "... src/pbp_cross.s"
 	@echo "... src/pbp_double.o"
 	@echo "... src/pbp_double.i"
 	@echo "... src/pbp_double.s"

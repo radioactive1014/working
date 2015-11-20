@@ -192,6 +192,20 @@ fresh_cone/fast:
 .PHONY : fresh_cone/fast
 
 # Convenience name for target.
+unit/CMakeFiles/fresh_cross.dir/rule:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_cross.dir/rule
+.PHONY : unit/CMakeFiles/fresh_cross.dir/rule
+
+# Convenience name for target.
+fresh_cross: unit/CMakeFiles/fresh_cross.dir/rule
+.PHONY : fresh_cross
+
+# fast build rule for target.
+fresh_cross/fast:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cross.dir/build.make unit/CMakeFiles/fresh_cross.dir/build
+.PHONY : fresh_cross/fast
+
+# Convenience name for target.
 unit/CMakeFiles/fresh_double.dir/rule:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f CMakeFiles/Makefile2 unit/CMakeFiles/fresh_double.dir/rule
 .PHONY : unit/CMakeFiles/fresh_double.dir/rule
@@ -658,6 +672,30 @@ fresh_cone.s: fresh_cone.cpp.s
 fresh_cone.cpp.s:
 	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cone.dir/build.make unit/CMakeFiles/fresh_cone.dir/fresh_cone.cpp.s
 .PHONY : fresh_cone.cpp.s
+
+fresh_cross.o: fresh_cross.cpp.o
+.PHONY : fresh_cross.o
+
+# target to build an object file
+fresh_cross.cpp.o:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cross.dir/build.make unit/CMakeFiles/fresh_cross.dir/fresh_cross.cpp.o
+.PHONY : fresh_cross.cpp.o
+
+fresh_cross.i: fresh_cross.cpp.i
+.PHONY : fresh_cross.i
+
+# target to preprocess a source file
+fresh_cross.cpp.i:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cross.dir/build.make unit/CMakeFiles/fresh_cross.dir/fresh_cross.cpp.i
+.PHONY : fresh_cross.cpp.i
+
+fresh_cross.s: fresh_cross.cpp.s
+.PHONY : fresh_cross.s
+
+# target to generate assembly for a file
+fresh_cross.cpp.s:
+	cd /home/intelligentrobotics/rokon_clone/October/build && $(MAKE) -f unit/CMakeFiles/fresh_cross.dir/build.make unit/CMakeFiles/fresh_cross.dir/fresh_cross.cpp.s
+.PHONY : fresh_cross.cpp.s
 
 fresh_double.o: fresh_double.cpp.o
 .PHONY : fresh_double.o
@@ -1245,6 +1283,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... fresh"
 	@echo "... fresh_cone"
+	@echo "... fresh_cross"
 	@echo "... fresh_double"
 	@echo "... fresh_double_ros"
 	@echo "... fresh_feedback"
@@ -1287,6 +1326,9 @@ help:
 	@echo "... fresh_cone.o"
 	@echo "... fresh_cone.i"
 	@echo "... fresh_cone.s"
+	@echo "... fresh_cross.o"
+	@echo "... fresh_cross.i"
+	@echo "... fresh_cross.s"
 	@echo "... fresh_double.o"
 	@echo "... fresh_double.i"
 	@echo "... fresh_double.s"

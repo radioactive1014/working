@@ -123,6 +123,7 @@ include_directories(
  add_executable(fix_double src/fix_double.cpp)
  add_executable(fix_test src/fix_test.cpp)
  add_executable(fix_corner src/fix_corner.cpp)
+ add_executable(fix_cross src/fix_cross.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -163,6 +164,10 @@ include_directories(
  target_link_libraries(fix_corner
   ${catkin_LIBRARIES}
  )
+
+ target_link_libraries(fix_cross
+  ${catkin_LIBRARIES}
+ )
    target_link_libraries(camera ${OpenCV_LIBRARIES})
  target_link_libraries(color ${OpenCV_LIBRARIES})
  target_link_libraries(check ${OpenCV_LIBRARIES})
@@ -172,6 +177,7 @@ include_directories(
  target_link_libraries(fix_double ${OpenCV_LIBRARIES})
  target_link_libraries(fix_test ${OpenCV_LIBRARIES})
  target_link_libraries(fix_corner ${OpenCV_LIBRARIES})
+ #target_link_libraries(fix_cross ${OpenCV_LIBRARIES})
 
 
 #############

@@ -24,6 +24,7 @@ add_service_files(
 	from_robot.srv
 	for_double.srv
 	for_feedback.srv
+	twoBall.srv
 )
 
 generate_messages(DEPENDENCIES std_msgs)
@@ -75,6 +76,7 @@ add_executable(fresh_maze fresh_maze.cpp )
 
 add_executable(fresh_maze_rel fresh_maze_rel.cpp )
 add_executable(fresh_pieces fresh_pieces.cpp )
+add_executable(fresh_cross fresh_cross.cpp )
 #add_executable(unit_corrected unit_double_corrected.cpp )
 
 
@@ -107,5 +109,6 @@ target_link_libraries(fresh_cone ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_maze ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_maze_rel ${roscpp_LIBRARIES} utils ode main)
 target_link_libraries(fresh_pieces ${roscpp_LIBRARIES} utils ode main)
+target_link_libraries(fresh_cross ${roscpp_LIBRARIES} utils ode main)
 
 
