@@ -262,7 +262,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.1-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.1-pos[0])*6.5f) + squared(vel_inside[1]*pos[1]*6.5f) ;
+			float cost=squared((0.1-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.1-pos[0])*2.5f) + squared(vel_inside[1]*pos[1]*2.5f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
@@ -332,7 +332,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	last_posY = pos_roboty; 
 	last_vel_estx = vel_estx;
 
-	work << std::setw(10)<<pos1[0] <<std::setw(10)<<pos1[0] << std::setw(10)<< pos_robotx  << std::setw(10)<< pos_roboty<< std::setw(10)<<vel_estx  <<std::setw(10)<<vel_esty << std::setw(10)<<vel_sim[0] <<std::setw(10)<<vel_sim[1]<< std::setw(10)<<ang_robot_a5  <<std::setw(10)<<ang_robot_a4<<std::setw(10)<<angle  <<std::setw(15)<< angle1<<std::endl ;
+	work << std::setw(10)<<pos1[0] <<std::setw(10)<<pos1[0] << std::setw(10)<< pos_robotx  << std::setw(10)<< pos_roboty<< std::setw(10)<<vel_estx  <<std::setw(10)<<vel_esty << std::setw(10)<<vel_sim[0] <<std::setw(10)<<vel_sim[1]<< std::setw(10)<<ang_robot_a5  <<std::setw(10)<<ang_robot_a4<<std::setw(10)<<angle  <<std::setw(15)<< angle1<<std::setw(15)<< cost<<std::endl ;
 	
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);

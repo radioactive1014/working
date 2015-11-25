@@ -46,7 +46,7 @@ const int nSamples=65; //working 65
 //physics simulation time step
 float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=15; // 15 working
+int nTimeSteps=20; // 15 working
 const int nStateDimensions=4;
 const int nControlDimensions=2;
 float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
@@ -55,8 +55,8 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=1;
-float controlStd[2]={0.65f*C,0.65f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float C=1.00;
+float controlStd[2]={0.75f*C,0.75f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -80,6 +80,7 @@ float vel_estx;
 float vel_esty;
 float last_vel_estx=0.0;
 float last_vel_esty=0.0;
+std::ofstream obs_data;
 
 
 float current_posX, current_posY;
@@ -177,7 +178,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.0;
+	float alpha = 0.00;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -259,14 +260,14 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.08-pos[0])*14.5f)+squared((pos[1])*14.5f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.08-pos[0])*1.5f) + squared(vel_inside[1]*pos[1]*1.5f) ;
+			float cost=squared((0.08-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*7.5f)+squared(angle_second*6.5f)+squared(vel_inside[0]*(0.08-pos[0])*8.6f) + squared(vel_inside[1]*(pos[1])*2.2f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			//if (-0.04<pos[1] && pos[1] <0.04 && -0.06<pos[0] && pos[0]<0.04 )
-			//{
-			//cost = cost+1000;
-			//}
+			if (-0.05<pos[1] && pos[1] <0.05 && -0.04<pos[0] && pos[0]<0.03 )
+			{
+			cost = cost+100;
+			}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
@@ -311,6 +312,8 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	const dReal *pos1 = odeBodyGetPosition(ball.body);
 	float angle1=odeJointGetHingeAngle(mainLink.joint);
+	const dReal *vel_sim;
+	vel_sim =odeBodyGetLinearVel(ball.body);
 	
 	//sending the control for real robot
 	res.commandx = control[0];
@@ -324,9 +327,12 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	last_posX = pos_robotx;
 	last_posY = pos_roboty; 
 	last_vel_estx = vel_estx;
+	last_vel_esty = vel_esty;
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
-	if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
+	
+	obs_data<< std::setw(15)<<pos1[0] <<std::setw(15)<<pos1[1] << std::setw(15)<< pos_robotx  << std::setw(15)<< pos_roboty<< std::setw(15)<<vel_estx  <<std::setw(15)<<vel_esty << std::setw(15)<<vel_sim[0] <<std::setw(15)<<vel_sim[1]<< std::setw(15)<<ang_robot_a5  <<std::setw(15)<<ang_robot_a4<<std::setw(15)<<angle  <<std::setw(15)<< angle1<<std::setw(15)<< cost<<std::endl ;
+	//if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
 	/*
 	int j = 0;
 	loop : std::cin >> j;
@@ -349,6 +355,7 @@ int main(int argc, char **argv)
 
 	chatter_pub = n.advertise<std_msgs::Float32>("from_ode", 1);
 	service = n.advertiseService("for_feedback", robot);
+	obs_data.open ("fresh_obs_cost_again-22.txt");
 
 
 	initOde(nSamples+1);
@@ -421,7 +428,7 @@ int main(int argc, char **argv)
 	printf("ball body id %f, geom id %f \n", ball.body, ball.geom);
 
 
-	/*
+/*
 	//creating Obstacle
 	obs.radius = 0.03f;
 	obs.body = odeBodyCreate();
@@ -430,22 +437,22 @@ int main(int argc, char **argv)
 	odeBodySetPosition(obs.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs.geom,obs.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
-	*/
+*/	
 
 
-
+/*
 	//creating Obstacle
 	obs.radius = 0.02f;
 
 
 	obs.body = odeBodyCreate();
-	obs.geom = odeCreateBox( 0.07,0.04,0.02); 
-	odeMassSetBoxTotal(obs.body, 0.05,0.07,0.04,0.02); 
+	obs.geom = odeCreateBox( 0.031,0.062,0.02); 
+	odeMassSetBoxTotal(obs.body, 0.002,0.031,0.062,0.02); 
 	odeBodySetPosition(obs.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs.geom,obs.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
 
-
+*/
 	// Main link and World
 	mainLink.joint =odeJointCreateHinge();
 	odeJointAttach(mainLink.joint,mainLink.body,0);
@@ -474,11 +481,12 @@ int main(int argc, char **argv)
 	odeJointAttach(stage.joint,stage.body,support.body);
 	odeJointSetFixed(stage.joint);
 
+	/*
 	//Stage and Obstacle
 	obs.joint =odeJointCreateFixed();
 	odeJointAttach(obs.joint,stage.body,obs.body);
 	odeJointSetFixed(obs.joint);
-
+*/
 
 	
 
