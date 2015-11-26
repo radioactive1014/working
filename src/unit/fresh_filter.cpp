@@ -42,12 +42,12 @@ float h_support = 0.14f ;
 float stage_dim[3]= {0.46f, 0.4f, 0.052f };
 
 
-const int nSamples=65; //working 65
+const int nSamples=75; //working 65
 //physics simulation time step
 float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=20; // 15 working
-const int nStateDimensions=4;
+int nTimeSteps=15; // 15 working
+const int nStateDimensions=6;
 const int nControlDimensions=2;
 float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
 float maxControl[2]={0.8,0.8}; //upper sampling bound 0.8 both working
@@ -56,7 +56,7 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 float C=1.00;
-float controlStd[2]={0.75f*C,0.75f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlStd[2]={0.620f*C,0.620f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -178,7 +178,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.00;
+	float alpha = 0.1;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -222,7 +222,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	
 	if(debug) printf("position befor simulate forward  x%f  y %f \n", pos[0],pos[1]);
 
-	float stateVector[4]={pos[0],pos[1], angle, angle_second};
+	float stateVector[6]={pos[0],pos[1], angle, angle_second,vel_estx,vel_esty};
 	pbp.startIteration(true,stateVector);
 
 	//simulate forward
@@ -260,18 +260,18 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.08-pos[0])*12.5f)+squared((pos[1])*12.5f)+squared(angle*7.5f)+squared(angle_second*6.5f)+squared(vel_inside[0]*(0.08-pos[0])*8.6f) + squared(vel_inside[1]*(pos[1])*2.2f) ;
+			float cost=squared((0.12-pos[0])*14.5f)+squared((pos[1])*16.5f)+squared(angle*9.5f)+squared(angle_second*8.1f)+squared(vel_inside[0]*(0.12-pos[0])*9.5f) + squared(vel_inside[1]*(pos[1])*0.15f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			if (-0.05<pos[1] && pos[1] <0.05 && -0.04<pos[0] && pos[0]<0.03 )
+			if (-0.045<pos[1] && pos[1] <0.045 && -0.04<pos[0] && pos[0]<-0.01 )
 			{
-			cost = cost+100;
+			cost = cost+200;
 			}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
-			float stateVector[4]={pos[0],pos[1], angle, angle_second};
+			float stateVector[6]={pos[0],pos[1], angle, angle_second,vel_inside[0],vel_inside[1]};
 			pbp.updateResults(i,control,stateVector,cost);
 		}
 		/*
@@ -320,10 +320,6 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
     res.commandy = control[1];
 
 
-	ros::Time end = ros::Time::now();
-	double dt = (begin - end).toSec();
-	if (debug) printf(" dt %f\n", dt );
-
 	last_posX = pos_robotx;
 	last_posY = pos_roboty; 
 	last_vel_estx = vel_estx;
@@ -331,7 +327,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
 	
-	obs_data<< std::setw(15)<<pos1[0] <<std::setw(15)<<pos1[1] << std::setw(15)<< pos_robotx  << std::setw(15)<< pos_roboty<< std::setw(15)<<vel_estx  <<std::setw(15)<<vel_esty << std::setw(15)<<vel_sim[0] <<std::setw(15)<<vel_sim[1]<< std::setw(15)<<ang_robot_a5  <<std::setw(15)<<ang_robot_a4<<std::setw(15)<<angle  <<std::setw(15)<< angle1<<std::setw(15)<< cost<<std::endl ;
+	obs_data<< std::setw(15)<<pos1[0] <<std::setw(15)<<pos1[1] << std::setw(15)<< pos_robotx  << std::setw(15)<< pos_roboty<< std::setw(15)<<vel_estx  <<std::setw(15)<<vel_esty << std::setw(15)<<vel_sim[0] <<std::setw(15)<<vel_sim[1]<< std::setw(15)<<ang_robot_a5  <<std::setw(15)<<ang_robot_a4<<std::setw(15)<< cost<<std::setw(15)<< control[0]<<std::setw(15)<< control[1]<<std::endl ;
 	//if (final_debug) printf("FINAL Posx %1.3f,posy = %f angle %1.3f, cost=%1.3f, control %f \n",pos1[0],pos1[1],angle1*180/3.1416,cost,control[0]);
 	/*
 	int j = 0;
@@ -339,6 +335,12 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	if ( j != 1)
 	goto loop;
 	*/
+
+
+
+	ros::Time end = ros::Time::now();
+	double dt = (begin - end).toSec();
+	// printf(" dt %f\n", dt );
 }
 
 
@@ -355,7 +357,7 @@ int main(int argc, char **argv)
 
 	chatter_pub = n.advertise<std_msgs::Float32>("from_ode", 1);
 	service = n.advertiseService("for_feedback", robot);
-	obs_data.open ("fresh_obs_cost_again-22.txt");
+	obs_data.open ("fresh_obs_cost_redone_15-1.txt");
 
 
 	initOde(nSamples+1);

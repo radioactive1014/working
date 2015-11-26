@@ -179,8 +179,8 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.01;
-	float beta = 0.01;
+	float alpha = 0.00;
+	float beta = 0.00;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -262,13 +262,13 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.1-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*9.5)+squared(vel_inside[0]*(0.1-pos[0])*2.5f) + squared(vel_inside[1]*pos[1]*2.5f) ;
+			float cost=squared((0.12-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*8.1)+squared(vel_inside[0]*(0.12-pos[0])*9.5f) + squared(vel_inside[1]*pos[1]*0.15f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
 			if (-0.06<pos[1] && pos[1] <0.06 && -0.06<pos[0] && pos[0]<0.06 )
 			{
-			cost = cost+500;
+			cost = cost+200;
 			}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
@@ -314,6 +314,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	const dReal *pos1 = odeBodyGetPosition(ball.body);
 	float angle1=odeJointGetHingeAngle(mainLink.joint);
+		float angle2=odeJointGetHingeAngle(LinkBall.joint);
 
 		const dReal *vel_sim;
 
@@ -332,7 +333,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	last_posY = pos_roboty; 
 	last_vel_estx = vel_estx;
 
-	work << std::setw(10)<<pos1[0] <<std::setw(10)<<pos1[0] << std::setw(10)<< pos_robotx  << std::setw(10)<< pos_roboty<< std::setw(10)<<vel_estx  <<std::setw(10)<<vel_esty << std::setw(10)<<vel_sim[0] <<std::setw(10)<<vel_sim[1]<< std::setw(10)<<ang_robot_a5  <<std::setw(10)<<ang_robot_a4<<std::setw(10)<<angle  <<std::setw(15)<< angle1<<std::setw(15)<< cost<<std::endl ;
+	work << std::setw(15)<<pos1[0] <<std::setw(15)<<pos1[1] << std::setw(15)<< pos_robotx  << std::setw(15)<< pos_roboty<< std::setw(15)<<vel_estx  <<std::setw(15)<<vel_esty << std::setw(15)<<vel_sim[0] <<std::setw(15)<<vel_sim[1]<< std::setw(15)<<ang_robot_a5  <<std::setw(15)<<ang_robot_a4<<std::setw(15)<< cost<<std::setw(15)<< control[0]<<std::setw(15)<< control[1]<<std::setw(15)<< angle1 <<std::setw(15)<< angle2<<std::endl ;
 	
 	
 	//printf("rel_vec %f and stage %f\n", re_vec, stage_pos[0]);
@@ -366,7 +367,7 @@ int main(int argc, char **argv)
 	odeRandSetSeed(0);
 	odeSetContactSoftCFM(0);
 	odeWorldSetGravity(0, 0, -9.81f);
-	work.open ("fresh_working.txt");
+	work.open ("fresh_working-2.txt");
 	//creating stage
 	stage.body = odeBodyCreate();
 	stage.geom = odeCreateBox(0.46f, 0.38f, 0.05f);

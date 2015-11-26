@@ -39,24 +39,24 @@ int UpperH = 180;
 int UpperS = 196;
 int UpperV = 170;
 
-int iLowH = 114;
+int iLowH = 0;
 int iHighH = 179;
 
-int iLowS = 88; 
+int iLowS = 195; 
 int iHighS = 255;
 
-int iLowV = 142;
+int iLowV = 65;
 int iHighV = 255;
 
-int posX;
-int posY; 
+double posX;
+double posY; 
 
 
-float newX ;
-float newY;
+double newX ;
+double newY;
 
-int iLastX = -1; 
-int iLastY = -1;
+double iLastX = -1; 
+double iLastY = -1;
 
 
 void onMouse( int event, int x, int y, int, void* )
@@ -79,7 +79,7 @@ void onMouse( int event, int x, int y, int, void* )
 
         newY = (pt.x - ref_minX) * per_pixelX;
         newX = (pt.y- ref_minY) * per_pixelY ;
-        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-20)/100); 
+        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-21)/100); 
 
   }
 
@@ -153,27 +153,29 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
      	iLastY = posY;
     }
 
-  	//printf("x: %d , y: %d \n", posX, posY);
+  	//printf("x: %f , y: %f \n", posX, posY);
 
 
-    int ref_minX = 113 ;
-    int ref_maxX = 424 ;
-    int ref_minY = 65 ;
-    int ref_maxY = 440 ;
+    double ref_minX = 113 ;
+    double ref_maxX = 424 ;
+    double ref_minY = 65 ;
+    double ref_maxY = 440 ;
 
   
    if ( posX > ref_minX && posX< ref_maxX && posY > ref_minY && posY <ref_maxY  )
       {
 
-        int diffX = (ref_maxX - ref_minX);
-        int diffY = (ref_maxY - ref_minY);
-        float per_pixelX = 38.0/diffX;
-        float per_pixelY = 46.0/diffY;
-
+        double diffX = (ref_maxX - ref_minX);
+        double diffY = (ref_maxY - ref_minY);
+        double per_pixelX = 38.0/diffX;
+        double per_pixelY = 46.0/diffY;
+       // printf(" per_pixelX %f    per_pixelY %f \n",per_pixelX,per_pixelY );
 
         newY = (posX - ref_minX) * per_pixelX;
-        newX = (posY- ref_minY) * per_pixelY ;
-        printf("x= %f,y=%f\n", (newX-23)/100,(newY-20)/100); 
+        newX = (posY- ref_minY) * per_pixelX ;
+        //printf("x= %f,y=%f\n", newX,newY); 
+
+        printf("x= %f,y=%f\n", (newX-23)/100,(newY-21)/100); 
   
       }
 
@@ -364,7 +366,7 @@ int main(int argc, char **argv)
     * to ros::shutdown() or a Ctrl-C.
     */
  	// ros::spin();
-	loop_rate.sleep();
+	//loop_rate.sleep();
     
   	}
     //ROS_INFO is the replacement for printf/cout.
