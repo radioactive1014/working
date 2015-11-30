@@ -51,7 +51,7 @@ vector<float> red_cornerY ;
 vector<float> blue_cornerY ;
 vector<float> green_cornerY ;
 
-float new1X,new1Y,new2X,new2Y;
+double new1X,new1Y,new2X,new2Y;
 
 class colored 
 
@@ -69,13 +69,13 @@ class colored
 	int iHighV;
 	const char* color;
 	const char* window;
-	int posX;
-	int posY;
+	double posX;
+	double posY;
 	
-  	int iLastX ; 
- 	int iLastY ; 
-	int lastx;
-	int lasty;
+  	double iLastX ; 
+ 	double iLastY ; 
+	double lastx;
+	double lasty;
 	cv::Mat imgThresholded;
 	
 
@@ -105,7 +105,7 @@ void trackbar( colored item,  int lH, int hH, int lS, int hS, int lV, int hV)
 }
 */
 
-vector<int>  threshold(colored item, Mat imgHSV, Mat imgLines )
+vector<double>  threshold(colored item, Mat imgHSV, Mat imgLines )
 
 {
 	
@@ -115,7 +115,7 @@ vector<int>  threshold(colored item, Mat imgHSV, Mat imgLines )
 	item.iLastX = -1; 
  	item.iLastY = -1;
 	
-	vector<int>  result(2);
+	vector<double>  result(2);
 
 	cv::inRange(imgHSV, cv::Scalar(item.iLowH, item.iLowS, item.iLowV), cv::Scalar(item.iHighH, item.iHighS, item.iHighV), item.imgThresholded); //Threshold the image
 
@@ -157,7 +157,7 @@ vector<int>  threshold(colored item, Mat imgHSV, Mat imgLines )
 
 	
 	cv::imshow(item.window, item.imgThresholded); //show the thresholded image
-cv::imshow(item.window, item.imgThresholded); //show the thresholded image
+	cv::imshow(item.window, item.imgThresholded); //show the thresholded image
 	cv::waitKey(1);
 
 	//int result[2]= {item.posX,item.posY} ;
@@ -196,7 +196,7 @@ int callback(const sensor_msgs::ImageConstPtr& original_image)
 	cv::cvtColor(cv_ptr->image, imgHSV, CV_BGR2HSV);
 	
 	//threshold(green, imgHSV,imgLines);
-	vector<int> result_ball1(2), result_ball2(2);
+	vector<double> result_ball1(2), result_ball2(2);
 	result_ball1= threshold(ball1, imgHSV,imgLines);
 	result_ball2=threshold(ball2, imgHSV,imgLines);
 	
@@ -220,9 +220,9 @@ int callback(const sensor_msgs::ImageConstPtr& original_image)
 	int maxY = 440;
 
 	int diffX = (maxX - minX);
-        int diffY = (maxY - minY);
-        float per_pixelX = 38.0/diffX;
-        float per_pixelY = 46.0/diffY;
+    int diffY = (maxY - minY);
+    double per_pixelX = 38.0/diffX;
+    double per_pixelY = 46.0/diffY;
     
 
 	if ( result_ball1[0] > minX && result_ball1[0]< maxX && result_ball1[1] > minY && result_ball1[1] <maxY  )

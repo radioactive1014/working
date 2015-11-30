@@ -44,12 +44,12 @@ std::ofstream work;
 
 
 
-const int nSamples=65; //working 65
+const int nSamples=75; //working 65
 //physics simulation time step
 float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=15; // 15 working
-const int nStateDimensions=4;
+int nTimeSteps=20; // 15 working
+const int nStateDimensions=6;
 const int nControlDimensions=2;
 float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
 float maxControl[2]={0.8,0.8}; //upper sampling bound 0.8 both working
@@ -58,7 +58,7 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
 float C=1.00;
-float controlStd[2]={0.75f*C,0.75f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float controlStd[2]={0.85f*C,0.85f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
 float controlDiffDiffStd[2]={18.5f*C,18.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
@@ -179,8 +179,8 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	const dReal *vel;
 	float vel_robotX,vel_robotY ;
 
-	float alpha = 0.00;
-	float beta = 0.00;
+	float alpha = 0.1;
+	float beta = 0.1;
 
 	current_posX = pos_robotx;
 	current_posY = pos_roboty;
@@ -224,7 +224,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 	
 	if(debug) printf("position befor simulate forward  x%f  y %f \n", pos[0],pos[1]);
 
-	float stateVector[4]={pos[0],pos[1], angle, angle_second};
+	float stateVector[6]={pos[0],pos[1], angle, angle_second,vel_estx,vel_esty};
 	pbp.startIteration(true,stateVector);
 
 	//simulate forward
@@ -262,18 +262,18 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.12-pos[0])*15.50f)+squared((pos[1])*15.50f)+squared(angle*9.5)+squared(angle_second*8.1)+squared(vel_inside[0]*(0.12-pos[0])*9.5f) + squared(vel_inside[1]*pos[1]*0.15f) ;
+			float cost=squared((0.12-pos[0])*12.50f)+squared((pos[1])*12.50f)+squared(angle*9.5)+squared(angle_second*8.1)+squared(vel_inside[0]*(0.12-pos[0])*10.5f) + squared(vel_inside[1]*pos[1]*0.15f) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 			
-			if (-0.06<pos[1] && pos[1] <0.06 && -0.06<pos[0] && pos[0]<0.06 )
+			if (-0.065<pos[1] && pos[1] <0.065 && -0.08<pos[0] && pos[0]<0.04 )
 			{
-			cost = cost+200;
+			cost = cost+45;
 			}
 			
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
-			float stateVector[4]={pos[0],pos[1], angle, angle_second};
+			float stateVector[6]={pos[0],pos[1], angle, angle_second,vel_inside[0],vel_inside[1]};
 			pbp.updateResults(i,control,stateVector,cost);
 		}
 		/*
@@ -367,7 +367,12 @@ int main(int argc, char **argv)
 	odeRandSetSeed(0);
 	odeSetContactSoftCFM(0);
 	odeWorldSetGravity(0, 0, -9.81f);
-	work.open ("fresh_working-2.txt");
+	
+
+	work.open ("fresh_working-20.txt");
+
+
+
 	//creating stage
 	stage.body = odeBodyCreate();
 	stage.geom = odeCreateBox(0.46f, 0.38f, 0.05f);
@@ -450,8 +455,8 @@ int main(int argc, char **argv)
 
 
 	obs.body = odeBodyCreate();
-	obs.geom = odeCreateBox( 0.061,0.031,0.02); 
-	odeMassSetBoxTotal(obs.body, 0.012,0.062,0.031,0.031); 
+	obs.geom = odeCreateBox( 0.031,0.062,0.02); 
+	odeMassSetBoxTotal(obs.body, 0.012,0.031,0.062,0.031); 
 	odeBodySetPosition(obs.body,0,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs.geom,obs.body);
 	printf("capsule obstacle body id %f, geom id %f \n", obs.body, obs.geom);
@@ -485,6 +490,7 @@ int main(int argc, char **argv)
 	odeJointAttach(stage.joint,stage.body,support.body);
 	odeJointSetFixed(stage.joint);
 
+	
 	//Stage and Obstacle
 	obs.joint =odeJointCreateFixed();
 	odeJointAttach(obs.joint,stage.body,obs.body);

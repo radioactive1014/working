@@ -79,7 +79,7 @@ void onMouse( int event, int x, int y, int, void* )
 
         newY = (pt.x - ref_minX) * per_pixelX;
         newX = (pt.y- ref_minY) * per_pixelY ;
-        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-21)/100); 
+        printf("x_click = %f,y_click=%f\n", (newX-23)/100,(newY-20)/100); 
 
   }
 
@@ -175,7 +175,7 @@ void colorDetectionCallback(const sensor_msgs::ImageConstPtr& original_image)
         newX = (posY- ref_minY) * per_pixelX ;
         //printf("x= %f,y=%f\n", newX,newY); 
 
-        printf("x= %f,y=%f\n", (newX-23)/100,(newY-21)/100); 
+        printf("x= %f,y=%f\n", (newX-23)/100,(newY-20)/100); 
   
       }
 

@@ -188,7 +188,7 @@ int main(int argc, char **argv) {
 
 
 		ball_posX = (cam_X-23)/100 ;
-		ball_posY = (cam_Y-19)/100 ;
+		ball_posY = (cam_Y-20)/100 ;
 		//printf("BALL posx %f, posy %f\n",ball_posX, ball_posY );
 
 

@@ -50,11 +50,11 @@ std::ofstream work;
 
 
 
-const int nSamples=75; //working 65
+const int nSamples=85; //working 65
 //physics simulation time step
 float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=16; // 15 working
+int nTimeSteps=18; // 15 working
 const int nStateDimensions=6;
 const int nControlDimensions=2;
 float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
@@ -63,10 +63,10 @@ float controlMean[2]={0,0}; //we're using torque as the control, makes sense to 
 //Square root of the diagonal elements of C_u in the paper, i.e., stdev of a Gaussian prior for control.
 //Note that the optimizer interface does not have the C_u as a parameter, and instead uses meand and stdev arrays as parameters.
 //The 3D character tests compute the C_u on the Unity side to reduce the number of effective parameters, and then compute the arrays based on it as described to correspond to the products \sigma_0 C_u etc.
-float C=1.2;
-float controlStd[2]={0.35f*C,0.35f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
+float C=0.4;
+float controlStd[2]={0.85f*C,0.85f*C}; // 0.65 both working //sqrt(\sigma_{0}^2 C_u) of the paper (we're not explicitly specifying C_u as u is a scalar here). In effect, a "tolerance" for torque minimization in this test
 float controlDiffStd[2]={0.9f*C, 0.9f*C}; // 0.9 both working //sqrt(\sigma_{1}^2 C_u) in the pape. In effect, a "tolerance" for angular jerk minimization in this test
-float controlDiffDiffStd[2]={10.5f*C,10.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
+float controlDiffDiffStd[2]={20.5f*C,20.5f*C}; //18.5 both working//sqrt(\sigma_{2}^2 C_u) in the paper. A large value to have no effect in this test.
 float mutationScale=0.25f;
 
 
@@ -268,7 +268,19 @@ bool robot(unit::twoBall::Request &req, unit::twoBall::Response &res)
 	
 	if(debug) printf("position befor simulate forward  x%f  y %f \n", pos[0],pos[1]);
 
-	float stateVector[6]={pos[0],pos[1], pos2[0], pos2[1], angle, angle_second};
+
+	float rel1, rel_second1,rel2, rel_second2;
+	rel1= odeBodyGetPosRelPoint( stage.body, pos[0], pos[1], pos[2]);
+	rel_second1=odeBodyGetPosRelPoint1( stage.body, pos[0], pos[1], pos[2]);
+
+
+	rel2= odeBodyGetPosRelPoint( stage.body, pos2[0], pos2[1], pos2[2]);
+	rel_second2=odeBodyGetPosRelPoint1( stage.body, pos2[0], pos2[1], pos2[2]);
+
+	//float stateVector[6]={pos[0],pos[1], pos2[0], pos2[1], angle, angle_second};
+	float stateVector[6]={rel1,rel_second1, rel2, rel_second2, angle, angle_second};
+
+
 	pbp.startIteration(true,stateVector);
 
 	//simulate forward
@@ -301,17 +313,26 @@ bool robot(unit::twoBall::Request &req, unit::twoBall::Response &res)
 			const dReal *pos2= odeBodyGetPosition(ball2.body);
 
 
+			float rel1, rel_second1,rel2, rel_second2;
+			rel1= odeBodyGetPosRelPoint( stage.body, pos[0], pos[1], pos[2]);
+			rel_second1=odeBodyGetPosRelPoint1( stage.body, pos[0], pos[1], pos[2]);
+
+
+			rel2= odeBodyGetPosRelPoint( stage.body, pos2[0], pos2[1], pos2[2]);
+			rel_second2=odeBodyGetPosRelPoint1( stage.body, pos2[0], pos2[1], pos2[2]);
+
+
 			float angle=odeJointGetHingeAngle(mainLink.joint);
 			float angle_second = odeJointGetHingeAngle(LinkBall.joint);
 
 			const dReal *vel_inside  = odeBodyGetLinearVel(ball.body);
 			const dReal *vel_inside2  = odeBodyGetLinearVel(ball2.body);
 			
-			float weight_pos = 15.5f ;
-			float weight_angle = 9.5f;
-			float weight_vel= 7.5f;
+			float weight_pos = 11.5f ;
+			float weight_angle = 10.5f;
+			float weight_vel= 9.5f;
 			//working 12.5, 12.5, 9.5,9.5
-			float cost=squared((0.08-pos[0])*weight_pos)+squared((0.03-pos[1])*weight_pos)+squared((0.08-pos2[0])*weight_pos)+squared((-0.03-pos2[1])*weight_pos)+squared(angle*weight_angle)+squared(angle_second*weight_angle)+squared(vel_inside[0]*(0.08-pos[0])*weight_vel) + squared(vel_inside[1]*pos[1]*weight_vel)+squared(vel_inside2[0]*(0.08-pos[0])*weight_vel) + squared(vel_inside2[1]*pos[1]*weight_vel) ;
+			float cost=squared((0.08-rel1)*weight_pos)+squared((0.03-rel_second1)*weight_pos)+squared((0.08-rel2)*weight_pos)+squared((-0.03-rel_second2)*weight_pos)+squared(angle*weight_angle)+squared(angle_second*weight_angle)+squared(vel_inside[0]*(0.08-rel1)*weight_vel) + squared(vel_inside[1]*(0.03-rel_second1)*weight_vel)+squared(vel_inside2[0]*(0.08-rel2)*weight_vel) + squared(vel_inside2[1]*(-0.03-rel_second2)*weight_vel) ;
 			//+squared(control[0]*1.5)+squared(control[1]*1.5) ;//+ squared(vel_robotX*0.05f)+ squared(vel_robotY*0.05f) ;
 			
 	/*
@@ -327,7 +348,7 @@ bool robot(unit::twoBall::Request &req, unit::twoBall::Response &res)
 	*/	
 		//store the state and cost to C-PBP. Note that in general, the stored state does not need to contain full simulation state as in this simple case.
 		//instead, one may use arbitrary state features
-			float stateVector[6]={pos[0],pos[1],pos2[0],pos2[1], angle, angle_second};
+			float stateVector[6]={rel1,rel_second1,rel2,rel_second2, angle, angle_second};
 			pbp.updateResults(i,control,stateVector,cost);
 		}
 		/*
@@ -537,7 +558,7 @@ int main(int argc, char **argv)
 
 
 	obs2.body = odeBodyCreate();
-	obs2.geom = odeCreateBox( 0.031,0.062,0.02); 
+	obs2.geom = odeCreateBox( 0.031,0.013,0.02); 
 	odeMassSetBoxTotal(obs2.body, 0.006,0.031,0.13,0.031); 
 	odeBodySetPosition(obs2.body,0.00,0.0,h_floor_table+h_base+h_sphere+h_support+stage_dim[2]+obs.radius);
 	odeGeomSetBody(obs2.geom,obs2.body);

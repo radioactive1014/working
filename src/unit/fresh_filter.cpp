@@ -46,7 +46,7 @@ const int nSamples=75; //working 65
 //physics simulation time step
 float timeStep=1.0f/24.0f;
 ControlPBP pbp;
-int nTimeSteps=15; // 15 working
+int nTimeSteps=20; // 15 working
 const int nStateDimensions=6;
 const int nControlDimensions=2;
 float minControl[2]={-0.8,-0.8}; //lower sampling bound -0.8 both working
@@ -340,7 +340,7 @@ bool robot(unit::for_feedback::Request &req, unit::for_feedback::Response &res)
 
 	ros::Time end = ros::Time::now();
 	double dt = (begin - end).toSec();
-	// printf(" dt %f\n", dt );
+	printf(" dt %f\n", dt );
 }
 
 
